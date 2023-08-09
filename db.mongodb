@@ -1,0 +1,54 @@
+
+//? CHECK
+use("zoo");
+db.createCollection("automovil", {
+  capped: true,
+  size: 650,
+  max: 5,
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: [
+        "ID_Automovil",
+        "Marca",
+        "Modelo",
+        "Año",
+        "Tipo",
+        "Capacidad",
+        "Precio_Diario"
+      ],
+      properties: {
+        ID_Automovil: {
+          bsonType: "int",
+          description: "Identificador del automovil",
+        },
+        Marca: {
+          bsonType: "string",
+          description: "nombre de la marca",
+        },
+        Modelo: {
+          bsonType: "string",
+          description: "modelo de la marca",
+        },
+        Año: {
+          bsonType: "int",
+          description: "año de automovil, solo se permite el ingreso del año como número, no como fecha",
+        },
+        Tipo: {
+          bsonType: "string",
+          description: "año de automovil",
+        },
+        Capacidad: {
+          bsonType: "int",
+          description: "capacidad de cupos en el auto",
+        },
+        Precio_Diario: {
+          bsonType: "int",
+          description: "precio del automovil",
+        },
+      }
+    }
+  },
+  validationLevel: "strict",
+  validationAction: "error"
+});
