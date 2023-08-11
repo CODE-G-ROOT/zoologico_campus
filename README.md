@@ -1,4 +1,9 @@
-# Zoológico: Una Exploración Integral 🐾
+<h1 align="center">Zoológico: Una Exploración Integral 🐾</h1>
+
+<p align="center">
+  <img style="border-radius: 50px; cursor: none;" src="https://cdn.discordapp.com/attachments/1139164392294989834/1139523135507546212/image_processing20190925-26883-1dquwhs.gif" alt="Descripción de la imagen">
+</p>
+
 
 Un zoológico es mucho más que un simple lugar de entretenimiento. Es una institución con un propósito profundo: la exhibición, conservación y educación de diversas especies animales. A través de su labor, los zoológicos no solo nos asombran con la belleza de la vida silvestre, sino que también desempeñan un papel crucial en la preservación de la biodiversidad y la promoción de la conciencia ambiental.
 
@@ -7,7 +12,7 @@ Un zoológico es mucho más que un simple lugar de entretenimiento. Es una insti
 Nuestro proyecto tiene como objetivo principal crear un sistema de gestión integral para un zoológico, aprovechando la potencia de las bases de datos y la tecnología moderna. Nos enfocamos en abordar los desafíos clave que enfrenta la administración de un zoológico, desde la organización de datos de especies hasta la educación ambiental de los visitantes.
 
 ## Funciones Principales 🌍
- 
+
 **1. Educación:** Los zoológicos tienen un importante papel educativo. A través de cautivadoras exhibiciones, charlas informativas y emocionantes actividades interactivas, nos conectan con la fauna global y nos sensibilizan sobre la importancia de la conservación y el respeto por la naturaleza.
 
 **2. Conservación:** Más allá de las emocionantes experiencias que ofrecen, los zoológicos son verdaderos héroes de la conservación. Participan en programas de cría en cautiverio para especies en peligro, aumentando sus poblaciones y, en algunos casos, reintroduciéndolas a su hábitat natural.
