@@ -12,6 +12,5 @@ const data = {
         port: info.PORT
     }
 }
-console.log(data);
 
 export default data;
