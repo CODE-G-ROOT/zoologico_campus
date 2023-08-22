@@ -197,7 +197,7 @@ db.createCollection('Intraestructura',{
     size: 1000,
     max: 21,
     validator: { 
-        $jsonSchema: {
+        $jsonSchema: { 
             type: "object",
             required: [
                 "ID_zona",
