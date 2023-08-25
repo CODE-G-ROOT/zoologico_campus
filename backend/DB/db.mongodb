@@ -1,0 +1,119 @@
+
+//! En construcción
+use('zoologico');
+db.createCollection('area', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: [], //TODO: Queda pendiente por configurar
+            properties: {
+                id: {
+                    bsonType: 'int',
+                    description: "El campo id es requerido y debe ser de tipo integer 32 bits"
+                },
+                name: {
+                    bsonType: 'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ0-9\s]+$',
+                    description: "El campo name es requerido y debe ser de tipo string. Solo se permiten letras, letras especiales y espacios"
+                },
+                descripcion: {
+                    bsonType: 'string',
+                    descripcion: 'El campo description es requerido, y debe de ser de tipo string'
+                },
+                responsable: {
+                    bsonType: 'int',
+                    descripcion: 'El campo responsable debe ser de tipo interger'
+                },
+                habitats: {
+
+                },
+                instalciones: {
+
+                }
+            }
+        }
+    }
+});
+
+
+//! En construcción
+use('zoologico');
+db.createCollection('animales',{
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: [],
+            properties: {
+                id: {
+                    bsonType: 'int', //32 bits
+                    description: ''
+                },
+                nombre: {
+                    bsonType: 'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    description: ''
+                },
+                nombre_cientifico: {
+                    bsonType:  'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    description: ''
+                },
+                clase: {
+                    bsonType: 'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    descripcion: ''
+                },
+                raza: '',
+
+                alimentacion: {
+                    bsonType: 'string',
+                    required: ["Carnívoro","Herbívoro","Omnivóro",],
+                    descripcion: ''
+                },
+                vertebrado: '',
+                invertebrado: '',
+
+                tipo_animal: {
+                    bsonType: 'string',
+                    enum: [
+                        "Ave",
+                        "Reptil",
+                        "Anfibio",
+                        "Mamífero",
+                    ]
+                },
+                habitat: '',
+                tipo_habitat: '',
+            }
+        }
+    }
+})
+// id:'', //int
+// nombre:'', //string
+// datos:'', 
+//   {
+//     clase: '',
+//     orden: '', //carivoro, hervivoro etc
+//     familia:'',
+//     habitat:'',
+//     dieta:'',
+//     especie: '', //string
+//     imagen_de_la_especie
+// }
+// caracterisitcas: '',
+// {
+//     color,
+//     tamaño
+//     promedio de vida
+//     depredador{
+//         tiene? -> true
+//         cual es -> nombre
+//     }
+//     amenazas: 
+// }
+// edad:'', //int
+// genero:'', //string
+// ubicacion_geografica: '', //object
+// imagen_referencia: '',
+// historial:'', // fecha de llegada, zoologicos en los que ha estado, etc
+// notas:'', //strgin
