@@ -1,93 +1,297 @@
 
 //! En construcción
-use('zoologico');
-db.createCollection('area', {
-    validator: {
-        $jsonSchema: {
-            bsonType: 'object',
-            required: [], //TODO: Queda pendiente por configurar
-            properties: {
-                id: {
-                    bsonType: 'int',
-                    description: "El campo id es requerido y debe ser de tipo integer 32 bits"
-                },
-                name: {
-                    bsonType: 'string',
-                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ0-9\s]+$',
-                    description: "El campo name es requerido y debe ser de tipo string. Solo se permiten letras, letras especiales y espacios"
-                },
-                descripcion: {
-                    bsonType: 'string',
-                    descripcion: 'El campo description es requerido, y debe de ser de tipo string'
-                },
-                responsable: {
-                    bsonType: 'int',
-                    descripcion: 'El campo responsable debe ser de tipo interger'
-                },
-                habitats: {
+// use('zoologico');
+// db.createCollection('area', {
+//     validator: {
+//         $jsonSchema: {
+//             bsonType: 'object',
+//             required: [], //TODO: Queda pendiente por configurar
+//             properties: {
+//                 id: {
+//                     bsonType: 'int',
+//                     description: "El campo id es requerido y debe ser de tipo integer 32 bits"
+//                 },
+//                 name: {
+//                     bsonType: 'string',
+//                     pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ0-9\s]+$',
+//                     description: "El campo name es requerido y debe ser de tipo string. Solo se permiten letras, letras especiales y espacios"
+//                 },
+//                 descripcion: {
+//                     bsonType: 'string',
+//                     descripcion: 'El campo description es requerido, y debe de ser de tipo string'
+//                 },
+//                 responsable: {
+//                     bsonType: 'int',
+//                     descripcion: 'El campo responsable debe ser de tipo interger'
+//                 },
+//                 habitats: {
 
-                },
-                instalciones: {
+//                 },
+//                 instalciones: {
 
-                }
-            }
-        }
-    }
-});
+//                 }
+//             }
+//         }
+//     }
+// });
 
 
 //! En construcción
+
 use('zoologico');
-db.createCollection('animales',{
+db.createCollection('animales', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: [],
+            required: [
+                "id",
+                "nombre",
+                "edad",
+                "genero",
+                "alimentacion",
+                "habitat_zoo",
+                "actividades_diarias",
+                "cuidados",
+                "relacion_animales",
+                "estado_salud",
+                "historia",
+                "interaccion_humanos",
+                "enlaces_geneticos",
+                "informacion_general",
+                "detalles",
+            ],
             properties: {
                 id: {
                     bsonType: 'int', //32 bits
-                    description: ''
+                    description: 'Identify animal bust be interger type'
                 },
                 nombre: {
                     bsonType: 'string',
                     pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    description: 'Animal name must be string type'
+                },
+                edad: {
+                    bsonType: 'int',
                     description: ''
                 },
-                nombre_cientifico: {
-                    bsonType:  'string',
-                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
-                    description: ''
-                },
-                clase: {
+                genero: {
                     bsonType: 'string',
-                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
-                    descripcion: ''
+                    enum: ['macho', 'hembra'],
+                    description: ''
                 },
-                raza: '',
-
                 alimentacion: {
                     bsonType: 'string',
-                    required: ["Carnívoro","Herbívoro","Omnivóro",],
-                    descripcion: ''
+                    enum: ['Carnívoro', 'Hervívoro', 'Omnívoro', 'Insectívoro'],
+                    description: ''
                 },
-                vertebrado: '',
-                invertebrado: '',
-
-                tipo_animal: {
+                habitat_zoo: {
+                    bsonType: 'int',
+                    description: ''
+                },
+                actividades_diarias: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                cuidados: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                relacion_animales: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                estado_salud: {
                     bsonType: 'string',
                     enum: [
-                        "Ave",
-                        "Reptil",
-                        "Anfibio",
-                        "Mamífero",
-                    ]
+                        'Bueno', 
+                        'Malo',
+                        'Cautela',
+                        'En observación',
+                        'Regular',
+                        'Preocupante',
+                        'Grave',
+                        'Terminal'],
+                    description: ''
                 },
-                habitat: '',
-                tipo_habitat: '',
+                historia: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                interaccion_humanos: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                enlaces_geneticos: {
+                    bsonType: 'string',
+                    description: ''
+                },
+                informacion_general: {
+                    bsonType: 'int',
+                    description: ''
+                },
+                detalles: {
+                    bsonType: 'object',
+                    required: [
+                        "nombre_cientifico",
+                        "clase",
+                        "raza",
+                        "especie",
+                        "tipo_animal",
+                        "invertebrado",
+                        "vertebrado",
+                        "tipo_habitat",
+                        "distribicion_geografica",
+                        "comportamiento",
+                        "estado_conservacion",
+                        "depredadores",
+                        "presa",
+                        "curiosidades",
+                        "amenazas",
+                        "relacion_con_humanos",
+                        "importancia_ecologica",
+                        "origen",
+                    ],
+                    properties: {
+                        nombre_cientifico: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        clase: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        raza: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        especie: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        tipo_animal: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        invertebrado: {
+                            bsonType: 'bool',
+                            description: ''
+                        },
+                        vertebrado: {
+                            bsonType: 'bool',
+                            description: ''
+                        },
+                        tipo_habitat: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        distribicion_geografica: {
+                            bsonType: 'object',
+                            required: [
+                                "habitat_natural",
+                                "region_geografica",
+                                "pais",
+                                "continente",
+                                "ecosistema",
+                            ],
+                            properties: {
+                                habitat_natural: {
+                                    bsonType: 'string',
+                                    description: ''
+                                },
+                                region_geografica: {
+                                    bsonType: 'string',
+                                    description: ''
+                                },
+                                pais: {
+                                    bsonType: 'string',
+                                    description: ''
+                                },
+                                continente: {
+                                    bsonType: 'string',
+                                    description: ''
+                                },
+                                ecosistema: {
+                                    bsonType: 'string',
+                                    description: ''
+                                }
+                            }
+                        },
+                        comportamiento: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        estado_conservacion: {
+                            bsonType: 'string',
+                            enum: [
+                                'Exinto en estado salvaje',
+                                'En peligro critico',
+                                'En peligro',
+                                'Vulnerable',
+                                'Casi amenazado',
+                                'Preocupación Menor',
+                                'Datos Insuficientes',
+                                'No Evaluado',
+                                'Sin amenaza',
+                                'Es más, son una plaga xd'
+                            ],
+                            description: ''
+                        },
+                        depredadores: {
+                            bsonType: 'array',
+                            description: ''
+                        },
+                        presa: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        curiosidades: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        amenazas: {
+                            bsonType: 'array',
+                            description: ''
+                        },
+                        relacion_con_humanos: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                        importancia_ecologica: {
+                            bsonType: 'string',
+                            enum: ['alta', 'media', 'baja'],
+                            description: ''
+                        },
+                        origen: {
+                            bsonType: 'string',
+                            description: ''
+                        },
+                    }
+                }
             }
         }
-    }
+    },
+
+});
+use('zoologico');
+db.animales.insertOne({
+    id: '1',
+    nombre: '',
+    edad: '',
+    genero: '',
+    alimentacion: '',
+    habitat_zoo: '',
+    actividades_diarias: '',
+    cuidados: '',
+    relacion_animales: '',
+    estado_salud: '',
+    historia: '',
+    interaccion_humanos: '',
+    enlaces_geneticos: '',
+    informacion_general: '',
+    detalles: '',
 })
+
+
 // id:'', //int
 // nombre:'', //string
 // datos:'', 
@@ -117,3 +321,17 @@ db.createCollection('animales',{
 // imagen_referencia: '',
 // historial:'', // fecha de llegada, zoologicos en los que ha estado, etc
 // notas:'', //strgin
+
+
+
+// caracteristicas_fisicas: {
+//     bsonType: 'object',
+//     required: [],
+//     properties: {
+//         tamaño: {
+//             bsonType: 'string',
+//             description: ''
+//         },
+//         forma_cuerpo:
+//     }
+// },
