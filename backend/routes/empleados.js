@@ -13,3 +13,21 @@ export async function getEmpleados(req, res) {
         res.status(500).send({ status: 500, message: "Internal Server Error :(" });
     }
 }
+
+export async function postEmpl(req, res){
+    try{
+        let db = await con();
+        let colleccion = db.collection("empleados");
+        let data = req.body;
+        const newEmpl = {
+            _id: new ObjectId(),
+            ...data,
+            fecha_contratacion: new Date(req.body.fecha_contratacion),
+        };
+        await colleccion.insertOne(newEmpl);
+        res.status(201).send({ status:201, message: "Created :)" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status:500, message: "Internal Server Error :(" });
+    }
+};
