@@ -1,8 +1,20 @@
+import dotenv from 'dotenv';
 import express from 'express';
-import data from './settings.js'; // variables de entorno
-import db from './connection/conect.js'; // conección
+import {appProductos, appUsers} from './routes/routes.js';
+import { appToken, appVerify} from './helpers/jwt.js';
+//import { initRoutes} from './routes/routes.js'
+dotenv.config();
 
-const app = express();
-app.listen(data.server_config, ()=>{
-    console.log(`http://${data.server_config.hostname}:${data.server_config.port}`);
-})
+let app = express();
+
+app.use(express.json());
+//app.use("/productos",appVerify, appBodegas);
+app.use("/token", appToken);
+app.use("/empleado",appProductos,appVerify);
+app.use("/user",appUsers,appVerify)
+
+let config = JSON.parse(process.env.MY_SERVER);
+
+app.listen(config, ()=>{
+    console.log(`http://${config.hostname}:${config.port}`);
+});

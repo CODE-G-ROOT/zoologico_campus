@@ -101,6 +101,62 @@ db.createCollection('animales', {
                         'Terminal'],
                     description: 'health status must be of type string, Bueno, Malo, Cautela, En, Regular, Preocupante, Grave, Terminal,'
                 },
+                salario: {
+                    bsonType: "int",
+                    description: "salario must be interger type"
+                },
+                responsabilidades: {
+                    bsonType: "string",
+                    description: "responsabilidades field must be string type"
+                }
+            }
+        }
+    },
+});
+
+// use('zoologico');
+// db.Empleado.insertMany([
+//     {
+//         id_empleado: 1,
+//         nombre: "María Gutierrez",
+//         cc: 987654321,
+//         telefono_personal: 1234567890,
+
+//         correo_personal: "maria@example.com",
+//         campo: {
+//             categoria: "Directivo",
+//             cargo: "Gerente General",
+//             especialidad: "Planificación estratégica",
+//         },
+//         fecha_contratacion: ISODate("2023-08-20T00:00:00Z"),
+//         horario: "Lunes a Viernes, 8 AM - 4 PM",
+//         salario: 2000,
+//         responsabilidades: "Ser el gerente"
+//     }
+// ]);
+
+use('zoologico');
+db.createCollection('Intraestructura',{
+    capped: true,
+    size: 1000,
+    max: 21,
+    validator: { 
+        $jsonSchema: { 
+            type: "object",
+            required: [
+                "ID_zona",
+                "nombre_lugar",
+                "descripcion",
+                "dimensiones",
+                "habitats",
+                "departamentos",
+                "instalaciones",
+                "area"
+            ],
+            properties: {
+                ID_zona : {
+                    bsonType: "int",
+                    descripcion: "zone indentify must be integer type"
                 historia: {
                     bsonType: 'string',
                     description: 'history field must be of type string'
