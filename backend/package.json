@@ -5,11 +5,11 @@
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev" : "nodemon --quiet ./app.js",
+    "dev" : "nodemon  ./app.js",
     "tsc" : "tsc -w"
   },
   "keywords": [],
-  "authors": ["Juan Avila", "Owell Polanco"],
+  "authors": ["Juan Avila", "Nicolas Ramirez"],
   "repositories": {
     "profiles" : [
       "https://github.com/JuanDavidAvilaRaveloCampus"
