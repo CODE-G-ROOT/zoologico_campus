@@ -1,161 +1,105 @@
+
+//! En construcción
+// use('zoologico');
+// db.createCollection('area', {
+//     validator: {
+//         $jsonSchema: {
+//             bsonType: 'object',
+//             required: [], //TODO: Queda pendiente por configurar
+//             properties: {
+//                 id: {
+//                     bsonType: 'int',
+//                     description: "El campo id es requerido y debe ser de tipo integer 32 bits"
+//                 },
+//                 name: {
+//                     bsonType: 'string',
+//                     pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ0-9\s]+$',
+//                     description: "El campo name es requerido y debe ser de tipo string. Solo se permiten letras, letras especiales y espacios"
+//                 },
+//                 descripcion: {
+//                     bsonType: 'string',
+//                     descripcion: 'El campo description es requerido, y debe de ser de tipo string'
+//                 },
+//                 responsable: {
+//                     bsonType: 'int',
+//                     descripcion: 'El campo responsable debe ser de tipo interger'
+//                 },
+//                 habitats: {
+
+//                 },
+//                 instalciones: {
+
+//                 }
+//             }
+//         }
+//     }
+// });
+
+
+//! En construcción
+
 use('zoologico');
-db.createCollection('Empleado', {
-    capped: true,
-    size: 1000,
-    max: 21,
+db.createCollection('animales', {
     validator: {
         $jsonSchema: {
-            type: "object",
+            bsonType: 'object',
             required: [
-                "id_empleado",
+                "id",
                 "nombre",
-                "cc",
-                "telefono_personal",
-                "correo_personal",
-                "campo",
-                "fecha_contratacion",
-                "horario",
-                "salario",
-                "responsabilidades"
+                "edad",
+                "genero",
+                "habitat_zoo",
+                "cuidados",
+                "relacion_animales",
+                "estado_salud",
+                "historia",
+                "interaccion_humanos",
+                "enlaces_geneticos",
+                "detalles",
             ],
             properties: {
-                id_empleado: {
-                    bsonType: "int",
-                    description: "Must be interger type",
+                id: {
+                    bsonType: 'int', //32 bits
+                    description: 'Identify animal bust be interger type'
                 },
                 nombre: {
-                    bsonType: "string",
-                    description: "Must be string type",
-                    minLength: 4,
-                    maxLength: 41
+                    bsonType: 'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    description: 'Animal name must be of type string'
                 },
-                cc: {
-                    bsonType: "int",
-                    description: "Must be interger type",
+                edad: {
+                    bsonType: 'int',
+                    description: 'Edad field must be of type interger'
                 },
-                telefono_personal: {
-                    bsonType: "int",
-                    description: "field telefono personal must be interger type"
+                genero: {
+                    bsonType: 'string',
+                    enum: ['macho', 'hembra'],
+                    description: 'genero field must be of or macho hembra'
                 },
-                correo_personal: {
-                    bsonType: "string",
-                    description: "field correo must be string type"
+                habitat_zoo: {
+                    bsonType: 'int',
+                    description: 'habitat must be of type interger, is a fk'
                 },
-                campo: {
-                    type: "object",
-                    required: [
-                        "categoria",
-                        "cargo",
-                        "especialidad"
-                    ],
-                    properties: {
-                        categoria: {
-                            bsonType: "string",
-                            // enum: [
-                            //     "Directivo",
-                            //     "Administrativo",
-                            //     "Personal de Cuidado y Bienestar Animal",
-                            //     "Personal de Educación y Programas Educativos",
-                            //     "Personal de Mantenimiento y Operaciones",
-                            //     "Personal de Servicio al Visitante",
-                            //     "otro"
-                            // ],
-                            description: "el campo categoria solo puede ser de tipo string. Revisar si el dato insertado cumple con los datos permitidos"
-                        },
-                        cargo: {
-                            bsonType: "string",
-                            // enum: [
-                            //     "Gerente General",
-                            //     "Director de Operaciones",
-                            //     "Director Financiero",
-                            //     "Director de Marketing",
-                            //     "Director de Conservación",
-                            //     "Veterinario",
-                            //     "Biologo",
-                            //     "Zootecnista",
-                            //     "Etólogo",
-                            //     "Entrenador Animal",
-                            //     "Educador Ambiental",
-                            //     "Guia de Tours",
-                            //     "Coordinador de Programas Educativos",
-                            //     "Ingeniero de Instalaciones",
-                            //     "Paisajista",
-                            //     "Recepcionista",
-                            //     "Encargado de Tienda de Regalos",
-                            //     "Personal de Restaurante y Cafetería",
-                            //     "otro"
-                            // ],
-                            description: "el campo cargo, solo puede ser de tipo string. Revisar si el dato insertado cumple con datos permitidos"
-                        },
-                        especialidad: {
-                            bsonType: "string",
-                            // enum: [
-                            //     "Administración de empresas",
-                            //     "Gestión de recursos humanos",
-                            //     "Planificación estratégica",
-                            //     "Gestión de operaciones",
-                            //     "Logística",
-                            //     "Eficiencia en recursos",
-                            //     "Finanzas y contabilidad",
-                            //     "Gestión presupuestaria",
-                            //     "Análisis financiero",
-                            //     "Marketing y publicidad",
-                            //     "Estrategias de promoción",
-                            //     "Gestión de redes sociales",
-                            //     "Biología de la conservación",
-                            //     "Planificación de programas de conservación",
-                            //     "Colaboración con organizaciones de conservación",
-                            //     "Medicina veterinaria",
-                            //     "Cuidado y salud animal",
-                            //     "Tratamiento médico",
-                            //     "Biología animal",
-                            //     "Ecología",
-                            //     "Investigación de especies",
-                            //     "Zootecnia",
-                            //     "Manejo de animales en cautiverio",
-                            //     "Nutrición animal",
-                            //     "Etología",
-                            //     "Comportamiento animal",
-                            //     "Enriquecimiento y bienestar animal",
-                            //     "Técnicas de entrenamiento animal",
-                            //     "Manejo de comportamiento",
-                            //     "Interacción con animales",
-                            //     "Educación ambiental",
-                            //     "Diseño de programas educativos",
-                            //     "Comunicación efectiva",
-                            //     "Conocimiento de la vida silvestre",
-                            //     "Comunicación con visitantes",
-                            //     "Habilidades de presentación",
-                            //     "Planificación y coordinación de programas educativos",
-                            //     "Relación con escuelas y grupos",
-                            //     "Ingeniería civil o mecánica",
-                            //     "Mantenimiento de estructuras y equipos",
-                            //     "Seguridad en instalaciones",
-                            //     "Diseño de paisajes",
-                            //     "Mantenimiento de áreas verdes",
-                            //     "Horticultura",
-                            //     "Atención al cliente",
-                            //     "Gestión de reservas y boletos",
-                            //     "Información general sobre el zoológico",
-                            //     "Administración de tiendas",
-                            //     "Ventas y marketing",
-                            //     "Gestión de inventario",
-                            //     "Servicio al cliente en alimentos y bebidas",
-                            //     "Higiene alimentaria",
-                            //     "Operación de caja registradora",
-                            //     "otro",
-                            // ],
-                            description: "el campo especialidad, solo puede ser de tipo string. Revisar si el dato insertado cumple con datos permitidos"
-                        }
-                    },
+                cuidados: {
+                    bsonType: 'string',
+                    description: 'cuidados field must be of type string'
                 },
-                fecha_contratacion: {
-                    bsonType: "date",
-                    description: "contratacion must be date type"
+                relacion_animales: {
+                    bsonType: 'string',
+                    description: 'relatoin with others animals field must be of type string'
                 },
-                horario: {
-                    bsonType: "string",
-                    description: "horario field must be string type"
+                estado_salud: {
+                    bsonType: 'string',
+                    enum: [
+                        'Bueno', 
+                        'Malo',
+                        'Cautela',
+                        'En observación',
+                        'Regular',
+                        'Preocupante',
+                        'Grave',
+                        'Terminal'],
+                    description: 'health status must be of type string, Bueno, Malo, Cautela, En, Regular, Preocupante, Grave, Terminal,'
                 },
                 salario: {
                     bsonType: "int",
@@ -213,74 +157,287 @@ db.createCollection('Intraestructura',{
                 ID_zona : {
                     bsonType: "int",
                     descripcion: "zone indentify must be integer type"
+                historia: {
+                    bsonType: 'string',
+                    description: 'history field must be of type string'
                 },
-                nombre_lugar: {
-                    bsonType: "string",
-                    descripcion: "place name must be string type"
+                interaccion_humanos: {
+                    bsonType: 'string',
+                    description: 'interaction with humans must be of type string'
                 },
-                descripcion: {
-                    bsonType: "string",
-                    descripcion: "description place must be string type"
+                enlaces_geneticos: {
+                    bsonType: 'string',
+                    description: 'genetic strings field must be of type string'
                 },
-                dimensiones: {
-                    type:"object",
+                detalles: {
+                    bsonType: 'object',
                     required: [
-                        "largo",
-                        "ancho"
+                        "nombre_cientifico",
+                        "clase",
+                        "raza",
+                        "especie",
+                        "tipo_animal",
+                        "invertebrado",
+                        "vertebrado",
+                        "tipo_habitat",
+                        "distribicion_geografica",
+                        "comportamiento",
+                        "estado_conservacion",
+                        "depredadores",
+                        "alimento_principal",
+                        "curiosidades",
+                        "amenazas",
+                        "relacion_con_humanos",
+                        "importancia_ecologica",
+                        "origen",
                     ],
                     properties: {
-                        largo: {
-                            bsonType: "string",
-                            descripcion: "long dimention must be string type, example: '5m'",
+                        nombre_cientifico: {
+                            bsonType: 'string',
+                            description: 'ciencist name field must be of type string'
                         },
-                        ancho: {
-                            bsonType: "string",
-                            descripcion: "wide dimention must be string type, example: '5m'"
+                        clase: {
+                            bsonType: 'string',
+                            description: 'class field must be of type string'
                         },
-                    },
-
-                },
-                habitats: {
-                    type: "object",
-                    required: [
-                        "ID_habitad",
-                        "tipo",
-                        "dimensiones",
-                        "descripcion",
-                    ],
-                    properties: {
-                        ID_habitad: {
-                            bsonType: "int",
-                            descripcion: "habitad id must be integer type"
+                        raza: {
+                            bsonType: 'string',
+                            description: 'raza field must be of type string'
                         },
-                        tipo: {
-                            bsonType: "string",
-                            enum: [
-                                "savana",
-                                "selva",
-                                "bosque"
-                            ]
+                        especie: {
+                            bsonType: 'string',
+                            description: 'especie field must be of type string'
                         },
-                        dimensiones: {
-                            bsonType: "object",
-                            required: [alto, ancho],
+                        tipo_animal: {
+                            bsonType: 'string',
+                            description: 'animal type must be of type string'
+                        },
+                        invertebrado: {
+                            bsonType: 'bool',
+                            description: 'invertebrado field must be of type bool'
+                        },
+                        vertebrado: {
+                            bsonType: 'bool',
+                            description: 'vertebrado field must be of type bool'
+                        },
+                        tipo_habitat: {
+                            bsonType: 'string',
+                            description: 'habitat type must be of type string'
+                        },
+                        distribicion_geografica: {
+                            bsonType: 'object',
+                            required: [
+                                "habitat_natural",
+                                "region_geografica",
+                                "pais",
+                                "continente",
+                                "ecosistema",
+                            ],
                             properties: {
-                                alto:{
-                                    bsonType: "string",
-                                    descripcion: "alto dimentoins habitads must be string type"
+                                habitat_natural: {
+                                    bsonType: 'string',
+                                    description: 'natural habitat must be of type string'
                                 },
-                                ancho: {
-                                    bsonType: "string",
-                                    descripcion: "ancho dimentoins habitads must be string type"
+                                region_geografica: {
+                                    bsonType: 'string',
+                                    description: 'geographic region must be of type string'
+                                },
+                                pais: {
+                                    bsonType: 'array',
+                                    description: 'country field must be of type array'
+                                },
+                                continente: {
+                                    bsonType: 'string',
+                                    description: 'continente field must be of type string'
+                                },
+                                ecosistema: {
+                                    bsonType: 'string',
+                                    description: 'ecosistema field must be of type string'
                                 }
                             }
-                        }
+                        },
+                        comportamiento: {
+                            bsonType: 'string',
+                            description: 'comportamiento field must be of type string'
+                        },
+                        estado_conservacion: {
+                            bsonType: 'string',
+                            enum: [
+                                'Exinto en estado salvaje',
+                                'En peligro critico',
+                                'En peligro',
+                                'Vulnerable',
+                                'Casi amenazado',
+                                'Preocupación Menor',
+                                'Datos Insuficientes',
+                                'No Evaluado',
+                                'Sin amenaza',
+                                'Es más, son una plaga xd',
+                            ],
+                            description: 'conservation status must be of type string and could countain something the it options: Exinto en estado salvaje, En peligro critico, En peligro, Vulnerable, Casi amenazado, Preocupación Menor, Datos Insuficientes, No Evaluado, Sin amenaza, Es más, son una plaga xd',
+                        },
+                        depredadores: {
+                            bsonType: 'array',
+                            description: 'depredadores field must be of type array'
+                        },
+                        alimento_principal: {
+                            bsonType: 'array',
+                            description: 'alimento_principal field must be of type alimento_principal'
+                        },
+                        curiosidades: {
+                            bsonType: 'string',
+                            description: 'curiosidades field must be of type string'
+                        },
+                        amenazas: {
+                            bsonType: 'array',
+                            description: 'amenazas field must be of type array'
+                        },
+                        relacion_con_humanos: {
+                            bsonType: 'string',
+                            description: 'relationship with humans must be of type string'
+                        },
+                        importancia_ecologica: {
+                            bsonType: 'string',
+                            enum: ['Alta', 'Media', 'Baja'],
+                            description: 'importancia field must be fo type string'
+                        },
+                        origen: {
+                            bsonType: 'string',
+                            description: 'origen field must be of type string'
+                        },
                     }
-                },
-                departamentos,
-                instalaciones,
-                ares
+                }
             }
         }
+    },
+
+});
+
+use('zoologico');
+db.animales.insertOne({
+    id: 1,
+    nombre: "León",
+    edad: 5,
+    genero: "macho",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "El león es conocido por ser el rey de la selva...",
+    interaccion_humanos: "Los leones suelen ser cautelosos...",
+    enlaces_geneticos: "Análisis genéticos han revelado...",
+    detalles: {
+        nombre_cientifico: "Panthera leo",
+        clase: "Mamífero",
+        raza: "Africana",
+        especie: "León",
+        tipo_animal: "Felino",
+        invertebrado: false,
+        vertebrado: true,
+        tipo_habitat: "Savana",
+        distribicion_geografica: {
+            habitat_natural: "Savanas de África",
+            region_geografica: "África subsahariana",
+            pais: ["Kenia", "Tanzania", "Sudáfrica"],
+            continente: "África",
+            ecosistema: "Savanas y llanuras"
+        },
+        comportamiento: "Los leones son animales sociales...",
+        estado_conservacion: "Vulnerable",
+        depredadores: ["Cocodrilos", "Hienas"],
+        alimento_principal: ["Antílopes", "Cebúes"],
+        curiosidades: "Los leones machos tienen una melena...",
+        amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+        relacion_con_humanos: "En algunas culturas africanas...",
+        importancia_ecologica: "Alta",
+        origen: "África"
     }
 });
+
+use('zoologico');
+db.animales.insertOne({
+    id: 2,
+    nombre: "Panda Gigante",
+    edad: 8,
+    genero: "hembra",
+    habitat_zoo: 456,
+    cuidados: "Se alimenta principalmente de bambú...",
+    relacion_animales: "Los pandas gigantes suelen ser solitarios...",
+    estado_salud: "Bueno",
+    historia: "El panda gigante es un símbolo de conservación...",
+    interaccion_humanos: "Los pandas gigantes son cautelosos...",
+    enlaces_geneticos: "Investigaciones genéticas han revelado...",
+    detalles: {
+        nombre_cientifico: "Ailuropoda melanoleuca",
+        clase: "Mamífero",
+        raza: "Asia",
+        especie: "Panda Gigante",
+        tipo_animal: "Marsupial",
+        invertebrado: false,
+        vertebrado: true,
+        tipo_habitat: "Bosques de bambú",
+        distribicion_geografica: {
+            habitat_natural: "Región montañosa de China",
+            region_geografica: "Asia Oriental",
+            pais: ["China"],
+            continente: "Asia",
+            ecosistema: "Bosques y Montañas"
+        },
+        comportamiento: "Los pandas gigantes son animales solitarios...",
+        estado_conservacion: "Vulnerable",
+        depredadores: [],
+        alimento_principal: ["Bambú"],
+        curiosidades: "Aunque son carnívoros, su dieta consiste en bambú...",
+        amenazas: ["Pérdida de hábitat", "Baja tasa de reproducción"],
+        relacion_con_humanos: "Los pandas gigantes son populares en todo el mundo...",
+        importancia_ecologica: "Media",
+        origen: "China"
+    }
+});
+
+use('zoologico');
+db.animales.drop()
+
+// id:'', //int
+// nombre:'', //string
+// datos:'', 
+//   {
+//     clase: '',
+//     orden: '', //carivoro, hervivoro etc
+//     familia:'',
+//     habitat:'',
+//     dieta:'',
+//     especie: '', //string
+//     imagen_de_la_especie
+// }
+// caracterisitcas: '',
+// {
+//     color,
+//     tamaño
+//     promedio de vida
+//     depredador{
+//         tiene? -> true
+//         cual es -> nombre
+//     }
+//     amenazas: 
+// }
+// edad:'', //int
+// genero:'', //string
+// ubicacion_geografica: '', //object
+// imagen_referencia: '',
+// historial:'', // fecha de llegada, zoologicos en los que ha estado, etc
+// notas:'', //strgin
+
+
+
+// caracteristicas_fisicas: {
+//     bsonType: 'object',
+//     required: [],
+//     properties: {
+//         tamaño: {
+//             bsonType: 'string',
+//             description: ''
+//         },
+//         forma_cuerpo:
+//     }
+// },
