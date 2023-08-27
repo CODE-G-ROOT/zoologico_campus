@@ -51,7 +51,7 @@ db.createCollection("infraestructura", {
     validator: {
       $jsonSchema: {
         bsonType: "object",
-        required: ["id", "nombre", "descripcion","area"],
+        required: ["id", "nombre", "tipo", "descripcion","area"],
         properties: {
           id: {
             bsonType: "int",
@@ -60,6 +60,10 @@ db.createCollection("infraestructura", {
           nombre: {
             bsonType: "string",
             description: "Nombre del empleado",
+          },
+          tipo: {
+            bsonType: "string",
+            description: "descripcion",
           },
           descripcion: {
             bsonType: "string",
