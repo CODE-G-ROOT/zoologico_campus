@@ -51,14 +51,14 @@ use('zoologico');
 db.empleados.insertMany([
   {
     id: 1,
-    nombre_completo: "Juan Pérez",
+    nombre_completo: 'Juan Pérez',
     cc: 123456789,
-    cargo: "Programador",
+    cargo: 'Programador',
     fecha_contratacion: new Date("2023-07-15"),
-    salario: 3000.0,
-    especialidad: "Desarrollo web",
-    telefono: 555555555,
-    email: "juan@example.com"
+    salario: 3000.02,
+    especialidad: 'Desarrollo web',
+    telefono: 555512345,
+    email: 'juan@example.com',
   },
   {
     id: 2,
@@ -90,7 +90,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-09-05"),
     salario: 2800.25,
     especialidad: "Análisis estadístico",
-    telefono: 999999999,
+    telefono: 1023456789,
     email: "maria@example.com"
   },
   {
@@ -101,7 +101,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-07-20"),
     salario: 3200.0,
     especialidad: "Administración de servidores",
-    telefono: 666666666,
+    telefono: 987654322,
     email: "luis@example.com"
   },
   {
@@ -112,7 +112,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-06-15"),
     salario: 2800.5,
     especialidad: "Finanzas y contabilidad",
-    telefono: 555555555,
+    telefono: 555555554,
     email: "elena@example.com"
   },
   {
@@ -123,7 +123,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-08-10"),
     salario: 3000.75,
     especialidad: "Diseño de estructuras",
-    telefono: 777777777,
+    telefono: 987654322,
     email: "andres@example.com"
   },
   {
@@ -134,7 +134,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-07-01"),
     salario: 3400.25,
     especialidad: "Diseño arquitectónico",
-    telefono: 888888888,
+    telefono: 888888845,
     email: "laura@example.com"
   },
   {
@@ -145,7 +145,7 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-06-10"),
     salario: 2600.5,
     especialidad: "Marketing digital",
-    telefono: 999999999,
+    telefono: 789123457,
     email: "jose@example.com"
   },
   {
@@ -156,11 +156,16 @@ db.empleados.insertMany([
     fecha_contratacion: new Date("2023-09-05"),
     salario: 2900.0,
     especialidad: "Diseño de espacios",
-    telefono: 666666666,
+    telefono: 789123654,
     email: "maria@example.com"
   }
-])
+]);
 
+
+
+
+use('zoologico');
+db.empleados.drop();
 
 use('zoologico');
 db.createCollection("infraestructura", {

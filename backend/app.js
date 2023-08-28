@@ -1,7 +1,7 @@
 import express from 'express';
 import data from './settigns.js';
 
-import {appEmpleados} from './routers/routes.js';
+import {appEmpleados} from './routers/empleados.js';
 import { appToken, appVerify} from './helpers/jwt.js';
 
 let app = express();
