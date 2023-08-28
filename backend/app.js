@@ -1,9 +1,8 @@
-import dotenv from 'dotenv';
 import express from 'express';
-import {appEmpleados} from './routes/routes.js';
+import data from './settigns.js';
+
+import {appEmpleados} from './routers/routes.js';
 import { appToken, appVerify} from './helpers/jwt.js';
-//import { initRoutes} from './routes/routes.js'
-dotenv.config();
 
 let app = express();
 
@@ -13,8 +12,8 @@ app.use("/token", appToken);
 app.use("/empleado",appVerify,appEmpleados);
 //app.use("/user",appUsers,appVerify)
 
-let config = JSON.parse(process.env.MY_SERVER);
+const server_config = data.server_config;
 
-app.listen(config, ()=>{
-    console.log(`http://${config.hostname}:${config.port}`);
+app.listen(server_config, ()=>{
+    console.log(`http://${server_config.hostname}:${server_config.port}`);
 });
