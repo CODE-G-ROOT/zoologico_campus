@@ -9,18 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Expose, Transform } from 'class-transformer';
 import { IsDefined } from 'class-validator';
-export class empleados {
+export class historial_mantenimiento {
     constructor(data) {
         Object.assign(this, data);
         this.id = 0;
-        this.nombre_completo = "";
-        this.email = "";
-        this.cargo = "";
-        this.cc = "";
-        this.especialidad = "";
-        this.fecha_contratacion = new Date();
-        this.salario = 0;
-        this.telefono = "";
+        this.descripcion = "";
+        this.area = "";
+        this.nombre_empl = "";
+        this.fecha = new Date();
+        ;
     }
 }
 __decorate([
@@ -33,9 +30,9 @@ __decorate([
             throw { status: 400, message: `el dato no id cumple los parametros` };
     }, { toClassOnly: true }),
     __metadata("design:type", Number)
-], empleados.prototype, "id", void 0);
+], historial_mantenimiento.prototype, "id", void 0);
 __decorate([
-    Expose({ name: 'nombre_completo' }),
+    Expose({ name: 'descripcion' }),
     IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
     Transform(({ value }) => {
         if (/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value))
@@ -44,20 +41,9 @@ __decorate([
             throw { status: 400, message: `el dato no nn cumple los parametros` };
     }, { toClassOnly: true }),
     __metadata("design:type", String)
-], empleados.prototype, "nombre_completo", void 0);
+], historial_mantenimiento.prototype, "descripcion", void 0);
 __decorate([
-    Expose({ name: 'cc' }),
-    IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
-    Transform(({ value }) => {
-        if (/^\d{10}$/.test(value))
-            return value;
-        else
-            throw { status: 400, message: `el dato no cumple los parametros` };
-    }, { toClassOnly: true }),
-    __metadata("design:type", String)
-], empleados.prototype, "cc", void 0);
-__decorate([
-    Expose({ name: 'cargo' }),
+    Expose({ name: 'area' }),
     IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
     Transform(({ value }) => {
         if (/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value))
@@ -66,9 +52,21 @@ __decorate([
             throw { status: 400, message: `el dato no nn cumple los parametros` };
     }, { toClassOnly: true }),
     __metadata("design:type", String)
-], empleados.prototype, "cargo", void 0);
+], historial_mantenimiento.prototype, "area", void 0);
 __decorate([
-    Expose({ name: 'fecha_contratacion' }),
+    Expose({ name: 'nombre_empl' }),
+    IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
+    Transform(({ value }) => {
+        if (/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value))
+            return value;
+        else
+            throw { status: 400, message: `el dato no nn cumple los parametros` };
+    }, { toClassOnly: true }),
+    __metadata("design:type", String)
+], historial_mantenimiento.prototype, "nombre_empl", void 0);
+__decorate([
+    Expose({ name: 'fecha' }),
+    IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
     Transform(({ value }) => {
         if (/^\d{4}-\d{2}-\d{2}$/.test(value))
             return new Date(value);
@@ -76,46 +74,4 @@ __decorate([
             throw { status: 400, message: `el dato no aa cumple los parametros` };
     }, { toClassOnly: true }),
     __metadata("design:type", Date)
-], empleados.prototype, "fecha_contratacion", void 0);
-__decorate([
-    Expose({ name: 'salario' }),
-    IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
-    Transform(({ value }) => {
-        if (Math.floor(value) && typeof value === 'number')
-            return Math.floor(value);
-        else
-            throw { status: 400, message: `el dato no cumple los parametros` };
-    }, { toClassOnly: true }),
-    __metadata("design:type", Number)
-], empleados.prototype, "salario", void 0);
-__decorate([
-    Expose({ name: 'especialidad' }),
-    IsDefined({ message: () => { throw { status: 401, message: `el mensaje es obligatorio ` }; } }),
-    Transform(({ value }) => {
-        if (/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value))
-            return value;
-        else
-            throw { status: 400, message: `el dato no nn cumple los parametros` };
-    }, { toClassOnly: true }),
-    __metadata("design:type", String)
-], empleados.prototype, "especialidad", void 0);
-__decorate([
-    Expose({ name: 'telefono' }),
-    Transform(({ value }) => {
-        if (/^\d{10}$/.test(value))
-            return value;
-        else
-            throw { status: 400, message: `el dato no cumple los parametros` };
-    }, { toClassOnly: true }),
-    __metadata("design:type", String)
-], empleados.prototype, "telefono", void 0);
-__decorate([
-    Expose({ name: 'email' }),
-    Transform(({ value }) => {
-        if (/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value))
-            return value;
-        else
-            throw { status: 400, message: `el dato no cumple los parametros` };
-    }, { toClassOnly: true }),
-    __metadata("design:type", String)
-], empleados.prototype, "email", void 0);
+], historial_mantenimiento.prototype, "fecha", void 0);

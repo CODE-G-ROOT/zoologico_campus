@@ -47,6 +47,21 @@ db.createCollection("empleados", {
 
 
 use('zoologico');
+const empleadoDocumento = {
+  id: 2,
+  nombre_completo: "Nombre Apellido",
+  cc: 123456789,
+  cargo: "Cargo del empleado",
+  fecha_contratacion: new Date(),
+  salario: 50000.50,
+  especialidad: "Especialidad del empleado",
+  telefono: 32222222,
+  email: "correo@example.com"
+};
+
+// Insertar el documento en la colección "empleados" en MongoDB
+db.empleados.insertOne(empleadoDocumento);
+
 db.createCollection("infraestructura", {
     validator: {
       $jsonSchema: {
@@ -70,7 +85,7 @@ db.createCollection("infraestructura", {
             description: "dimensiones",  
         },
         departamentos: {
-          bsonType: "string",
+          bsonType: ["string","null"],
           description: "departamentos",
       },
       area:{
@@ -124,17 +139,17 @@ db.createCollection("historial_mantenimiento", {
               bsonType: "int",
               description: "ID",
             },
-            descripcion: {
+            nombre_animal: {
               bsonType: "string",
-              description: "descripcion",
+              description: "nombre_animal",
             },
-            area: {
+            nombre_veterinario: {
               bsonType: "string",
-              description: "area",  
+              description: "nombre_veterinario",  
           },
-          nombre_empleado: {
+          descripcion: {
             bsonType: "string",
-            description: "nombre_empleado",
+            description: "descripcion",
         },
         fecha:{
           bsonType:"date",

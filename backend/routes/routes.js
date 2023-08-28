@@ -1,14 +1,14 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
-import {getEmpleados} from '../routes/empleados.js';
+import {getEmpleados,postEmpl} from '../routes/empleados.js';
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
-const appProductos = express();
+const appEmpleados = express();
 appEmpleados.use(express.json());
 
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
-appEmpleados.post("/empleados",limitQuery(),appValidateUsers,middlewareUsers,DTOUsers,postUsers);
+appEmpleados.post("/empl",limitQuery(),postEmpl);
 
 
 export {appEmpleados};

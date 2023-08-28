@@ -1,27 +1,25 @@
 {
-  "name": "backend",
+  "name": "zoologico_campus",
   "version": "1.0.0",
-  "description": "",
+  "description": "administracion zoologico",
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "dev" : "nodemon  ./app.js",
-    "tsc" : "tsc -w"
+    "tsc": "tsc -w",
+    "dev": "nodemon app.js"
   },
-  "keywords": [],
-  "authors": ["Juan Avila", "Nicolas Ramirez"],
-  "repositories": {
-    "profiles" : [
-      "https://github.com/JuanDavidAvilaRaveloCampus"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanDavidAvilaRaveloCampus/zoologico_campus.git"
   },
+  "author": "Juan Avila, Nicolas Ramirez",
   "license": "ISC",
   "devDependencies": {
     "class-transformer": "0.5.1",
     "class-validator": "0.14.0",
     "dotenv": "16.3.1",
     "express": "4.18.2",
-    "express-rate-limit": "6.9.0",
+    "express-rate-limit": "6.8.1",
     "jose": "4.14.4",
     "mongodb": "5.7.0",
     "nodemon": "3.0.1",
