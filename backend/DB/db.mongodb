@@ -1,3 +1,4 @@
+//? CHECK
 use('zoologico');
 db.createCollection("empleados", {
   validator: {
@@ -46,7 +47,6 @@ db.createCollection("empleados", {
     }
   }
 });
-
 use('zoologico');
 db.empleados.insertMany([
   {
@@ -161,51 +161,141 @@ db.empleados.insertMany([
   }
 ]);
 
-
-
-
 use('zoologico');
-db.empleados.drop();
-
-use('zoologico');
-db.createCollection("infraestructura", {
+db.createCollection('Intraestructura', {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["id", "nombre", "tipo", "descripcion", "area"],
+      required: [
+        "id",
+        "nombre_lugar",
+        'tipo',
+        "descripcion",
+        "dimensiones",
+      ],
       properties: {
         id: {
           bsonType: "int",
-          description: "ID infraestructura",
+          descripcion: "zone indentify must be integer type"
         },
-        nombre: {
+        nombre_lugar: {
           bsonType: "string",
-          description: "Nombre del empleado",
+          descripcion: "place name must be string type"
         },
         tipo: {
           bsonType: "string",
-          description: "descripcion",
+          descripcion: "place name must be string type"
         },
         descripcion: {
           bsonType: "string",
-          description: "descripcion",
+          descripcion: "description place must be string type"
         },
         dimensiones: {
           bsonType: "string",
-          description: "dimensiones",
+          descripcion: 'dimensiones de la estructura'
         },
-        departamentos: {
-          bsonType: "string",
-          description: "departamentos",
-        },
-        area: {
-          bsonType: "string",
-          description: "Area"
+        otro: {
+          bsonType: 'object'
         }
       }
     }
-  },
+  }
 });
+
+
+//TODO: DEPARTAMENTOS
+use('zoologico');
+db.infraestructura.insertMany([
+  {
+    id: '0',
+    nombre_lugar: 'Cuidado Animal',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '1000 m²',
+  },
+  {
+    id: '1',
+    nombre_lugar: 'Departamento Veterinario',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '800 m²',
+  },
+  {
+    id: '2',
+    nombre_lugar: 'Diseño y Exhibiciones',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '1200 m²',
+  },
+  {
+    id: '3',
+    nombre_lugar: 'Enriquecimiento Animal',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '',
+  },
+  {
+    id: '4',
+    nombre_lugar: 'Educación y Conservación',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '600 m²',
+  },
+  {
+    id: '5',
+    nombre_lugar: 'Investigación y Desarrollo',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '1500 m²',
+  },
+  {
+    id: '6',
+    nombre_lugar: 'Mantenimiento y Paisajismo',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '700 m²',
+  },
+  {
+    id: '7',
+    nombre_lugar: 'Alimentación y Nutrición',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '2000 m²',
+  },
+  {
+    id: '8',
+    nombre_lugar: 'Conservación de Especies',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '500 m²',
+  },
+  {
+    id: '9',
+    nombre_lugar: 'Seguridad',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '1000 m²',
+  },
+  {
+    id: '10',
+    nombre_lugar: 'Bienestar Animal',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '800 m²',
+  },
+  {
+    id: '11',
+    nombre_lugar: 'Marketing y Relaciones Públicas',
+    tipo: 'departamento',
+    descripcion: '',
+    dimensiones: '1200 m²',
+  },
+
+])
+
+use('zoologico');
+db.infraestructura.drop()
+
 
 use('zoologico');
 db.createCollection("historial_mantenimiento", {
