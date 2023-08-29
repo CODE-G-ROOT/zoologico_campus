@@ -176,23 +176,23 @@ db.createCollection('Intraestructura', {
       properties: {
         id: {
           bsonType: "int",
-          descripcion: "zone indentify must be integer type"
+          description: "zone indentify must be integer type"
         },
         nombre_lugar: {
           bsonType: "string",
-          descripcion: "place name must be string type"
+          description: "place name must be string type"
         },
         tipo: {
           bsonType: "string",
-          descripcion: "place name must be string type"
+          description: "place name must be string type"
         },
         descripcion: {
           bsonType: "string",
-          descripcion: "description place must be string type"
+          description: "description place must be string type"
         },
         dimensiones: {
           bsonType: "string",
-          descripcion: 'dimensiones de la estructura'
+          description: 'dimensiones de la estructura'
         },
         otro: {
           bsonType: 'object'
@@ -201,8 +201,6 @@ db.createCollection('Intraestructura', {
     }
   }
 });
-
-
 //TODO: DEPARTAMENTOS
 use('zoologico');
 db.infraestructura.insertMany([
@@ -210,93 +208,204 @@ db.infraestructura.insertMany([
     id: '0',
     nombre_lugar: 'Cuidado Animal',
     tipo: 'departamento',
-    descripcion: '',
+    descripcion: 'Equipo encargado del cuidado y bienestar de los animales en el zoológico.',
     dimensiones: '1000 m²',
   },
   {
     id: '1',
     nombre_lugar: 'Departamento Veterinario',
     tipo: 'departamento',
-    descripcion: '',
+    descripcion: 'Profesionales de la salud animal que garantizan el bienestar médico de los habitantes del zoológico.',
     dimensiones: '800 m²',
   },
   {
     id: '2',
     nombre_lugar: 'Diseño y Exhibiciones',
     tipo: 'departamento',
-    descripcion: '',
+    descripcion: 'Expertos en crear hábitats y entornos que imitan los lugares naturales de los animales.',
     dimensiones: '1200 m²',
   },
   {
     id: '3',
     nombre_lugar: 'Enriquecimiento Animal',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '',
+    descripcion: 'Personal que desarrolla actividades y estímulos para mantener a los animales activos y saludables.',
+    dimensiones: '600 m²',
   },
   {
     id: '4',
     nombre_lugar: 'Educación y Conservación',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '600 m²',
+    descripcion: 'Equipo responsable de la educación de los visitantes y de la promoción de la conservación de la vida silvestre.',
+    dimensiones: '1500 m²',
   },
   {
     id: '5',
     nombre_lugar: 'Investigación y Desarrollo',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '1500 m²',
+    descripcion: 'Científicos que estudian el comportamiento y necesidades de los animales, y desarrollan nuevos métodos de cuidado.',
+    dimensiones: '700 m²',
   },
   {
     id: '6',
     nombre_lugar: 'Mantenimiento y Paisajismo',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '700 m²',
+    descripcion: 'Equipo que se encarga de mantener los espacios limpios, seguros y estéticamente atractivos para los visitantes.',
+    dimensiones: '2000 m²',
   },
   {
     id: '7',
     nombre_lugar: 'Alimentación y Nutrición',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '2000 m²',
+    descripcion: 'Profesionales que planifican y preparan las dietas adecuadas para los diferentes animales.',
+    dimensiones: '500 m²',
   },
   {
     id: '8',
     nombre_lugar: 'Conservación de Especies',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '500 m²',
+    descripcion: 'Especialistas que trabajan para la reproducción y conservación de especies en peligro de extinción.',
+    dimensiones: '1000 m²',
   },
   {
     id: '9',
     nombre_lugar: 'Seguridad',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '1000 m²',
+    descripcion: '	Personal de seguridad que garantiza la seguridad de visitantes y trabajadores cerca de los animales.',
+    dimensiones: '800 m²',
   },
   {
     id: '10',
     nombre_lugar: 'Bienestar Animal',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '800 m²',
+    descripcion: 'Responsables de monitorear el bienestar físico y emocional de los animales para asegurarse de su salud.',
+    dimensiones: '1200 m²',
   },
   {
     id: '11',
     nombre_lugar: 'Marketing y Relaciones Públicas',
     tipo: 'departamento',
-    descripcion: '',
-    dimensiones: '1200 m²',
+    descripcion: 'Equipo que comunica información sobre el zoológico y sus habitantes al público.',
+    dimensiones: '600 m²',
   },
 
 ])
-
+//TODO: AREAS
+//? CHECK
 use('zoologico');
-db.infraestructura.drop()
+db.infraestructura.insertMany([
+  {
+    id: '11',
+    nombre_lugar: 'Área de Exhibición',
+    tipo: 'area',
+    descripcion: 'Espacio para mostrar diversas especies de animales en hábitats diseñados.',
+    dimensiones: '2000 m²',
+  },
+  {
+    id: '12',
+    nombre_lugar: 'Jardín Botánico',
+    tipo: 'area',
+    descripcion: 'Colección de plantas y vegetación de diferentes partes del mundo.',
+    dimensiones: '1500 m²',
+  },
+  {
+    id: '13',
+    nombre_lugar: 'Acuario',
+    tipo: 'area',
+    descripcion: 'Zona con tanques y piscinas para exhibir una variedad de vida acuática.',
+    dimensiones: '1000 m²',
+  },
+  {
+    id: '14',
+    nombre_lugar: 'Aviario',
+    tipo: 'area',
+    descripcion: 'Área con estructuras para exhibir diversas especies de aves.',
+    dimensiones: '1200 m²',
+  },
+  {
+    id: '15',
+    nombre_lugar: 'Hábitats Nocturnos',
+    tipo: 'area',
+    descripcion: '	Espacio oscuro para exhibir animales activos durante la noche.',
+    dimensiones: '800 m²',
+  },
+  {
+    id: '16',
+    nombre_lugar: 'Zona de Animales Exóticos',
+    tipo: 'area',
+    descripcion: 'Exhibición de animales de regiones lejanas y exóticas.',
+    dimensiones: '1800 m²',
+  },
+  {
+    id: '17',
+    nombre_lugar: 'Zona de Animales en Peligro',
+    tipo: 'area',
+    descripcion: 'Área dedicada a especies en peligro de extinción y sus necesidades de conservación.',
+    dimensiones: '1600 m²',
+  },
+  {
+    id: '18',
+    nombre_lugar: 'Zona de Aves Rapaces',
+    tipo: 'area',
+    descripcion: 'Espacio para aves de presa con vuelos y demostraciones.',
+    dimensiones: '1400 m²',
+  },
+  {
+    id: '19',
+    nombre_lugar: 'Granja Educativa',
+    tipo: 'area',
+    descripcion: '	Área interactiva para aprender sobre animales domesticados y la vida en la granja.',
+    dimensiones: '1200 m²',
+  },
+  {
+    id: '20',
+    nombre_lugar: 'Área de Recreación y Juegos',
+    tipo: 'area',
+    descripcion: 'Espacio para actividades recreativas y juegos para los visitantes.',
+    dimensiones: '2500 m²',
+  },
+  {
+    id: '21',
+    nombre_lugar: 'Área de Exhibición',
+    tipo: 'area',
+    descripcion: 'Exhibición de animales en hábitats naturales o diseñados.',
+    dimensiones: '1800 m²',
+  },
+  {
+    id: '22',
+    nombre_lugar: 'Zona de Alimentación y Descanso',
+    tipo: 'area',
+    descripcion: 'Área con restaurantes, cafeterías y lugares para descansar.',
+    dimensiones: '2000 m²',
+  },
+  {
+    id: '23',
+    nombre_lugar: 'Centro de Educación y Exhibiciones Interactivas',
+    tipo: 'area',
+    descripcion: 'Espacio educativo con presentaciones interactivas y programas educativos.',
+    dimensiones: '1500 m²',
+  },
+  {
+    id: '24',
+    nombre_lugar: 'Área de Espectáculos y Presentaciones',
+    tipo: 'area',
+    descripcion: 'Escenario para espectáculos con animales y presentaciones.',
+    dimensiones: '1800 m²',
+  }
+])
+//! HÁBITADS PENDIENTES
+use('zoologico');
+db.infraestructura.insertMany([
+  {
+    id: '25',
+    nombre_lugar: 'Área de Espectáculos y Presentaciones',
+    tipo: 'area',
+    descripcion: 'Escenario para espectáculos con animales y presentaciones.',
+    dimensiones: '1800 m²',
+  }
+]);
 
-
+//TODO: mantenimiento
 use('zoologico');
 db.createCollection("historial_mantenimiento", {
   validator: {
@@ -328,8 +437,27 @@ db.createCollection("historial_mantenimiento", {
     }
   },
 });
+//? CHECK
+use('zoologico');
+db.historial_mantenimiento.insertOne({
+  id: 1,
+  descripcion: "Reparación de valla en el hábitat de leones.",
+  area: "Hábitats Nocturnos",
+  nombre_empleado: "Juan Pérez",
+  fecha: new Date("2023-08-15T10:00:00Z")
+});
+//? CHECK
+use('zoologico');
+db.historial_mantenimiento.insertOne({
+  id: 2,
+  descripcion: "Limpieza y mantenimiento de tanques de peces en el acuario.",
+  area: "Acuario",
+  nombre_empleado: "María Rodríguez",
+  fecha: new Date("2023-08-20T14:30:00Z")
+});
 
 
+//TODO: historial mendico
 use('zoologico');
 db.createCollection("historial_medico", {
   validator: {
@@ -361,14 +489,88 @@ db.createCollection("historial_medico", {
     }
   },
 });
+//? CHECK
+use('zoologico');
+db.historial_medico.insertMany([
+  {
+    id: 1,
+    nombre_animal: "Simba",
+    nombre_veterinario: "Dr. García",
+    descripcion: "Examen médico de rutina.",
+    fecha: new Date("2023-08-15T09:30:00Z")
+  },
+  {
+    id: 2,
+    nombre_animal: "Luna",
+    nombre_veterinario: "Dra. Martínez",
+    descripcion: "Tratamiento para infección respiratoria.",
+    fecha: new Date("2023-08-17T11:00:00Z")
+  },
+  {
+    id: 3,
+    nombre_animal: "Diego",
+    nombre_veterinario: "Dr. Sánchez",
+    descripcion: "Control de parásitos y vacunación.",
+    fecha: new Date("2023-08-20T14:00:00Z")
+  },
+  {
+    id: 4,
+    nombre_animal: "Aurora",
+    nombre_veterinario: "Dra. López",
+    descripcion: "Cirugía para extracción de dientes.",
+    fecha: new Date("2023-08-22T10:30:00Z")
+  },
+  {
+    id: 5,
+    nombre_animal: "Kiko",
+    nombre_veterinario: "Dr. Rodríguez",
+    descripcion: "Radiografía para evaluar fractura.",
+    fecha: new Date("2023-08-25T15:45:00Z")
+  },
+  {
+    id: 6,
+    nombre_animal: "Lola",
+    nombre_veterinario: "Dra. Pérez",
+    descripcion: "Tratamiento de herida en pata.",
+    fecha: new Date("2023-08-28T12:15:00Z")
+  },
+  {
+    id: 7,
+    nombre_animal: "Max",
+    nombre_veterinario: "Dr. Gómez",
+    descripcion: "Consulta por problemas gastrointestinales.",
+    fecha: new Date("2023-08-30T13:30:00Z")
+  },
+  {
+    id: 8,
+    nombre_animal: "Mia",
+    nombre_veterinario: "Dra. Torres",
+    descripcion: "Examen preoperatorio para castración.",
+    fecha: new Date("2023-09-02T11:45:00Z")
+  },
+  {
+    id: 9,
+    nombre_animal: "Rocky",
+    nombre_veterinario: "Dr. Ramírez",
+    descripcion: "Control de peso y recomendaciones dietéticas.",
+    fecha: new Date("2023-09-05T10:00:00Z")
+  },
+  {
+    id: 10,
+    nombre_animal: "Coco",
+    nombre_veterinario: "Dra. Castro",
+    descripcion: "Examen ocular y administración de medicamentos.",
+    fecha: new Date("2023-09-08T14:15:00Z")
+  }
+]);
 
-
+//TODO: EVENTOS COMPLETO
 use('zoologico');
 db.createCollection("eventos", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["id", "nombre", "descripcion", "encargado", "fecha"],
+      required: ["id", "nombre", "descripcion", "encargado", "horario"],
       properties: {
         id: {
           bsonType: "int",
@@ -386,15 +588,115 @@ db.createCollection("eventos", {
           bsonType: "string",
           description: "encargado",
         },
-        fecha: {
-          bsonType: "date",
-          description: "fecha"
+        horario: {
+          bsonType: "object",
+          properties: {
+            dias: {
+              bsonType: 'string',
+              enum: [
+                'Lunes a Viernes', 
+                'Sábados y Domingos', 
+                'Todos los Días',
+                "Lunes",
+                "Martes",
+                "Miércoles",
+                "Jueves",
+                "Viernes",
+                "Sábado",
+                "Sábados",
+                "Domingo",
+                "Domingos",
+              ],
+              description: 'horario del evento'
+            },
+            hora: {
+              bsonType: 'string',
+              enum: [
+                '8:00 AM - 11:00 AM',
+                '9:00 AM - 5:00 PM', 
+                '9:00 AM - 6:00 PM',
+                '9:00 AM - 7:00 PM', 
+                '9:00 AM - 1:00 PM', 
+                '1:00 PM - 5:00 PM',
+                '10:00 AM - 6:00 PM',
+                '10:00 AM - 2:00 PM',
+                '2:00 PM - 6:00 PM',
+                '6:00 PM - 10:00 PM'
+              ],
+              description: 'horario de horas del evento'
+            }
+          }
+        },
+        animales_participantes: {
+          bsonType: ['array', 'null'],
+          description: 'animales que participan en el evento'
         }
       }
     }
   },
 });
+use('zoologico');
+db.eventos.insertOne({
+  id: 1,
+  nombre: "Show de Aves Exóticas",
+  descripcion: "Disfruta de un emocionante espectáculo con aves de todo el mundo.",
+  encargado: "Juan Pérez",
+  horario: {
+    dias: "Sábados y Domingos",
+    hora: "10:00 AM - 2:00 PM"
+  },
+  animales_participantes: ["Aguila Calva", "Guacamaya Azul", "Cacatúa"]
+});
+use('zoologico');
+db.eventos.insertOne({
+  id: 2,
+  nombre: "Taller de Educación Ambiental",
+  descripcion: "Aprende sobre la importancia de la conservación y el cuidado del medio ambiente.",
+  encargado: "María Gómez",
+  horario: {
+    dias: "Lunes a Viernes",
+    hora: "9:00 AM - 1:00 PM"
+  },
+  animales_participantes: null
+});
+use('zoologico');
+db.eventos.insertOne({
+  id: 3,
+  nombre: "Visita Nocturna",
+  descripcion: "Explora el zoológico en la noche y descubre cómo se comportan los animales en la oscuridad.",
+  encargado: "Carlos Rodríguez",
+  horario: {
+    dias: "Viernes",
+    hora: "6:00 PM - 10:00 PM"
+  },
+  animales_participantes: ["Búho Real", "Lince Ibérico", "Murciélagos"]
+});
+use('zoologico');
+db.eventos.insertOne({
+  id: 4,
+  nombre: "Carrera por la Conservación",
+  descripcion: "Participa en una carrera a favor de la conservación de especies en peligro de extinción.",
+  encargado: "Ana López",
+  horario: {
+    dias: "Domingos",
+    hora: "8:00 AM - 11:00 AM"
+  },
+  animales_participantes: ["Tigre de Bengala", "Gorila de Montaña", "Cóndor de los Andes"]
+});
+use('zoologico');
+db.eventos.insertOne({
+  id: 5,
+  nombre: "Festival de la Primavera",
+  descripcion: "Celebra la llegada de la primavera con actividades para toda la familia.",
+  encargado: "Pedro Martínez",
+  horario: {
+    dias: "Todos los Días",
+    hora: "9:00 AM - 6:00 PM"
+  },
+  animales_participantes: ["Pavos Reales", "Mariposas Monarca", "Conejos"]
+});
 
+//TODO: COMPLETO
 use('zoologico');
 db.createCollection("finanzas", {
   validator: {
@@ -411,8 +713,12 @@ db.createCollection("finanzas", {
           description: "tipo",
         },
         cantidad: {
-          bsonType: "double",
+          bsonType: "number",
           description: "cantidad",
+        },
+        objetivo: {
+          bsonType: "string",
+          description: "descripcion",
         },
         descripcion: {
           bsonType: "string",
@@ -426,7 +732,49 @@ db.createCollection("finanzas", {
     }
   },
 });
+use('zoologico');
+db.finanzas.insertOne({
+  id: 1,
+  tipo: "Fuentes de Ingresos",
+  cantidad: 75000.00,
+  descripcion: "Ingresos generados por la venta de entradas y membresías durante el mes de julio",
+  fecha: new Date("2023-07-15")
+});
+use('zoologico');
+db.finanzas.insertOne({
+  id: 2,
+  tipo: "Gastos Operativos",
+  cantidad: 40000.00,
+  descripcion: "Gastos incurridos en la adquisición de alimentos y atención médica para los animales del zoológico",
+  fecha: new Date("2023-07-20")
+});
+use('zoologico');
+db.finanzas.insertOne({
+  id: 3,
+  tipo: "Administración Financiera",
+  cantidad: 15000.00,
+  descripcion: "Gasto destinado a la implementación de sistemas de venta de boletos en línea y aplicaciones móviles",
+  fecha: new Date("2023-08-05")
+});
+use('zoologico');
+db.finanzas.insertOne({
+  id: 4,
+  tipo: "Conservación y Educación",
+  cantidad: 2000.00,
+  descripcion: "Donación realizada a un programa de conservación de tigres en colaboración con una organización aliada",
+  fecha: new Date("2023-08-10")
+});
+use('zoologico');
+db.finanzas.insertOne({
+  id: 5,
+  tipo: "Marketing y Publicidad",
+  cantidad: 8000.00,
+  descripcion: "Gasto en campañas publicitarias y material de promoción para el próximo festival de la primavera",
+  fecha: new Date("2023-08-18")
+});
 
+
+//TODO: ORGANIZACIÓNES COMPLETADO
 use('zoologico');
 db.createCollection("organizaciones", {
   validator: {
@@ -441,6 +789,10 @@ db.createCollection("organizaciones", {
         nombre: {
           bsonType: "string",
           description: "nombre",
+        },
+        descripcion: {
+          bsonType: "string",
+          description: "ubicacion",
         },
         ubicacion: {
           bsonType: "string",
@@ -462,9 +814,54 @@ db.createCollection("organizaciones", {
     }
   },
 });
+use('zoologico');
+db.organizaciones.insertOne({
+  id: 1,
+  nombre: "AZA - Asociación de Zoológicos y Acuarios",
+  descripcion: "Promueve la conservación, educación y bienestar animal a través de la colaboración entre zoológicos y acuarios acreditados.",
+  ubicacion: "Estados Unidos",
+  encargado: "John Smith",
+  fecha_creacion: new Date("1924-01-01"),
+  area_encargada: "Área de Conservación y Educación"
+});
+db.organizaciones.insertOne({
+  id: 2,
+  nombre: "WAZA - Asociación Mundial de Zoológicos y Acuarios",
+  descripcion: "Red global de zoológicos y acuarios que trabajan juntos para la conservación y la promoción de la biodiversidad.",
+  ubicacion: "Internacional",
+  encargado: "Maria García",
+  fecha_creacion: new Date("1935-01-01"),
+  area_encargada: "Departamento de Conservación"
+});
+db.organizaciones.insertOne({
+  id: 3,
+  nombre: "WCS - Sociedad de Conservación de la Vida Silvestre",
+  descripcion: "Trabaja para salvar la vida silvestre y los hábitats en todo el mundo, colaborando con zoológicos en programas de conservación.",
+  ubicacion: "Global",
+  encargado: "David Johnson",
+  fecha_creacion: new Date("1895-01-01"),
+  area_encargada: "Área de Investigación y Conservación"
+});
+db.organizaciones.insertOne({
+  id: 4,
+  nombre: "FZS - Fundación para la Conservación de la Vida Silvestre",
+  descripcion: "Dedicada a la protección de la biodiversidad en hábitats naturales y trabaja con zoológicos para apoyar la conservación in situ.",
+  ubicacion: "Internacional",
+  encargado: "Anna Müller",
+  fecha_creacion: new Date("1996-01-01"),
+  area_encargada: "Departamento de Conservación Ex situ"
+});
+db.organizaciones.insertOne({
+  id: 5,
+  nombre: "EAZA - Asociación Europea de Zoológicos y Acuarios",
+  descripcion: "Une a zoológicos y acuarios europeos para la conservación y educación, y coordina programas de cría y liberación de especies amenazadas.",
+  ubicacion: "Europa",
+  encargado: "Peter Klein",
+  fecha_creacion: new Date("1992-01-01"),
+  area_encargada: "Departamento de Programas Europeos"
+});
 
-
-
+//TODO: ANIMALES COMPLEATADO
 use('zoologico');
 db.createCollection('animales', {
   validator: {
@@ -493,6 +890,10 @@ db.createCollection('animales', {
           bsonType: 'string',
           pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
           description: 'Animal name must be of type string'
+        },
+        animal: {
+          bsonType: 'string',
+          description: 'animal field must be of type string'
         },
         edad: {
           bsonType: 'int',
@@ -683,11 +1084,11 @@ db.createCollection('animales', {
   },
 
 });
-
 use('zoologico');
 db.animales.insertOne({
   id: 1,
-  nombre: "León",
+  nombre: "Loki",
+  animal: 'León',
   edad: 5,
   genero: "macho",
   habitat_zoo: 123,
@@ -724,44 +1125,824 @@ db.animales.insertOne({
     origen: "África"
   }
 });
-
 use('zoologico');
 db.animales.insertOne({
-  id: 2,
-  nombre: "Panda Gigante",
-  edad: 8,
+},
+  {
+    id: 2,
+    nombre: "Nala",
+    animal: 'León',
+    edad: 4,
+    genero: "hembra",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "Nala es una leona valiente...",
+    interaccion_humanos: "Las leonas suelen ser más curiosas...",
+    enlaces_geneticos: "Estudios genéticos han revelado...",
+    detalles: {
+      nombre_cientifico: "Panthera leo",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "León",
+      tipo_animal: "Felino",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana",
+      distribicion_geografica: {
+        habitat_natural: "Savanas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Savanas y llanuras"
+      },
+      comportamiento: "Las leonas cazan en grupo...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Cocodrilos", "Hienas"],
+      alimento_principal: ["Antílopes", "Cebúes"],
+      curiosidades: "Las leonas lideran la caza...",
+      amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+      relacion_con_humanos: "En algunas culturas africanas...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  }
+);
+use('zoologico');
+db.animales.insertOne(
+  {
+    id: 3,
+    nombre: "Simba",
+    animal: 'León',
+    edad: 3,
+    genero: "macho",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "Simba es un joven león aventurero...",
+    interaccion_humanos: "Simba es curioso y suele acercarse...",
+    enlaces_geneticos: "Análisis genéticos han mostrado...",
+    detalles: {
+      nombre_cientifico: "Panthera leo",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "León",
+      tipo_animal: "Felino",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana",
+      distribicion_geografica: {
+        habitat_natural: "Savanas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Savanas y llanuras"
+      },
+      comportamiento: "Simba es curioso y valiente...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Cocodrilos", "Hienas"],
+      alimento_principal: ["Antílopes", "Cebúes"],
+      curiosidades: "Simba es el protagonista de El Rey León...",
+      amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+      relacion_con_humanos: "Simba es un símbolo popular en la cultura...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  }
+);
+use('zoologico');
+db.animales.insertOne({
+  id: 31,
+  nombre: "Kiara",
+  animal: 'León',
+  edad: 2,
   genero: "hembra",
-  habitat_zoo: 456,
-  cuidados: "Se alimenta principalmente de bambú...",
-  relacion_animales: "Los pandas gigantes suelen ser solitarios...",
+  habitat_zoo: 123,
+  cuidados: "Requiere una dieta balanceada...",
+  relacion_animales: "Convive en manadas...",
   estado_salud: "Bueno",
-  historia: "El panda gigante es un símbolo de conservación...",
-  interaccion_humanos: "Los pandas gigantes son cautelosos...",
-  enlaces_geneticos: "Investigaciones genéticas han revelado...",
+  historia: "Kiara es la hija de Simba y Nala...",
+  interaccion_humanos: "Kiara es curiosa y amistosa...",
+  enlaces_geneticos: "Análisis genéticos han confirmado...",
   detalles: {
-    nombre_cientifico: "Ailuropoda melanoleuca",
+    nombre_cientifico: "Panthera leo",
     clase: "Mamífero",
-    raza: "Asia",
-    especie: "Panda Gigante",
-    tipo_animal: "Marsupial",
+    raza: "Africana",
+    especie: "León",
+    tipo_animal: "Felino",
     invertebrado: false,
     vertebrado: true,
-    tipo_habitat: "Bosques de bambú",
+    tipo_habitat: "Savana",
     distribicion_geografica: {
-      habitat_natural: "Región montañosa de China",
-      region_geografica: "Asia Oriental",
-      pais: ["China"],
-      continente: "Asia",
-      ecosistema: "Bosques y Montañas"
+      habitat_natural: "Savanas de África",
+      region_geografica: "África subsahariana",
+      pais: ["Kenia", "Tanzania", "Sudáfrica"],
+      continente: "África",
+      ecosistema: "Savanas y llanuras"
     },
-    comportamiento: "Los pandas gigantes son animales solitarios...",
+    comportamiento: "Kiara es juguetona y exploradora...",
     estado_conservacion: "Vulnerable",
-    depredadores: [],
-    alimento_principal: ["Bambú"],
-    curiosidades: "Aunque son carnívoros, su dieta consiste en bambú...",
-    amenazas: ["Pérdida de hábitat", "Baja tasa de reproducción"],
-    relacion_con_humanos: "Los pandas gigantes son populares en todo el mundo...",
-    importancia_ecologica: "Media",
-    origen: "China"
+    depredadores: ["Cocodrilos", "Hienas"],
+    alimento_principal: ["Antílopes", "Cebúes"],
+    curiosidades: "Kiara es un personaje de El Rey León 2...",
+    amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+    relacion_con_humanos: "Kiara representa la nueva generación...",
+    importancia_ecologica: "Alta",
+    origen: "África"
   }
 });
+use('zoologico');
+db.animales.insertOne({
+  id: 32,
+  nombre: "Kovu",
+  animal: 'León',
+  edad: 3,
+  genero: "macho",
+  habitat_zoo: 123,
+  cuidados: "Requiere una dieta balanceada...",
+  relacion_animales: "Convive en manadas...",
+  estado_salud: "Bueno",
+  historia: "Kovu es un león adoptado en la manada...",
+  interaccion_humanos: "Kovu es tímido al principio, pero curioso...",
+  enlaces_geneticos: "Análisis genéticos han demostrado...",
+  detalles: {
+    nombre_cientifico: "Panthera leo",
+    clase: "Mamífero",
+    raza: "Africana",
+    especie: "León",
+    tipo_animal: "Felino",
+    invertebrado: false,
+    vertebrado: true,
+    tipo_habitat: "Savana",
+    distribicion_geografica: {
+      habitat_natural: "Savanas de África",
+      region_geografica: "África subsahariana",
+      pais: ["Kenia", "Tanzania", "Sudáfrica"],
+      continente: "África",
+      ecosistema: "Savanas y llanuras"
+    },
+    comportamiento: "Kovu es leal y protector con su manada...",
+    estado_conservacion: "Vulnerable",
+    depredadores: ["Cocodrilos", "Hienas"],
+    alimento_principal: ["Antílopes", "Cebúes"],
+    curiosidades: "Kovu es un personaje de El Rey León 2...",
+    amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+    relacion_con_humanos: "Kovu muestra resiliencia y superación...",
+    importancia_ecologica: "Alta",
+    origen: "África"
+  }
+});
+use('zoologico');
+db.animales.insertOne({
+  id: 33,
+  nombre: "Zara",
+  animal: 'Jirafa',
+  edad: 6,
+  genero: "hembra",
+  habitat_zoo: 124,
+  cuidados: "Requiere una dieta alta en hojas...",
+  relacion_animales: "Convive con otras jirafas y herbívoros...",
+  estado_salud: "Bueno",
+  historia: "Zara es una jirafa tranquila y curiosa...",
+  interaccion_humanos: "Zara es amigable y se acerca a los visitantes...",
+  enlaces_geneticos: "Análisis genéticos han revelado...",
+  detalles: {
+    nombre_cientifico: "Giraffa camelopardalis",
+    clase: "Mamífero",
+    raza: "Masai",
+    especie: "Jirafa",
+    tipo_animal: "Herbívoro",
+    invertebrado: false,
+    vertebrado: true,
+    tipo_habitat: "Savana y bosques abiertos",
+    distribicion_geografica: {
+      habitat_natural: "Savanas y regiones arboladas de África",
+      region_geografica: "África subsahariana",
+      pais: ["Kenia", "Tanzania", "Uganda"],
+      continente: "África",
+      ecosistema: "Savanas y bosques"
+    },
+    comportamiento: "Las jirafas son sociables y pacíficas...",
+    estado_conservacion: "Preocupación Menor",
+    depredadores: ["Leones", "Hienas"],
+    alimento_principal: ["Hojas de árboles", "Brotes"],
+    curiosidades: "Las jirafas tienen cuellos largos para alcanzar las hojas...",
+    amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+    relacion_con_humanos: "Las jirafas son populares en la cultura...",
+    importancia_ecologica: "Media",
+    origen: "África"
+  }
+});
+use('zoologico');
+db.animales.insertMany([
+  {
+    id: 34,
+    nombre: "Rex",
+    animal: 'Tigre',
+    edad: 8,
+    genero: "macho",
+    habitat_zoo: 125,
+    cuidados: "Requiere una dieta variada y ejercicio...",
+    relacion_animales: "Suele estar solo debido a su naturaleza territorial...",
+    estado_salud: "Bueno",
+    historia: "Rex es un tigre imponente con un pasado misterioso...",
+    interaccion_humanos: "Rex suele ser cauteloso y observador...",
+    enlaces_geneticos: "Análisis genéticos han arrojado luz sobre...",
+    detalles: {
+      nombre_cientifico: "Panthera tigris",
+      clase: "Mamífero",
+      raza: "Bengala",
+      especie: "Tigre",
+      tipo_animal: "Carnívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Selvas y bosques tropicales",
+      distribicion_geografica: {
+        habitat_natural: "Asia",
+        region_geografica: "Asia oriental y meridional",
+        pais: ["India", "China", "Rusia"],
+        continente: "Asia",
+        ecosistema: "Selvas y bosques tropicales"
+      },
+      comportamiento: "Los tigres son solitarios y cazadores nocturnos...",
+      estado_conservacion: "En peligro",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Cérvidos", "Cerdos salvajes"],
+      curiosidades: "Los tigres tienen un patrón único de rayas...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los tigres han sido venerados y temidos...",
+      importancia_ecologica: "Media",
+      origen: "Asia"
+    }
+  },
+  {
+    id: 35,
+    nombre: "Maya",
+    animal: 'Elefante',
+    edad: 12,
+    genero: "hembra",
+    habitat_zoo: 126,
+    cuidados: "Requiere una dieta rica en vegetales y cuidado dental...",
+    relacion_animales: "Interactúa con otros elefantes en el recinto...",
+    estado_salud: "Bueno",
+    historia: "Maya es una elefanta rescatada de la caza furtiva...",
+    interaccion_humanos: "Maya es amistosa y suele interactuar...",
+    enlaces_geneticos: "Estudios genéticos han demostrado...",
+    detalles: {
+      nombre_cientifico: "Loxodonta africana",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "Elefante",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Sabana y selva",
+      distribicion_geografica: {
+        habitat_natural: "África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Zimbabue"],
+        continente: "África",
+        ecosistema: "Sabanas y selvas"
+      },
+      comportamiento: "Los elefantes son sociales y tienen fuertes lazos...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Humanos", "Leones"],
+      alimento_principal: ["Vegetales", "Frutas"],
+      curiosidades: "Los elefantes africanos son los animales terrestres más grandes...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los elefantes han sido símbolos culturales y religiosos...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 36,
+    nombre: "Kiko",
+    animal: 'Gorila',
+    edad: 20,
+    genero: "macho",
+    habitat_zoo: 127,
+    cuidados: "Requiere una dieta variada y enriquecimiento...",
+    relacion_animales: "Kiko convive con otros gorilas en su grupo...",
+    estado_salud: "Bueno",
+    historia: "Kiko es un gorila de espalda plateada conocido por su liderazgo...",
+    interaccion_humanos: "Kiko es observador y puede acercarse a los cuidadores...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Gorilla beringei beringei",
+      clase: "Mamífero",
+      raza: "Montaña",
+      especie: "Gorila",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosque tropical y montañas",
+      distribicion_geografica: {
+        habitat_natural: "África",
+        region_geografica: "África oriental",
+        pais: ["Ruanda", "Uganda", "República Democrática del Congo"],
+        continente: "África",
+        ecosistema: "Bosques tropicales y montañas"
+      },
+      comportamiento: "Los gorilas son sociales y viven en grupos familiares...",
+      estado_conservacion: "En peligro crítico",
+      depredadores: ["Humanos", "Caza ilegal"],
+      alimento_principal: ["Hojas", "Brotes", "Frutas"],
+      curiosidades: "Los gorilas son parientes cercanos de los humanos...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los gorilas han sido objeto de estudio y conservación...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 37,
+    nombre: "Milo",
+    animal: 'Pingüino',
+    edad: 4,
+    genero: "macho",
+    habitat_zoo: 128,
+    cuidados: "Requiere un ambiente frío y alimentación acuática...",
+    relacion_animales: "Milo forma parte de una colonia de pingüinos...",
+    estado_salud: "Bueno",
+    historia: "Milo es un pingüino explorador y juguetón...",
+    interaccion_humanos: "Milo suele acercarse a los visitantes y chapotear...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Spheniscidae",
+      clase: "Aves",
+      raza: "Emperador",
+      especie: "Pingüino",
+      tipo_animal: "Ave marina",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Hielo marino y aguas costeras",
+      distribicion_geografica: {
+        habitat_natural: "Antártida",
+        region_geografica: "Antártida",
+        pais: ["Antártida"],
+        continente: "Antártida",
+        ecosistema: "Hielo marino y aguas costeras"
+      },
+      comportamiento: "Los pingüinos son sociables y viven en colonias...",
+      estado_conservacion: "Casi amenazado",
+      depredadores: ["Orca", "Leopardos marinos"],
+      alimento_principal: ["Peces", "Krill"],
+      curiosidades: "Los pingüinos emperadores son famosos por su crianza...",
+      amenazas: ["Cambio climático", "Pesca incidental"],
+      relacion_con_humanos: "Los pingüinos son un símbolo icónico de la Antártida...",
+      importancia_ecologica: "Alta",
+      origen: "Antártida"
+    }
+  },
+  {
+    id: 38,
+    nombre: "Luna",
+    animal: 'Lobo Gris',
+    edad: 5,
+    genero: "hembra",
+    habitat_zoo: 129,
+    cuidados: "Requiere un espacio amplio y estimulación mental...",
+    relacion_animales: "Luna es parte de una manada de lobos...",
+    estado_salud: "Bueno",
+    historia: "Luna es una loba rescatada de un entorno hostil...",
+    interaccion_humanos: "Luna es cautelosa pero puede acercarse a los cuidadores...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Canis lupus",
+      clase: "Mamífero",
+      raza: "Gris",
+      especie: "Lobo",
+      tipo_animal: "Carnívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosques, tundras y praderas",
+      distribicion_geografica: {
+        habitat_natural: "América del Norte, Europa, Asia",
+        region_geografica: "Hemisferio norte",
+        pais: ["Estados Unidos", "Canadá", "Rusia"],
+        continente: "América del Norte, Europa, Asia",
+        ecosistema: "Bosques, tundras y praderas"
+      },
+      comportamiento: "Los lobos viven en manadas y tienen una estructura social...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Cérvidos", "Conejos", "Roedores"],
+      curiosidades: "Los lobos tienen una comunicación vocal compleja...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los lobos han sido temidos y malentendidos...",
+      importancia_ecologica: "Alta",
+      origen: "América del Norte, Europa, Asia"
+    }
+  }
+]);
+use('zoologico');
+db.animales.insertMany([
+  {
+    id: 34,
+    nombre: "Rex",
+    animal: 'Tigre',
+    edad: 8,
+    genero: "macho",
+    habitat_zoo: 125,
+    cuidados: "Requiere una dieta variada y ejercicio...",
+    relacion_animales: "Suele estar solo debido a su naturaleza territorial...",
+    estado_salud: "Bueno",
+    historia: "Rex es un tigre imponente con un pasado misterioso...",
+    interaccion_humanos: "Rex suele ser cauteloso y observador...",
+    enlaces_geneticos: "Análisis genéticos han arrojado luz sobre...",
+    detalles: {
+      nombre_cientifico: "Panthera tigris",
+      clase: "Mamífero",
+      raza: "Bengala",
+      especie: "Tigre",
+      tipo_animal: "Carnívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Selvas y bosques tropicales",
+      distribicion_geografica: {
+        habitat_natural: "Asia",
+        region_geografica: "Asia oriental y meridional",
+        pais: ["India", "China", "Rusia"],
+        continente: "Asia",
+        ecosistema: "Selvas y bosques tropicales"
+      },
+      comportamiento: "Los tigres son solitarios y cazadores nocturnos...",
+      estado_conservacion: "En peligro",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Cérvidos", "Cerdos salvajes"],
+      curiosidades: "Los tigres tienen un patrón único de rayas...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los tigres han sido venerados y temidos...",
+      importancia_ecologica: "Media",
+      origen: "Asia"
+    }
+  },
+  {
+    id: 35,
+    nombre: "Maya",
+    animal: 'Elefante',
+    edad: 12,
+    genero: "hembra",
+    habitat_zoo: 126,
+    cuidados: "Requiere una dieta rica en vegetales y cuidado dental...",
+    relacion_animales: "Interactúa con otros elefantes en el recinto...",
+    estado_salud: "Bueno",
+    historia: "Maya es una elefanta rescatada de la caza furtiva...",
+    interaccion_humanos: "Maya es amistosa y suele interactuar...",
+    enlaces_geneticos: "Estudios genéticos han demostrado...",
+    detalles: {
+      nombre_cientifico: "Loxodonta africana",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "Elefante",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Sabana y selva",
+      distribicion_geografica: {
+        habitat_natural: "África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Zimbabue"],
+        continente: "África",
+        ecosistema: "Sabanas y selvas"
+      },
+      comportamiento: "Los elefantes son sociales y tienen fuertes lazos...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Humanos", "Leones"],
+      alimento_principal: ["Vegetales", "Frutas"],
+      curiosidades: "Los elefantes africanos son los animales terrestres más grandes...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los elefantes han sido símbolos culturales y religiosos...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 36,
+    nombre: "Kiko",
+    animal: 'Gorila',
+    edad: 20,
+    genero: "macho",
+    habitat_zoo: 127,
+    cuidados: "Requiere una dieta variada y enriquecimiento...",
+    relacion_animales: "Kiko convive con otros gorilas en su grupo...",
+    estado_salud: "Bueno",
+    historia: "Kiko es un gorila de espalda plateada conocido por su liderazgo...",
+    interaccion_humanos: "Kiko es observador y puede acercarse a los cuidadores...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Gorilla beringei beringei",
+      clase: "Mamífero",
+      raza: "Montaña",
+      especie: "Gorila",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosque tropical y montañas",
+      distribicion_geografica: {
+        habitat_natural: "África",
+        region_geografica: "África oriental",
+        pais: ["Ruanda", "Uganda", "República Democrática del Congo"],
+        continente: "África",
+        ecosistema: "Bosques tropicales y montañas"
+      },
+      comportamiento: "Los gorilas son sociales y viven en grupos familiares...",
+      estado_conservacion: "En peligro crítico",
+      depredadores: ["Humanos", "Caza ilegal"],
+      alimento_principal: ["Hojas", "Brotes", "Frutas"],
+      curiosidades: "Los gorilas son parientes cercanos de los humanos...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los gorilas han sido objeto de estudio y conservación...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 37,
+    nombre: "Milo",
+    animal: 'Pingüino',
+    edad: 4,
+    genero: "macho",
+    habitat_zoo: 128,
+    cuidados: "Requiere un ambiente frío y alimentación acuática...",
+    relacion_animales: "Milo forma parte de una colonia de pingüinos...",
+    estado_salud: "Bueno",
+    historia: "Milo es un pingüino explorador y juguetón...",
+    interaccion_humanos: "Milo suele acercarse a los visitantes y chapotear...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Spheniscidae",
+      clase: "Aves",
+      raza: "Emperador",
+      especie: "Pingüino",
+      tipo_animal: "Ave marina",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Hielo marino y aguas costeras",
+      distribicion_geografica: {
+        habitat_natural: "Antártida",
+        region_geografica: "Antártida",
+        pais: ["Antártida"],
+        continente: "Antártida",
+        ecosistema: "Hielo marino y aguas costeras"
+      },
+      comportamiento: "Los pingüinos son sociables y viven en colonias...",
+      estado_conservacion: "Casi amenazado",
+      depredadores: ["Orca", "Leopardos marinos"],
+      alimento_principal: ["Peces", "Krill"],
+      curiosidades: "Los pingüinos emperadores son famosos por su crianza...",
+      amenazas: ["Cambio climático", "Pesca incidental"],
+      relacion_con_humanos: "Los pingüinos son un símbolo icónico de la Antártida...",
+      importancia_ecologica: "Alta",
+      origen: "Antártida"
+    }
+  },
+  {
+    id: 38,
+    nombre: "Luna",
+    animal: 'Lobo Gris',
+    edad: 5,
+    genero: "hembra",
+    habitat_zoo: 129,
+    cuidados: "Requiere un espacio amplio y estimulación mental...",
+    relacion_animales: "Luna es parte de una manada de lobos...",
+    estado_salud: "Bueno",
+    historia: "Luna es una loba rescatada de un entorno hostil...",
+    interaccion_humanos: "Luna es cautelosa pero puede acercarse a los cuidadores...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Canis lupus",
+      clase: "Mamífero",
+      raza: "Gris",
+      especie: "Lobo",
+      tipo_animal: "Carnívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosques, tundras y praderas",
+      distribicion_geografica: {
+        habitat_natural: "América del Norte, Europa, Asia",
+        region_geografica: "Hemisferio norte",
+        pais: ["Estados Unidos", "Canadá", "Rusia"],
+        continente: "América del Norte, Europa, Asia",
+        ecosistema: "Bosques, tundras y praderas"
+      },
+      comportamiento: "Los lobos viven en manadas y tienen una estructura social...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Cérvidos", "Conejos", "Roedores"],
+      curiosidades: "Los lobos tienen una comunicación vocal compleja...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los lobos han sido temidos y malentendidos...",
+      importancia_ecologica: "Alta",
+      origen: "América del Norte, Europa, Asia"
+    }
+  }
+]);
+use('zoologico');
+db.animales.insertMany([
+  {
+    id: 39,
+    nombre: "Pablo",
+    animal: 'Panda Gigante',
+    edad: 6,
+    genero: "macho",
+    habitat_zoo: 130,
+    cuidados: "Requiere una dieta de bambú y áreas de juego...",
+    relacion_animales: "Pablo vive en un recinto especial con otros pandas...",
+    estado_salud: "Bueno",
+    historia: "Pablo fue un regalo diplomático de China...",
+    interaccion_humanos: "Pablo es tímido pero puede ser cariñoso con los cuidadores...",
+    enlaces_geneticos: "Estudios genéticos han revelado su parentesco con otros pandas...",
+    detalles: {
+      nombre_cientifico: "Ailuropoda melanoleuca",
+      clase: "Mamífero",
+      raza: "Gigante",
+      especie: "Panda",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosques de bambú",
+      distribucion_geografica: {
+        habitat_natural: "China",
+        region_geografica: "Asia oriental",
+        pais: ["China"],
+        continente: "Asia",
+        ecosistema: "Bosques de bambú"
+      },
+      comportamiento: "Los pandas gigantes son solitarios y pacíficos...",
+      estado_conservacion: "En peligro de extinción",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Bambú"],
+      curiosidades: "Los pandas gigantes son conocidos por su aspecto tierno...",
+      amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+      relacion_con_humanos: "Los pandas son símbolos de conservación y protección...",
+      importancia_ecologica: "Alta",
+      origen: "China"
+    }
+  },
+  {
+    id: 40,
+    nombre: "Nala",
+    animal: 'Leopardo de las Nieves',
+    edad: 4,
+    genero: "hembra",
+    habitat_zoo: 131,
+    cuidados: "Requiere un ambiente frío y dieta de carne magra...",
+    relacion_animales: "Nala vive en un recinto con otros leopardos...",
+    estado_salud: "Bueno",
+    historia: "Nala fue rescatada de una situación de tráfico de animales...",
+    interaccion_humanos: "Nala es curiosa y a veces se acerca a los visitantes...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Panthera uncia",
+      clase: "Mamífero",
+      raza: "Leopardo de las Nieves",
+      especie: "Leopardo",
+      tipo_animal: "Carnívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Montañas y estepas",
+      distribucion_geografica: {
+        habitat_natural: "Asia central y del sur",
+        region_geografica: "Asia",
+        pais: ["Mongolia", "Rusia", "India"],
+        continente: "Asia",
+        ecosistema: "Montañas y estepas"
+      },
+      comportamiento: "Los leopardos de las nieves son solitarios...",
+      estado_conservacion: "En peligro",
+      depredadores: ["Humanos"],
+      alimento_principal: ["Íbices", "Marmotas", "Aves"],
+      curiosidades: "Los leopardos de las nieves son maestros del camuflaje...",
+      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+      relacion_con_humanos: "Los leopardos de las nieves son misteriosos y esquivos...",
+      importancia_ecologica: "Alta",
+      origen: "Asia central y del sur"
+    }
+  },
+  {
+    id: 41,
+    nombre: "Kiara",
+    animal: 'Cebra',
+    edad: 5,
+    genero: "hembra",
+    habitat_zoo: 132,
+    cuidados: "Requiere acceso a pastizales y atención veterinaria...",
+    relacion_animales: "Kiara vive en un grupo de cebras y herbívoros...",
+    estado_salud: "Bueno",
+    historia: "Kiara llegó al zoológico después de ser rescatada de la caza furtiva...",
+    interaccion_humanos: "Kiara es curiosa y se acerca a los visitantes...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Equus zebra",
+      clase: "Mamífero",
+      raza: "Plains",
+      especie: "Cebra",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Praderas y sabanas",
+      distribucion_geografica: {
+        habitat_natural: "África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Praderas y sabanas"
+      },
+      comportamiento: "Las cebras viven en grupos para protegerse...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Leones", "Hienas"],
+      alimento_principal: ["Pasto", "Hojas", "Brotes"],
+      curiosidades: "Las cebras tienen un patrón único de rayas...",
+      amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+      relacion_con_humanos: "Las cebras son un símbolo icónico de la fauna africana...",
+      importancia_ecologica: "Media",
+      origen: "África"
+    }
+  },
+  {
+    id: 42,
+    nombre: "Kai",
+    animal: 'Pavo Real',
+    edad: 3,
+    genero: "macho",
+    habitat_zoo: 133,
+    cuidados: "Requiere un espacio amplio y una dieta variada...",
+    relacion_animales: "Kai convive con otros pavos reales en su área...",
+    estado_salud: "Bueno",
+    historia: "Kai es un pavo real con hermoso plumaje...",
+    interaccion_humanos: "Kai suele exhibir su plumaje y acercarse a los visitantes...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Pavo cristatus",
+      clase: "Aves",
+      raza: "Común",
+      especie: "Pavo Real",
+      tipo_animal: "Ave",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Bosques y praderas",
+      distribucion_geografica: {
+        habitat_natural: "Asia",
+        region_geografica: "Asia meridional",
+        pais: ["India", "Sri Lanka"],
+        continente: "Asia",
+        ecosistema: "Bosques y praderas"
+      },
+      comportamiento: "Los pavos reales son conocidos por su despliegue de plumaje...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Depredadores naturales"],
+      alimento_principal: ["Insectos", "Frutas", "Semillas"],
+      curiosidades: "Los pavos reales machos exhiben sus plumas para atraer a las hembras...",
+      amenazas: ["Depredadores naturales", "Caza ocasional"],
+      relacion_con_humanos: "Los pavos reales han sido apreciados por su belleza...",
+      importancia_ecologica: "Baja",
+      origen: "Asia"
+    }
+  },
+  {
+    id: 43,
+    nombre: "Rocky",
+    animal: 'Iguana Verde',
+    edad: 2,
+    genero: "macho",
+    habitat_zoo: 134,
+    cuidados: "Requiere un ambiente tropical y una dieta de vegetales...",
+    relacion_animales: "Rocky vive en un terrario junto a otras iguanas...",
+    estado_salud: "Bueno",
+    historia: "Rocky fue donado al zoológico por un criador local...",
+    interaccion_humanos: "Rocky es tranquilo y se acostumbra a la presencia humana...",
+    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+    detalles: {
+      nombre_cientifico: "Iguana iguana",
+      clase: "Reptil",
+      raza: "Verde",
+      especie: "Iguana",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Selvas y bosques tropicales",
+      distribucion_geografica: {
+        habitat_natural: "América Central y Sudamérica",
+        region_geografica: "América",
+        pais: ["México", "Costa Rica", "Brasil"],
+        continente: "América",
+        ecosistema: "Selvas y bosques tropicales"
+      },
+      comportamiento: "Las iguanas verdes son animales solitarios...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Depredadores naturales"],
+      alimento_principal: ["Vegetales", "Frutas"],
+      curiosidades: "Las iguanas verdes son reptiles de sangre fría que pueden regular su temperatura...",
+      amenazas: ["Depredadores naturales", "Tráfico de mascotas"],
+      relacion_con_humanos: "Las iguanas verdes son populares en el comercio de mascotas...",
+      importancia_ecologica: "Media",
+      origen: "América Central y Sudamérica"
+    }
+  }
+]);
+
+
