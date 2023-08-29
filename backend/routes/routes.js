@@ -3,6 +3,7 @@ import { limitQuery } from "../helpers/limit.js";
 import {getEmpleados,postEmpl} from '../routes/empleados.js';
 import { getInfra, postInfra } from "../routes/infraestructura.js";
 import { getHM, postHM } from "../routes/historial_mantenimiento.js";
+import { getHMed } from "../routes/historial_medico.js";
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
 const appEmpleados = express();
@@ -11,9 +12,11 @@ appEmpleados.use(express.json());
 const appInfraestructura = express();
 appInfraestructura.use(express.json());
 
-const appHM=express();
-appHM.use(express.json());
+const appHMant=express();
+appHMant.use(express.json());
 
+const appHMed = express();
+appHMed.use(express.json());
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
 appEmpleados.post("/empl",limitQuery(),postEmpl);
@@ -21,7 +24,10 @@ appEmpleados.post("/empl",limitQuery(),postEmpl);
 appInfraestructura.get("/infra",limitQuery(),getInfra);
 appInfraestructura.post("/infra", limitQuery(),postInfra);
 
-appHM.get("/hm",limitQuery(),getHM)
-appHM.post("/hm",limitQuery(),postHM)
+appHMant.get("/hmant",limitQuery(),getHM);
+appHMant.post("/hmant",limitQuery(),postHM);
 
-export {appEmpleados,appInfraestructura,appHM};
+appHMed.get("/hmed",limitQuery(),getHMed);
+
+
+export {appEmpleados,appInfraestructura,appHMant,appHMed};
