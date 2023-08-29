@@ -5,6 +5,7 @@ import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
 import { empleados } from "../routers/storage/empleados.js";
 import {infraestrutura} from "../routers/storage/infraestructura.js"
+import {historial_mantenimiento} from '../routers/storage/historial_mantenimiento.js'
 
 
 dotenv.config("../");
@@ -15,6 +16,7 @@ const DTO = (p1) => {
     const match = {
         'empleados': empleados,
         'infraestructura':infraestrutura,
+        'hm':historial_mantenimiento
     };
     const inst = match[p1];
     if(!inst) throw {status: 404, message: "Token solicitado no valido"}

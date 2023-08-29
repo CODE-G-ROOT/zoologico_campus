@@ -135,7 +135,14 @@ db.createCollection("historial_mantenimiento", {
         }}
     },
   });
-
+  use('zoologico');
+  db.historial_mantenimiento.insertOne({
+    "id": 2,
+    "descripcion": "Mantenimiento preventivo",
+    "area": "Área de producción",
+    "nombre_empleado": "Juan Pérez",
+    "fecha": "2023-07-28T00:00:00Z"
+  });
 
   use('zoologico');
   db.createCollection("historial_medico", {

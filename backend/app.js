@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import express from 'express';
-import {appEmpleados,appInfraestructura} from './routes/routes.js';
+import {appEmpleados,appInfraestructura,appHM} from './routes/routes.js';
 import { appToken, appVerify} from './helpers/jwt.js';
 //import { initRoutes} from './routes/routes.js'
 dotenv.config();
@@ -12,6 +12,7 @@ app.use(express.json());
 app.use("/token", appToken);
 app.use("/empleado",appVerify,appEmpleados);
 app.use("/infra",appVerify,appInfraestructura)
+app.use("/hm",appVerify,appHM)
 
 let config = JSON.parse(process.env.MY_SERVER);
 
