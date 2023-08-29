@@ -1,4 +1,4 @@
-use('zoologico');
+/* use('zoologico');
 db.createCollection("empleados", {
     validator: {
       $jsonSchema: {
@@ -553,4 +553,4 @@ db.animales.insertOne({
         importancia_ecologica: "Media",
         origen: "China"
     }
-});
+}); */

@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
 import { empleados } from "../routers/storage/empleados.js";
+import {infraestrutura} from "../routers/storage/infraestructura.js"
 
 
 dotenv.config("../");
@@ -13,6 +14,7 @@ const appVerify = Router();
 const DTO = (p1) => {
     const match = {
         'empleados': empleados,
+        'infraestructura':infraestrutura,
     };
     const inst = match[p1];
     if(!inst) throw {status: 404, message: "Token solicitado no valido"}

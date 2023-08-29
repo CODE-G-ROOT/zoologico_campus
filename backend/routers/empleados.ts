@@ -63,15 +63,15 @@ export class empleados {
 
         constructor(data:Partial<empleados>) {
             Object.assign(this, data);
-            this.id = 0;
-            this.nombre_completo = "";
-            this.email = "";
-            this.cargo = "";
-            this.cc = "";
-            this.especialidad = "";
-            this.fecha_contratacion = new Date();
-            this.salario = 0;
-            this.telefono = "";
+            this.id
+            this.nombre_completo 
+            this.email 
+            this.cargo 
+            this.cc 
+            this.especialidad 
+            this.fecha_contratacion
+            this.salario 
+            this.telefono 
         }
     
 }

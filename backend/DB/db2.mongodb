@@ -95,6 +95,15 @@ db.createCollection("infraestructura", {
         }}
     },
   });
+use('zoologico');
+  db.infraestructura.insertOne({
+    id: 2,
+    nombre: "Edificio B",
+    descripcion: "Edificio principal",
+    dimensiones: "50 x 30",
+    departamentos: ["Recursos Humanos", "Finanzas"],
+    area: "Oficinas",
+  });
 
   use('zoologico');
 db.createCollection("historial_mantenimiento", {
