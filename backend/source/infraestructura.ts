@@ -1,54 +1,34 @@
 import {Expose, Type, Transform} from 'class-transformer';
-import { IsString, IsEmpty, IsDefined} from 'class-validator';
+import { IsString, IsEmpty, IsDefined, isDecimal, IsNumber} from 'class-validator';
 
 export class infraestrutura {
+
     @Expose({name:'id'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{
-        if(Math.floor(value)&& typeof value === 'number')
-        return Math.floor(value);
-        else throw {status:400, message:`el dato no id cumple los parametros`};},{toClassOnly: true})
-        id:number;
+    @IsNumber({}, { message: ()=>{throw{ status:400, message:'el campo id_infra debe ser de tipo number', reference:'https://http.cat/400'}}})
+    @IsDefined({message: ()=> { throw {status:400, message:'el campo id_infra es obligatorio'}}})
+    id_infra: number = 0;
 
     @Expose({name:'nombre_lugar'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{if(/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value)) return value;
-        else throw {status:400, message:`el dato no nn cumple los parametros`};},{toClassOnly:true})
-        nombre_lugar:string;
-        
+    @IsString({message: ()=> {throw {status: 400, message:'el campo nombre_lugar debe ser de tipo string', reference:'https://http.cat/400'}}})
+    @IsDefined({message: ()=>{throw {status:400, message:'el campo nombre_lugar es obligatorio'}}})
+    nombre_lugar: string = '';
+
+    @Expose({name:'tipo'})
+    @IsString({message: ()=> {throw {status: 400, message:'el campo tipo debe ser de tipo string', reference:'https://http.cat/400'}}})
+    @IsDefined({message: ()=>{throw {status:400, message:'el campo tipo es obligatorio'}}})
+    tipo: string = '';
+
     @Expose({name:'descripcion'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{if(/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value)) return value;
-        else throw {status:400, message:`el dato no nn cumple los parametros`};},{toClassOnly:true})
-        descripcion:string;
-    
+    @IsString({message: ()=> {throw {status: 400, message:'el campo descripcion debe ser de tipo string', reference:'https://http.cat/400'}}})
+    @IsDefined({message: ()=>{throw {status:400, message:'el campo descripcion es obligatorio'}}})
+    descripcion: string = '';
+
     @Expose({name:'dimensiones'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{if(/^\d+\s*x\s*\d+$/.test(value)) return value;
-        else throw {status:400, message:`el dato no nn cumple los parametros`};},{toClassOnly:true})
-        dimensiones:string;
+    @IsString({message: ()=> {throw {status: 400, message:'el campo dimensiones debe ser de tipo string', reference:'https://http.cat/400'}}})
+    @IsDefined({message: ()=>{throw {status:400, message:'el campo dimensiones es obligatorio'}}})
+    dimensiones: string = '';
 
-
-    @Expose({name:'departamento'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{if(/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value)) return value;
-        else throw {status:400, message:`el dato no nn cumple los parametros`};},{toClassOnly:true})
-        departamento:string;
-
-    @Expose({name:'area'})
-    @IsDefined({message: ()=>{throw{status:401, message:`el mensaje es obligatorio `}}})
-    @Transform(({value})=>{if(/^[A-Za-zÁÉÍÓÚáéíóúÑñÜü\s]+$/.test(value)) return value;
-        else throw {status:400, message:`el dato no nn cumple los parametros`};},{toClassOnly:true})
-        area:string;
-
-    constructor(data:Partial<infraestrutura>) {
+    constructor(data: Partial<infraestrutura>) {
         Object.assign(this, data);
-        this.id = 0;
-        this.nombre_lugar = "";
-        this.descripcion = "";
-        this.dimensiones = "";
-        this.departamento="";
-        this.area= "" ;
     }
-
-    }
+}
