@@ -1,3 +1,5 @@
 URL_CONNECT_MONGODB=""
 HOSTNAME="localhost"
 PORT="4000"
+server_config={"hostname":"localhost","port":4000}
+JWT_PRIVATE_KEY=""
