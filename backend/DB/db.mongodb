@@ -162,7 +162,7 @@ db.empleados.insertMany([
 ]);
 
 use('zoologico');
-db.createCollection('Intraestructura', {
+db.createCollection('infraestructura', {
   validator: {
     $jsonSchema: {
       bsonType: "object",
@@ -184,6 +184,11 @@ db.createCollection('Intraestructura', {
         },
         tipo: {
           bsonType: "string",
+          enum: [
+            'Departamento',
+            'Area',
+            'Habitat'
+          ],
           description: "place name must be string type"
         },
         descripcion: {
@@ -193,10 +198,6 @@ db.createCollection('Intraestructura', {
         dimensiones: {
           bsonType: "string",
           description: 'dimensiones de la estructura'
-        },
-        animales: {
-          bsonType: ["string", "null"],
-          description: ''
         }
       }
     }
@@ -206,86 +207,86 @@ db.createCollection('Intraestructura', {
 use('zoologico');
 db.infraestructura.insertMany([
   {
-    id: '0',
+    id: 1,
     nombre_lugar: 'Cuidado Animal',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Equipo encargado del cuidado y bienestar de los animales en el zoológico.',
     dimensiones: '1000 m²',
   },
   {
-    id: '1',
+    id: 2,
     nombre_lugar: 'Departamento Veterinario',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Profesionales de la salud animal que garantizan el bienestar médico de los habitantes del zoológico.',
     dimensiones: '800 m²',
   },
   {
-    id: '2',
+    id: 3,
     nombre_lugar: 'Diseño y Exhibiciones',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Expertos en crear hábitats y entornos que imitan los lugares naturales de los animales.',
     dimensiones: '1200 m²',
   },
   {
-    id: '3',
+    id: 4,
     nombre_lugar: 'Enriquecimiento Animal',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Personal que desarrolla actividades y estímulos para mantener a los animales activos y saludables.',
     dimensiones: '600 m²',
   },
   {
-    id: '4',
+    id: 5,
     nombre_lugar: 'Educación y Conservación',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Equipo responsable de la educación de los visitantes y de la promoción de la conservación de la vida silvestre.',
     dimensiones: '1500 m²',
   },
   {
-    id: '5',
+    id: 6,
     nombre_lugar: 'Investigación y Desarrollo',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Científicos que estudian el comportamiento y necesidades de los animales, y desarrollan nuevos métodos de cuidado.',
     dimensiones: '700 m²',
   },
   {
-    id: '6',
+    id: 7,
     nombre_lugar: 'Mantenimiento y Paisajismo',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Equipo que se encarga de mantener los espacios limpios, seguros y estéticamente atractivos para los visitantes.',
     dimensiones: '2000 m²',
   },
   {
-    id: '7',
+    id: 8,
     nombre_lugar: 'Alimentación y Nutrición',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Profesionales que planifican y preparan las dietas adecuadas para los diferentes animales.',
     dimensiones: '500 m²',
   },
   {
-    id: '8',
+    id: 9,
     nombre_lugar: 'Conservación de Especies',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Especialistas que trabajan para la reproducción y conservación de especies en peligro de extinción.',
     dimensiones: '1000 m²',
   },
   {
-    id: '9',
+    id: 10,
     nombre_lugar: 'Seguridad',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: '	Personal de seguridad que garantiza la seguridad de visitantes y trabajadores cerca de los animales.',
     dimensiones: '800 m²',
   },
   {
-    id: '10',
+    id: 11,
     nombre_lugar: 'Bienestar Animal',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Responsables de monitorear el bienestar físico y emocional de los animales para asegurarse de su salud.',
     dimensiones: '1200 m²',
   },
   {
-    id: '11',
+    id: 12,
     nombre_lugar: 'Marketing y Relaciones Públicas',
-    tipo: 'departamento',
+    tipo: 'Departamento',
     descripcion: 'Equipo que comunica información sobre el zoológico y sus habitantes al público.',
     dimensiones: '600 m²',
   },
@@ -296,100 +297,100 @@ db.infraestructura.insertMany([
 use('zoologico');
 db.infraestructura.insertMany([
   {
-    id: '11',
+    id: 13,
     nombre_lugar: 'Área de Exhibición',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Espacio para mostrar diversas especies de animales en hábitats diseñados.',
     dimensiones: '2000 m²',
   },
   {
-    id: '12',
+    id: 14,
     nombre_lugar: 'Jardín Botánico',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Colección de plantas y vegetación de diferentes partes del mundo.',
     dimensiones: '1500 m²',
   },
   {
-    id: '13',
+    id: 15,
     nombre_lugar: 'Acuario',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Zona con tanques y piscinas para exhibir una variedad de vida acuática.',
     dimensiones: '1000 m²',
   },
   {
-    id: '14',
+    id: 16,
     nombre_lugar: 'Aviario',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Área con estructuras para exhibir diversas especies de aves.',
     dimensiones: '1200 m²',
   },
   {
-    id: '15',
+    id: 17,
     nombre_lugar: 'Hábitats Nocturnos',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: '	Espacio oscuro para exhibir animales activos durante la noche.',
     dimensiones: '800 m²',
   },
   {
-    id: '16',
+    id: 18,
     nombre_lugar: 'Zona de Animales Exóticos',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Exhibición de animales de regiones lejanas y exóticas.',
     dimensiones: '1800 m²',
   },
   {
-    id: '17',
+    id: 19,
     nombre_lugar: 'Zona de Animales en Peligro',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Área dedicada a especies en peligro de extinción y sus necesidades de conservación.',
     dimensiones: '1600 m²',
   },
   {
-    id: '18',
+    id: 20,
     nombre_lugar: 'Zona de Aves Rapaces',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Espacio para aves de presa con vuelos y demostraciones.',
     dimensiones: '1400 m²',
   },
   {
-    id: '19',
+    id: 21,
     nombre_lugar: 'Granja Educativa',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: '	Área interactiva para aprender sobre animales domesticados y la vida en la granja.',
     dimensiones: '1200 m²',
   },
   {
-    id: '20',
+    id: 22,
     nombre_lugar: 'Área de Recreación y Juegos',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Espacio para actividades recreativas y juegos para los visitantes.',
     dimensiones: '2500 m²',
   },
   {
-    id: '21',
+    id: 23,
     nombre_lugar: 'Área de Exhibición',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Exhibición de animales en hábitats naturales o diseñados.',
     dimensiones: '1800 m²',
   },
   {
-    id: '22',
+    id: 24,
     nombre_lugar: 'Zona de Alimentación y Descanso',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Área con restaurantes, cafeterías y lugares para descansar.',
     dimensiones: '2000 m²',
   },
   {
-    id: '23',
+    id: 25,
     nombre_lugar: 'Centro de Educación y Exhibiciones Interactivas',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Espacio educativo con presentaciones interactivas y programas educativos.',
     dimensiones: '1500 m²',
   },
   {
-    id: '24',
+    id: 26,
     nombre_lugar: 'Área de Espectáculos y Presentaciones',
-    tipo: 'area',
+    tipo: 'Area',
     descripcion: 'Escenario para espectáculos con animales y presentaciones.',
     dimensiones: '1800 m²',
   }
@@ -398,112 +399,100 @@ db.infraestructura.insertMany([
 use('zoologico');
 db.infraestructura.insertMany([
   {
-    id: '25',
+    id: 27,
     nombre_lugar: 'Sabana Africana',
     tipo: 'Habitat',
     tipo_habitad: 'Sabana',
     descripcion: 'Amplia sabana africana con pastizales y árboles dispersos.',
     dimensiones: '200 x 300',
-    animales: []
   },
   {
-    id: '26',
+    id: 28,
     nombre_lugar: 'Bosque Tropical',
     tipo: 'Habitat',
     tipo_habitad: 'Bosque',
     descripcion: 'Bosque tropical con densa vegetación y riachuelos.',
     dimensiones: '150 x 200',
-    animales: []
   },
   {
-    id: '27',
+    id: 29,
     nombre_lugar: 'Selva Amazónica',
     tipo: 'Habitat',
     tipo_habitad: 'Selva',
     descripcion: 'Selva tropical del Amazonas con vegetación exuberante.',
     dimensiones: '100 x 150',
-    animales: []
   },
   {
-    id: '28',
+    id: 30,
     nombre_lugar: 'Selva Africana',
     tipo: 'Habitat',
     tipo_habitad: 'Selva',
     descripcion: 'Selva africana con árboles altos y enredaderas.',
     dimensiones: '120 x 180',
-    animales: []
   },
   {
-    id: '29',
+    id: 31,
     nombre_lugar: 'Montaña de los Gorilas',
     tipo: 'Habitat',
     tipo_habitad: 'Montaña',
     descripcion: 'Montaña rocosa con vegetación alpina.',
     dimensiones: '80 x 100',
-    animales: []
   },
   {
-    id: '30',
+    id: 32,
     nombre_lugar: 'Pingüinera',
     tipo: 'Habitat',
     tipo_habitad: 'Zona Acuática',
     descripcion: 'Piscina con agua fría y plataformas rocosas.',
     dimensiones: 'Piscina grande',
-    animales: []
   },
   {
-    id: '31',
+    id: 33,
     nombre_lugar: 'Bosque de Lobos',
     tipo: 'Habitat',
     tipo_habitad: 'Bosque',
     descripcion: 'Bosque de coníferas con áreas de escondite.',
     dimensiones: '60 x 80',
-    animales: []
   },
   {
-    id: '32',
+    id: 34,
     nombre_lugar: 'Tierras Tropicales',
     tipo: 'Habitat',
     tipo_habitad: 'Bosque',
     descripcion: 'Área tropical con selva y ríos.',
     dimensiones: '200 x 250',
-    animales: []
   },
   {
-    id: '33',
+    id: 35,
     nombre_lugar: 'Leopardo de las Nieves',
     tipo: 'Habitat',
     tipo_habitad: 'Bosque',
     descripcion: 'Bosque frío con nieve y rocas.',
     dimensiones: '100 x 150',
-    animales: []
   },
   {
-    id: '34',
+    id: 36,
     nombre_lugar: 'Pradera Africana',
     tipo: 'Habitat',
     tipo_habitad: 'Pradera',
     descripcion: 'Amplia pradera africana con hierba alta.',
     dimensiones: '300 x 400',
-    animales: []
   },
   {
-    id: '35',
+    id: 37,
     nombre_lugar: 'Jardín de Pavos Reales',
     tipo: 'Habitat',
     tipo_habitad: 'Jardín',
     descripcion: 'Jardín decorado con áreas de exhibición.',
     dimensiones: '30 x 40',
-    animales: []
   },
   {
-    id: '36',
+    id: 38,
     nombre_lugar: 'Terrario de Iguanas',
     tipo: 'Habitat',
     tipo_habitad: 'Terrario',
     descripcion: 'Espacio cerrado con rocas y vegetación.',
     dimensiones: 'Varios',
-    animales: []
   },
 ]);
 
@@ -2049,6 +2038,5 @@ db.animales.insertMany([
     }
   }
 ]);
-
 
 
