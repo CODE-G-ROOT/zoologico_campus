@@ -61,4 +61,8 @@ export class animales {
     @IsString({message: ()=> {throw { status:400, message:'el campo enlaces_geneticos debe de ser de tipo'}}})
     @IsDefined({message: ()=>{throw {status:400, message: 'el campo enlaces_geneticos es obligatorio'}}})
     enlaces_geneticos: string = '';
+
+    constructor(data: Partial<animales>) {
+        Object.assign(this, data);
+    }
 }
