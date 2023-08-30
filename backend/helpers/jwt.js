@@ -3,13 +3,13 @@ import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
-import { empleados } from "../routers/storage/empleados.js";
-import {infraestrutura} from "../routers/storage/infraestructura.js"
-import {historial_mantenimiento} from '../routers/storage/historial_mantenimiento.js'
-import {historial_medico} from '../routers/storage/historial_medico.js'
-import {eventos} from '../routers/storage/evento.js'
-import {finanzas} from '../routers/storage/finanzas.js'
-import {organizaciones} from '../routers/storage/organizaciones.js'
+import { empleados } from "../DTO/empleados.js";
+import { infraestrutura} from "../DTO/infraestructura.js"
+import { historial_mantenimiento } from '../DTO/historial_mantenimiento.js'
+import { historial_medico } from '../DTO/historial_medico.js'
+import { eventos } from '../DTO/evento.js'
+import { finanzas } from '../DTO/finanzas.js'
+import { organizaciones } from '../DTO/organizaciones.js'
 
 dotenv.config("../");
 const appToken = Router();

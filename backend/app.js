@@ -1,6 +1,6 @@
 import express from 'express';
 import data from './settigns.js';
-import {appEmpleados,appInfraestructura,appHMant,appHMed,appEventos, appFinanzas,appOrg} from './routes/routes.js';
+import { appEmpleados,appInfraestructura,appHMant,appHMed,appEventos, appFinanzas,appOrg} from './routes.js';
 import { appToken, appVerify} from './helpers/jwt.js';
 
 let app = express();
