@@ -194,8 +194,9 @@ db.createCollection('Intraestructura', {
           bsonType: "string",
           description: 'dimensiones de la estructura'
         },
-        otro: {
-          bsonType: 'object'
+        animales: {
+          bsonType: ["string", "null"],
+          description: ''
         }
       }
     }
@@ -289,7 +290,7 @@ db.infraestructura.insertMany([
     dimensiones: '600 m²',
   },
 
-])
+]);
 //TODO: AREAS
 //? CHECK
 use('zoologico');
@@ -392,18 +393,122 @@ db.infraestructura.insertMany([
     descripcion: 'Escenario para espectáculos con animales y presentaciones.',
     dimensiones: '1800 m²',
   }
-])
-//! HÁBITADS PENDIENTES
+]);
+//TODO: HÁBITADS
 use('zoologico');
 db.infraestructura.insertMany([
   {
     id: '25',
-    nombre_lugar: 'Área de Espectáculos y Presentaciones',
-    tipo: 'area',
-    descripcion: 'Escenario para espectáculos con animales y presentaciones.',
-    dimensiones: '1800 m²',
-  }
+    nombre_lugar: 'Sabana Africana',
+    tipo: 'Habitat',
+    tipo_habitad: 'Sabana',
+    descripcion: 'Amplia sabana africana con pastizales y árboles dispersos.',
+    dimensiones: '200 x 300',
+    animales: []
+  },
+  {
+    id: '26',
+    nombre_lugar: 'Bosque Tropical',
+    tipo: 'Habitat',
+    tipo_habitad: 'Bosque',
+    descripcion: 'Bosque tropical con densa vegetación y riachuelos.',
+    dimensiones: '150 x 200',
+    animales: []
+  },
+  {
+    id: '27',
+    nombre_lugar: 'Selva Amazónica',
+    tipo: 'Habitat',
+    tipo_habitad: 'Selva',
+    descripcion: 'Selva tropical del Amazonas con vegetación exuberante.',
+    dimensiones: '100 x 150',
+    animales: []
+  },
+  {
+    id: '28',
+    nombre_lugar: 'Selva Africana',
+    tipo: 'Habitat',
+    tipo_habitad: 'Selva',
+    descripcion: 'Selva africana con árboles altos y enredaderas.',
+    dimensiones: '120 x 180',
+    animales: []
+  },
+  {
+    id: '29',
+    nombre_lugar: 'Montaña de los Gorilas',
+    tipo: 'Habitat',
+    tipo_habitad: 'Montaña',
+    descripcion: 'Montaña rocosa con vegetación alpina.',
+    dimensiones: '80 x 100',
+    animales: []
+  },
+  {
+    id: '30',
+    nombre_lugar: 'Pingüinera',
+    tipo: 'Habitat',
+    tipo_habitad: 'Zona Acuática',
+    descripcion: 'Piscina con agua fría y plataformas rocosas.',
+    dimensiones: 'Piscina grande',
+    animales: []
+  },
+  {
+    id: '31',
+    nombre_lugar: 'Bosque de Lobos',
+    tipo: 'Habitat',
+    tipo_habitad: 'Bosque',
+    descripcion: 'Bosque de coníferas con áreas de escondite.',
+    dimensiones: '60 x 80',
+    animales: []
+  },
+  {
+    id: '32',
+    nombre_lugar: 'Tierras Tropicales',
+    tipo: 'Habitat',
+    tipo_habitad: 'Bosque',
+    descripcion: 'Área tropical con selva y ríos.',
+    dimensiones: '200 x 250',
+    animales: []
+  },
+  {
+    id: '33',
+    nombre_lugar: 'Leopardo de las Nieves',
+    tipo: 'Habitat',
+    tipo_habitad: 'Bosque',
+    descripcion: 'Bosque frío con nieve y rocas.',
+    dimensiones: '100 x 150',
+    animales: []
+  },
+  {
+    id: '34',
+    nombre_lugar: 'Pradera Africana',
+    tipo: 'Habitat',
+    tipo_habitad: 'Pradera',
+    descripcion: 'Amplia pradera africana con hierba alta.',
+    dimensiones: '300 x 400',
+    animales: []
+  },
+  {
+    id: '35',
+    nombre_lugar: 'Jardín de Pavos Reales',
+    tipo: 'Habitat',
+    tipo_habitad: 'Jardín',
+    descripcion: 'Jardín decorado con áreas de exhibición.',
+    dimensiones: '30 x 40',
+    animales: []
+  },
+  {
+    id: '36',
+    nombre_lugar: 'Terrario de Iguanas',
+    tipo: 'Habitat',
+    tipo_habitad: 'Terrario',
+    descripcion: 'Espacio cerrado con rocas y vegetación.',
+    dimensiones: 'Varios',
+    animales: []
+  },
 ]);
+
+use('zoologico');
+db.infraestructura.drop()
 
 //TODO: mantenimiento
 use('zoologico');
@@ -1944,5 +2049,6 @@ db.animales.insertMany([
     }
   }
 ]);
+
 
 
