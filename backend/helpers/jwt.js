@@ -7,7 +7,9 @@ import { empleados } from "../routers/storage/empleados.js";
 import {infraestrutura} from "../routers/storage/infraestructura.js"
 import {historial_mantenimiento} from '../routers/storage/historial_mantenimiento.js'
 import {historial_medico} from '../routers/storage/historial_medico.js'
-
+import {eventos} from '../routers/storage/evento.js'
+import {finanzas} from '../routers/storage/finanzas.js'
+import {organizaciones} from '../routers/storage/organizaciones.js'
 
 dotenv.config("../");
 const appToken = Router();
@@ -19,6 +21,9 @@ const DTO = (p1) => {
         'infraestructura':infraestrutura,
         'hmant':historial_mantenimiento,
         'hmed':historial_medico,
+        'eventos':eventos,
+        'finanzas':finanzas,
+        'org':organizaciones
 
     };
     const inst = match[p1];

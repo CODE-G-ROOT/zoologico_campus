@@ -4,19 +4,37 @@ import {getEmpleados,postEmpl} from '../routes/empleados.js';
 import { getInfra, postInfra } from "../routes/infraestructura.js";
 import { getHM, postHM } from "../routes/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../routes/historial_medico.js";
+import { getEventos, postEventos } from "../routes/eventos.js";
+import { getFinanzas, postFinanzas } from "../routes/finanzas.js";
+import { getOrg,postOrg } from "../routes/organizaciones.js";
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
-const appEmpleados = express();
-appEmpleados.use(express.json());
+//const appEmpleados = express();
+//appEmpleados.use(express.json());
 
-const appInfraestructura = express();
-appInfraestructura.use(express.json());
+//const appInfraestructura = express();
+//appInfraestructura.use(express.json());
 
-const appHMant=express();
-appHMant.use(express.json());
+//const appHMant=express();
+//appHMant.use(express.json());
 
-const appHMed = express();
-appHMed.use(express.json());
+//const appHMed = express();
+//appHMed.use(express.json());
+
+function configurarApp() {
+    const app = express();
+    app.use(express.json());
+    return app;
+  }
+  
+  const appEmpleados = configurarApp();
+  const appInfraestructura = configurarApp();
+  const appHMant = configurarApp();
+  const appHMed = configurarApp();
+  const appEventos = configurarApp();
+  const appFinanzas = configurarApp();
+  const appOrg=configurarApp();
+
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
 appEmpleados.post("/empl",limitQuery(),postEmpl);
@@ -30,5 +48,13 @@ appHMant.post("/hmant",limitQuery(),postHM);
 appHMed.get("/hmed",limitQuery(),getHMed);
 appHMed.post("/hmed",limitQuery(),postHMed);
 
+appEventos.get("/eventos", limitQuery(),getEventos);
+appEventos.post("/eventos", limitQuery(),postEventos);
 
-export {appEmpleados,appInfraestructura,appHMant,appHMed};
+appFinanzas.get("/finanzas",limitQuery(),getFinanzas);
+appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
+
+appOrg.get("/org",limitQuery(),getOrg);
+appOrg.post("/org",limitQuery(),postOrg)
+
+export {appEmpleados,appInfraestructura,appHMant,appHMed,appEventos,appFinanzas,appOrg};
