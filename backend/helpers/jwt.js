@@ -6,6 +6,7 @@ import { SignJWT, jwtVerify } from 'jose';
 import { empleados } from "../routers/storage/empleados.js";
 import {infraestrutura} from "../routers/storage/infraestructura.js"
 import {historial_mantenimiento} from '../routers/storage/historial_mantenimiento.js'
+import {historial_medico} from '../routers/storage/historial_medico.js'
 
 
 dotenv.config("../");
@@ -16,7 +17,8 @@ const DTO = (p1) => {
     const match = {
         'empleados': empleados,
         'infraestructura':infraestrutura,
-        'hmat':historial_mantenimiento,
+        'hmant':historial_mantenimiento,
+        'hmed':historial_medico,
 
     };
     const inst = match[p1];

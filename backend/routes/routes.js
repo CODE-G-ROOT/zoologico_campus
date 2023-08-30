@@ -3,7 +3,7 @@ import { limitQuery } from "../helpers/limit.js";
 import {getEmpleados,postEmpl} from '../routes/empleados.js';
 import { getInfra, postInfra } from "../routes/infraestructura.js";
 import { getHM, postHM } from "../routes/historial_mantenimiento.js";
-import { getHMed } from "../routes/historial_medico.js";
+import { getHMed, postHMed } from "../routes/historial_medico.js";
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
 const appEmpleados = express();
@@ -28,6 +28,7 @@ appHMant.get("/hmant",limitQuery(),getHM);
 appHMant.post("/hmant",limitQuery(),postHM);
 
 appHMed.get("/hmed",limitQuery(),getHMed);
+appHMed.post("/hmed",limitQuery(),postHMed);
 
 
 export {appEmpleados,appInfraestructura,appHMant,appHMed};
