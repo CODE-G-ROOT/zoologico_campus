@@ -17,7 +17,7 @@ app.use("/eventos",appVerify,appEventos)
 app.use("/finanzas",appVerify,appFinanzas)
 app.use("/org",appVerify,appOrg)
 
-const server_config = JSON.parse(process.env.server_config)
+const server_config = JSON.parse(process.env.MY_SERVER)
 app.listen(server_config, ()=>{
     console.log(`http://${server_config.hostname}:${server_config.port}`);
 });

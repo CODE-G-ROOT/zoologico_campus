@@ -4,7 +4,7 @@ dotenv.config();
 export async function con() {
   try {
   //const uri=`mongodb+srv://JuanDev856:juan856%40juandev856.ikw3dq6.mongodb.net/`; 
-    const uri = process.env.URL_CONNECT_MONGODB;
+    const uri = "mongodb+srv://JuanDev856:juan856@juandev856.ikw3dq6.mongodb.net/";
     const options = {
       useNewUrlParser: true,
       useUnifiedTopology: true,

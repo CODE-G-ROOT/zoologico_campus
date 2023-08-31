@@ -5,10 +5,10 @@ import { DTO } from '../helpers/jwt';
 import { Router } from 'express';
 import 'reflect-metadata';
 
-const middle_verify_historial_mantenimiento = Router();
-const DTO_data_historial_mantenimiento = Router();
+const middle_verify_infraestructura = Router();
+const DTO_data_infraestructura = Router();
 
-middle_verify_historial_mantenimiento.use((req, res, next)=>{
+middle_verify_infraestructura.use((req, res, next)=>{
     if(!req.rateLimit) return;
 
     let { payload } = req.data;
@@ -17,7 +17,7 @@ middle_verify_historial_mantenimiento.use((req, res, next)=>{
 
     console.log({payload});
 
-    let Clone = JSON.stringify( classToPlain( plainToClass( DTO('historial_mantenimiento').class(), {}, { ignoreDecorators: true})));
+    let Clone = JSON.stringify( classToPlain( plainToClass( DTO('infraestructura').class(), {}, { ignoreDecorators: true})));
     console.log(Clone);
 
     let Verify = Clone === JSON.stringify(payload);
@@ -28,9 +28,9 @@ middle_verify_historial_mantenimiento.use((req, res, next)=>{
         : next()
 });
 
-DTO_data_historial_mantenimiento.use( async (req, res, next)=>{
+DTO_data_infraestructura.use( async (req, res, next)=>{
     try {
-        let data = plainToClass(DTO('historial_mantenimiento').class, req.body);
+        let data = plainToClass(DTO('infraestructura').class, req.body);
         await validate(data);
         req.body = JSON.parse(JSON.stringify(data));
         req.data = undefined;
@@ -41,4 +41,4 @@ DTO_data_historial_mantenimiento.use( async (req, res, next)=>{
     }
 });
 
-export { middle_verify_historial_mantenimiento, DTO_data_historial_mantenimiento}
+export { middle_verify_infraestructura, DTO_data_infraestructura}
