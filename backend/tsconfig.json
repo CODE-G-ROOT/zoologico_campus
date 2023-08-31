@@ -7,13 +7,5 @@
         "esModuleInterop": true,
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true
-    },
-
-    "include": [
-        "./routers/*.ts"
-    ],
-    
-    "exclude": [
-        "./routers/storage/*.js"
-    ]
+    }
 }

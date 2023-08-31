@@ -1,12 +1,26 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
-import {getEmpleados,postEmpl} from '../controllers/empleados.js';
+import { getEmpleados,postEmpl } from '../controllers/empleados.js';
 import { getInfra, postInfra } from "../controllers/infraestructura.js";
 import { getHM, postHM } from "../controllers/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../controllers/historial_medico.js";
 import { getEventos, postEventos } from "../controllers/eventos.js";
 import { getFinanzas, postFinanzas } from "../controllers/finanzas.js";
 import { getOrg,postOrg } from "../controllers/organizaciones.js";
+
+//import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
+
+//const appEmpleados = express();
+//appEmpleados.use(express.json());
+
+//const appInfraestructura = express();
+//appInfraestructura.use(express.json());
+
+//const appHMant=express();
+//appHMant.use(express.json());
+
+//const appHMed = express();
+//appHMed.use(express.json());
 
 function configurarApp() {
     const app = express();
