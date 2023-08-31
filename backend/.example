@@ -1,3 +1,6 @@
-URL_CONNECT_MONGODB=""
-HOSTNAME="localhost"
-PORT="4000"
+ATLAS_USER=
+ATLAS_PASSWORD=
+ATLAS_DB="zoologico"
+JWT_PRIVATE_KEY= cc
+MY_SERVER={"hostname":"127.1.1.1","port":5510}
+
