@@ -9,9 +9,11 @@ MY_SERVER={"hostname":"127.1.1.1","port":5510}
 `;
 
 const archivo = '.env';
+const carpeta = 'env';
 
 (async () => {
     try {
+        await fs.mkdirSync(`./${carpeta}`,{recursive:true});
         await fs.writeFile(archivo, contenido);
         console.log(`Se ha creado el archivo "${archivo}"`);
     } catch (err) {
