@@ -19,11 +19,11 @@ export async function postHM(req, res){
         let db = await con();
         let colleccion = db.collection("historial_mantenimiento");
         let data = req.body;
-        const newMed = {
+        const newHmant = {
             _id: new ObjectId(),
             ...data,
         };
-        await colleccion.insertOne(newMed);
+        await colleccion.insertOne(newHmant);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);

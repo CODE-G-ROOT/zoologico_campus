@@ -19,12 +19,12 @@ export async function postHMed(req, res){
         let db = await con();
         let colleccion = db.collection("historial_medico");
         let data = req.body;
-        const newInfra = {
+        const newHmed = {
             _id: new ObjectId(),
             ...data,
             fecha: new Date(req.body.fecha),
         };
-        await colleccion.insertOne(newInfra);
+        await colleccion.insertOne(newHmed);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);

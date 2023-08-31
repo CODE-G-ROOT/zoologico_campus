@@ -6,7 +6,7 @@ export async function getEmpleados(req, res) {
         let db = await con();
         console.log("get function");
         let colleccion = db.collection("empleados");
-        let results = await colleccion.find({}).sort({ nombre: 1 }).toArray();
+        let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
     } catch (error) {
         console.log(error); // Agregar este console.log para imprimir detalles del error
@@ -19,12 +19,12 @@ export async function postEmpl(req, res){
         let db = await con();
         let colleccion = db.collection("empleados");
         let data = req.body;
-        const newEmpl = {
+        const newEvento = {
             _id: new ObjectId(),
             ...data,
             fecha_contratacion: new Date(req.body.fecha_contratacion),
         };
-        await colleccion.insertOne(newEmpl);
+        await colleccion.insertOne(newEvento);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);

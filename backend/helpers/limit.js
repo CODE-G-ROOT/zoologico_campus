@@ -7,7 +7,7 @@ export let limitQuery = ()=>{
         standardHeaders: true, 
         legacyHeaders: false, 
         skip: (req,res)=>{
-            if(req.headers["content-length"]>300){
+            if(req.headers["content-length"]>350){
                 res.status(413).send({
                     status:413, 
                     message: "Tamaño de la solicitud alcanzado"
