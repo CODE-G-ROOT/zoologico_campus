@@ -7,6 +7,7 @@ import { getHMed, postHMed } from "../controllers/historial_medico.js";
 import { getEventos, postEventos } from "../controllers/eventos.js";
 import { getFinanzas, postFinanzas } from "../controllers/finanzas.js";
 import { getOrg,postOrg } from "../controllers/organizaciones.js";
+
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
 //const appEmpleados = express();
