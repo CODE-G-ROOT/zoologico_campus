@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "tsc": "tsc -w",
-    "dev": "nodemon app.js"
+    "dev": "nodemon --quiet app.js"
   },
   "repository": {
     "type": "git",

@@ -3,13 +3,14 @@ import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
-import { empleados } from "../routers/storage/empleados.js";
-import {infraestrutura} from "../routers/storage/infraestructura.js"
-import {historial_mantenimiento} from '../routers/storage/historial_mantenimiento.js'
-import {historial_medico} from '../routers/storage/historial_medico.js'
-import {eventos} from '../routers/storage/evento.js'
-import {finanzas} from '../routers/storage/finanzas.js'
-import {organizaciones} from '../routers/storage/organizaciones.js'
+import { animales } from "../models/animales.js";
+import { empleados } from "../models/empleados.js";
+import { infraestrutura } from "../models/infraestructura.js"
+import { historial_mantenimiento } from '../models/historial_mantenimiento.js'
+import { historial_medico } from '../models/historial_medico.js'
+import { eventos } from '../models/evento.js'
+import { finanzas } from '../models/finanzas.js'
+import { organizaciones } from '../models/organizaciones.js'
 
 dotenv.config("../");
 const appToken = Router();
@@ -17,6 +18,7 @@ const appVerify = Router();
 
 const DTO = (p1) => {
     const match = {
+        'animales': animales,
         'empleados': empleados,
         'infraestructura':infraestrutura,
         'hmant':historial_mantenimiento,
