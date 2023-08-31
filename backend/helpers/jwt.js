@@ -3,6 +3,7 @@ import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
+import { animales } from "../models/animales.js";
 import { empleados } from "../models/empleados.js";
 import { infraestrutura} from "../models/infraestructura.js"
 import { historial_mantenimiento } from '../models/historial_mantenimiento.js'
@@ -17,6 +18,7 @@ const appVerify = Router();
 
 const DTO = (p1) => {
     const match = {
+        'animales': animales,
         'empleados': empleados,
         'infraestructura':infraestrutura,
         'hmant':historial_mantenimiento,
