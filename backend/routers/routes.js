@@ -1,6 +1,6 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
-import { getEmpleados,postEmpl } from '../controllers/empleados.js';
+import { deleteEmpleado, getEmpleados,postEmpl } from '../controllers/empleados.js';
 import { getInfra, postInfra } from "../controllers/infraestructura.js";
 import { getHM, postHM } from "../controllers/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../controllers/historial_medico.js";
@@ -39,6 +39,7 @@ function configurarApp() {
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
 appEmpleados.post("/empl",limitQuery(),postEmpl);
+appEmpleados.delete("/empl/:1",limitQuery(),deleteEmpleado)
 
 appInfraestructura.get("/infra",limitQuery(),getInfra);
 appInfraestructura.post("/infra", limitQuery(),postInfra);
@@ -57,5 +58,6 @@ appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
 
 appOrg.get("/org",limitQuery(),getOrg);
 appOrg.post("/org",limitQuery(),postOrg)
+
 
 export {appEmpleados,appInfraestructura,appHMant,appHMed,appEventos,appFinanzas,appOrg};

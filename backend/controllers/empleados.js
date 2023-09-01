@@ -31,3 +31,32 @@ export async function postEmpl(req, res){
         res.status(500).send({ status:500, message: "Internal Server Error :(" });
     }
 };
+
+export async function putEmpleado(req, res){
+    try{
+        let db = await con();
+        let colleccion = db.collection("empleados");
+        let data = req.body;
+        const updatedEmpleado = {
+            ...data,
+            fecha_contratacion: new Date(req.body.fecha_contratacion),
+        };
+        await colleccion.updateOne({Id: req.params.id}, {$set: updatedEmpleado});
+        res.status(200).send({ status:200, message: "Updated :)" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status:500, message: "Internal Server Error :(" });
+    }
+};
+
+export async function deleteEmpleado(req, res){
+    try{
+        let db = await con();
+        let colleccion = db.collection("empleados");
+        await colleccion.deleteOne({Id: req.params.id});
+        res.status(200).send({ status:200, message: "Deleted :)" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status:500, message: "Internal Server Error :(" });
+    }
+};
