@@ -48,6 +48,7 @@ db.createCollection("empleados", {
     }
   }
 });
+
 use('zoologico');
 db.empleados.insertMany([
   {
@@ -496,6 +497,7 @@ db.infraestructura.insertMany([
     dimensiones: 'Varios',
   },
 ]);
+
 //TODO: MANTENIMIENTO COMPLETO
 use('zoologico');
 db.createCollection("historial_mantenimiento", {
