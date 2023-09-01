@@ -37,6 +37,9 @@ db.infraestructura.aggregate([
           foreignField: field,
           as: result
         }
+    },
+    {
+        $unwind: "$animales"
     }
 ])
 

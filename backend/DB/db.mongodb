@@ -562,6 +562,10 @@ db.createCollection("historial_medico", {
           bsonType: "int",
           description: "ID",
         },
+        animal:{
+          bsonType: "int",
+          description: "asfd",
+        },
         descripcion: {
           bsonType: "string",
           description: "descripcion",
@@ -587,70 +591,70 @@ use('zoologico');
 db.historial_medico.insertMany([
   {
     id: 1,
-    nombre_animal: "Simba",
+    animal: 3,
     nombre_veterinario: "Dr. García",
     descripcion: "Examen médico de rutina.",
     fecha: new Date("2023-08-15T09:30:00Z")
   },
   {
     id: 2,
-    nombre_animal: "Luna",
+    animal: 11,
     nombre_veterinario: "Dra. Martínez",
     descripcion: "Tratamiento para infección respiratoria.",
     fecha: new Date("2023-08-17T11:00:00Z")
   },
   {
     id: 3,
-    nombre_animal: "Diego",
+    animal: 1,
     nombre_veterinario: "Dr. Sánchez",
     descripcion: "Control de parásitos y vacunación.",
     fecha: new Date("2023-08-20T14:00:00Z")
   },
   {
     id: 4,
-    nombre_animal: "Aurora",
+    animal: 4,
     nombre_veterinario: "Dra. López",
     descripcion: "Cirugía para extracción de dientes.",
     fecha: new Date("2023-08-22T10:30:00Z")
   },
   {
     id: 5,
-    nombre_animal: "Kiko",
+    animal: 9,
     nombre_veterinario: "Dr. Rodríguez",
     descripcion: "Radiografía para evaluar fractura.",
     fecha: new Date("2023-08-25T15:45:00Z")
   },
   {
     id: 6,
-    nombre_animal: "Lola",
+    animal: 18,
     nombre_veterinario: "Dra. Pérez",
     descripcion: "Tratamiento de herida en pata.",
     fecha: new Date("2023-08-28T12:15:00Z")
   },
   {
     id: 7,
-    nombre_animal: "Max",
+    animal: 19,
     nombre_veterinario: "Dr. Gómez",
     descripcion: "Consulta por problemas gastrointestinales.",
     fecha: new Date("2023-08-30T13:30:00Z")
   },
   {
     id: 8,
-    nombre_animal: "Mia",
+    animal: 12,
     nombre_veterinario: "Dra. Torres",
     descripcion: "Examen preoperatorio para castración.",
     fecha: new Date("2023-09-02T11:45:00Z")
   },
   {
     id: 9,
-    nombre_animal: "Rocky",
+    animal: 20,
     nombre_veterinario: "Dr. Ramírez",
     descripcion: "Control de peso y recomendaciones dietéticas.",
     fecha: new Date("2023-09-05T10:00:00Z")
   },
   {
     id: 10,
-    nombre_animal: "Coco",
+    animal: 14,
     nombre_veterinario: "Dra. Castro",
     descripcion: "Examen ocular y administración de medicamentos.",
     fecha: new Date("2023-09-08T14:15:00Z")
