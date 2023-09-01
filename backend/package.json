@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "tsc": "tsc -w",
-    "env": "node settings.js",
+    "env": "node ./helpers/settings.js",
     "dev": "nodemon --quiet app.js"
   },
   "repository": {
