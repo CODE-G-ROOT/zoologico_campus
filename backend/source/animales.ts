@@ -1,7 +1,7 @@
 import { Expose, Transform } from "class-transformer";
 import { IsString, IsEmpty, IsArray, IsDefined, IsNumber, Matches } from "class-validator";
 
-export class animales {
+export class DTO_animales {
     @Expose({ name: 'id' })
     @IsNumber({}, { message: ()=> { throw { status: 400, message:' el campo id_animal debe ser de tipo number', reference: 'https://http.cat/400'}}})
     @IsDefined({ message: () => { throw { status: 400, message: 'el campo id es obligatorio', reference: 'https://http.cat/401' }}})
@@ -62,7 +62,7 @@ export class animales {
     @IsDefined({message: ()=>{throw {status:400, message: 'el campo enlaces_geneticos es obligatorio'}}})
     enlaces_geneticos: string = '';
 
-    constructor(data: Partial<animales>) {
+    constructor(data: Partial<DTO_animalesv>) {
         Object.assign(this, data);
     }
 }
