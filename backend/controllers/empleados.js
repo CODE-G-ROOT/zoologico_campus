@@ -14,6 +14,43 @@ export async function getEmpleados(req, res) {
     }
 }
 
+/* export async function getEmpleadoId(req,res){
+    try{
+        let db = await con();
+        let colleccion = db.collection("empleados");
+        const empleadoId = req.params.id;
+        let results = await colleccion.findOne({empleadoId}).toArray();
+        //const results = await collection.findOne({ id: empleadoId });
+
+        results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Empleado no encontrado :(" })
+    
+        res.send(results).status(200);
+    } catch(error){
+        console.log(error); // Agregar este console.log para imprimir detalles del error
+        res.status(500).send({ status: 500, message: "Internal Server Error :(" });
+    }
+} */
+
+export async function getEmpleadoId(req, res) {
+    try {
+        const db = await con();
+        const collection = db.collection("empleados");
+        const empleadoId = parseInt(req.params.id); // Convierte el parámetro en un número entero
+
+        // Buscar un empleado por el campo "id"
+        const empleado = await collection.findOne({ id: empleadoId });
+
+        if (!empleado) {
+            return res.status(404).send({ status: 404, message: "Empleado no encontrado" });
+        }
+
+        res.status(200).json(empleado);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status: 500, message: "Error interno del servidor" });
+    }
+};
+
 export async function postEmpl(req, res){
     try{
         let db = await con();
@@ -32,7 +69,7 @@ export async function postEmpl(req, res){
     }
 };
 
-export async function putEmpleado(req, res){
+/* export async function putEmpleado(req, res){
     try{
         let db = await con();
         let colleccion = db.collection("empleados");
@@ -41,13 +78,70 @@ export async function putEmpleado(req, res){
             ...data,
             fecha_contratacion: new Date(req.body.fecha_contratacion),
         };
-        await colleccion.updateOne({Id: req.params.id}, {$set: updatedEmpleado});
+        await colleccion.updateOne({Id: req.body.data.id}, {$set: updatedEmpleado});
         res.status(200).send({ status:200, message: "Updated :)" });
     } catch (error) {
         console.error(error);
         res.status(500).send({ status:500, message: "Internal Server Error :(" });
     }
+}; */
+/* 
+export async function putEmpleado(req, res) {
+    try {
+        const db = await con();
+        const collection = db.collection("empleados");
+        const empleadoId = parseInt(req.params.id); // Convierte el parámetro en un número entero
+
+        // Buscar un empleado por el campo "id"
+        const results = await collection.findOne({ id: empleadoId });
+        results ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Empleado no encontrado" })
+    
+        const updatedEmpleadoData = req.body;
+        const updatedEmpleado = {
+            ...updatedEmpleadoData,
+            fecha_contratacion: new Date(updatedEmpleadoData.fecha_contratacion),
+        };
+
+        await collection.updateOne({ id: empleadoId }, { $set: updatedEmpleado });
+
+        res.status(200).send({ status: 200, message: "Empleado actualizado exitosamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status: 500, message: "Error interno del servidor" });
+    }
 };
+ */
+
+export async function putEmpleado(req, res) {
+    try {
+        const db = await con();
+        const collection = db.collection("empleados");
+        const empleadoId = parseInt(req.params.id); // Convierte el parámetro en un número entero
+
+        // Comprueba si el empleado existe
+        const existingEmpleado = await collection.findOne({ id: empleadoId });
+
+        if (!existingEmpleado) {
+            return res.status(404).send({ status: 404, message: "Empleado no encontrado" });
+        }
+
+        // Actualiza el empleado con los datos enviados en la solicitud
+        const updatedEmpleado = {
+            ...existingEmpleado,
+            ...req.body,
+            fecha_contratacion: new Date(req.body.fecha_contratacion),
+        };
+
+        // Realiza la actualización
+        await collection.updateOne({ id: empleadoId }, { $set: updatedEmpleado });
+
+        res.status(200).send({ status: 200, message: "Empleado actualizado exitosamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status: 500, message: "Error interno del servidor" });
+    }
+}
+
 
 export async function deleteEmpleado(req, res){
     try{
