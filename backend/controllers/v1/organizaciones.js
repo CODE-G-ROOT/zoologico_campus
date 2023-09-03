@@ -1,11 +1,11 @@
-import { con} from "../connection/conect.js";
+import { con} from "../../connection/conect.js";
 import { ObjectId } from "mongodb";
 
-export async function getHMed(req, res) {
+export async function getOrg(req, res) {
     try {
         let db = await con();
         console.log("get function");
-        let colleccion = db.collection("historial_medico");
+        let colleccion = db.collection("organizaciones");
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
     } catch (error) {
@@ -14,17 +14,17 @@ export async function getHMed(req, res) {
     }
 }
 
-export async function postHMed(req, res){
+export async function postOrg(req, res){
     try{
         let db = await con();
-        let colleccion = db.collection("historial_medico");
+        let colleccion = db.collection("organizaciones");
         let data = req.body;
-        const newHmed = {
+        const newOrg = {
             _id: new ObjectId(),
             ...data,
-            fecha: new Date(req.body.fecha),
+            fecha_creacion: new Date(req.body.fecha_creacion),
         };
-        await colleccion.insertOne(newHmed);
+        await colleccion.insertOne(newOrg);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);

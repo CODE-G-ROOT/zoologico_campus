@@ -1,30 +1,34 @@
-import { con} from "../connection/conect.js";
+import { con} from "../../connection/conect.js";
 import { ObjectId } from "mongodb";
 
-export async function getOrg(req, res) {
+export async function getInfra(req, res) {
     try {
         let db = await con();
         console.log("get function");
-        let colleccion = db.collection("organizaciones");
-        let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
-        results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
+        let colleccion = db.collection("infraestructura");
+        let results = await colleccion.find({}).toArray();
+
+        results.length > 0 
+            ? res.send(results).status(200) 
+            : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
+
     } catch (error) {
         console.log(error); // Agregar este console.log para imprimir detalles del error
         res.status(500).send({ status: 500, message: "Internal Server Error :(" });
     }
 }
 
-export async function postOrg(req, res){
+export async function postInfra(req, res){
     try{
         let db = await con();
-        let colleccion = db.collection("organizaciones");
+        let colleccion = db.collection("infraestructura");
         let data = req.body;
-        const newOrg = {
+        const newInfra = {
             _id: new ObjectId(),
             ...data,
-            fecha_creacion: new Date(req.body.fecha_creacion),
+            fecha: new Date(req.body.fecha),
         };
-        await colleccion.insertOne(newOrg);
+        await colleccion.insertOne(newInfra);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);

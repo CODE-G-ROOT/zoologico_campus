@@ -1,11 +1,11 @@
-import { con} from "../connection/conect.js";
+import { con} from "../../connection/conect.js";
 import { ObjectId } from "mongodb";
 
-export async function getEmpleados(req, res) {
+export async function getHM(req, res) {
     try {
         let db = await con();
         console.log("get function");
-        let colleccion = db.collection("empleados");
+        let colleccion = db.collection("historial_mantenimiento");
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
     } catch (error) {
@@ -14,17 +14,16 @@ export async function getEmpleados(req, res) {
     }
 }
 
-export async function postEmpl(req, res){
+export async function postHM(req, res){
     try{
         let db = await con();
-        let colleccion = db.collection("empleados");
+        let colleccion = db.collection("historial_mantenimiento");
         let data = req.body;
-        const newEvento = {
+        const newHmant = {
             _id: new ObjectId(),
             ...data,
-            fecha_contratacion: new Date(req.body.fecha_contratacion),
         };
-        await colleccion.insertOne(newEvento);
+        await colleccion.insertOne(newHmant);
         res.status(201).send({ status:201, message: "Created :)" });
     } catch (error) {
         console.error(error);
