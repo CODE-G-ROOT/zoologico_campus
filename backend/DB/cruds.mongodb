@@ -18,7 +18,7 @@ db.empleados.find({ "cargo": "Programador" })
 
 //TODO: --> Salario  (Mayor o igual que)
 use('zoologico');
-db.empleados.find({ "salario": { $gte: 3000 }})
+db.empleados.find({ "salario": { $gte: 3000 } })
     .sort({ id: 1 })
     .toArray();
 
@@ -36,22 +36,22 @@ db.empleados.find({
     nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
     salario: { $gte: 3000 }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: --> Nombre + Cargo  + Salario
 use('zoologico');
-db.empleados.find({ 
+db.empleados.find({
     nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
     cargo: "Programador",
     salario: {
         $gte: 3000.02
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 
 
@@ -79,9 +79,100 @@ db.infraestructura.find({
         $regex: /Cuidado/i
     }
 })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: HISTORIAL DE MANTENIMIENTO - ID
+use('zoologico');
+db.historial_mantenimiento.find({ id: 1 })
 .sort({ id: 1 })
 .limit(25)
 .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    }
+})    
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - area
+use('zoologico');
+db.historial_mantenimiento.find({
+    area: {
+        $regex: /Hábitats/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - fecha
+use('zoologico');
+db.historial_mantenimiento.find({
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + area
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    area: {
+        $regex: /Hábitats/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha + area
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    area: {
+        $regex: /Hábitats/i
+    },
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
 
 
 

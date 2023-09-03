@@ -498,6 +498,8 @@ db.infraestructura.insertMany([
   },
 ]);
 
+
+
 //TODO: MANTENIMIENTO COMPLETO
 use('zoologico');
 db.createCollection("historial_mantenimiento", {
