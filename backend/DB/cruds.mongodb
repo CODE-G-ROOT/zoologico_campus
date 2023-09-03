@@ -88,9 +88,9 @@ db.infraestructura.find({
 //TODO: HISTORIAL DE MANTENIMIENTO - ID
 use('zoologico');
 db.historial_mantenimiento.find({ id: 1 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado
 use('zoologico');
@@ -98,10 +98,10 @@ db.historial_mantenimiento.find({
     nombre_empleado: {
         $regex: /Pérez/i
     }
-})    
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - area
 use('zoologico');
@@ -110,9 +110,9 @@ db.historial_mantenimiento.find({
         $regex: /Hábitats/i
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - fecha
 use('zoologico');
@@ -122,9 +122,9 @@ db.historial_mantenimiento.find({
         //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + area
 use('zoologico');
@@ -136,9 +136,9 @@ db.historial_mantenimiento.find({
         $regex: /Hábitats/i
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha
 use('zoologico');
@@ -151,9 +151,9 @@ db.historial_mantenimiento.find({
         //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha + area
 use('zoologico');
@@ -169,44 +169,48 @@ db.historial_mantenimiento.find({
         //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
     }
 })
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 
 
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO -ID
 use('zoologico');
-db.historial_medico.find({id: 1}) //Cambiar el 1 por el identificador del historial que se desea buscar
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+db.historial_medico.find({ id: 1 }) //Cambiar el 1 por el identificador del historial que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - Animal
 use('zoologico');
-db.historial_medico.find({animal: 3}) //Cambiar el 3 por el identificador del animal que se desea buscar
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+db.historial_medico.find({ animal: 3 }) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario
 use('zoologico');
-db.historial_medico.find({nombre_veterinario: {
-    $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
-}}) //Cambiar el 3 por el identificador del animal que se desea buscar
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+db.historial_medico.find({
+    nombre_veterinario: {
+        $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - fecha
 use('zoologico');
-db.historial_medico.find({fecha: {
-        $eq:  new Date("2023-08-17T11:00:00Z")
-    }}) //Cambiar el 3 por el identificador del animal que se desea buscar
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+db.historial_medico.find({
+    fecha: {
+        $eq: new Date("2023-08-17T11:00:00Z")
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
@@ -215,10 +219,11 @@ db.historial_medico.find({
     animal: 3,
     nombre_veterinario: {
         $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
-    }}) //Cambiar el 3 por el identificador del animal que se desea buscar
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
 
 //TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
 use('zoologico');
@@ -227,8 +232,105 @@ db.historial_medico.find({
         $regex: /Martínez/i //Cambiar "Garcia" por el nombre o apellido del doctor
     },
     fecha: {
-        $eq:  new Date("2023-08-17T11:00:00Z")
-    }})
-.sort({ id: 1 })
-.limit(25)
-.toArray();
+        $eq: new Date("2023-08-17T11:00:00Z")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: EVENTOS - ID
+use('zoologico');
+db.eventos.find({
+    id: 1
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - Nombre del show
+use('zoologico');
+db.eventos.find({
+    nombre: {
+        $regex: /Show/i //Cambiar show por el nombre que se desee buscar
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - encargado
+use('zoologico');
+db.eventos.find({
+    encargado: {
+        $regex: /Pérez/i //Cambiar "domingo por el encargado que se desee buscar"
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> Dias
+use('zoologico');
+db.eventos.find({
+    "horario.dias": {
+        $regex: /Domingos/i //Cambiar "Domingos por el dia que se busque"
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - horario -> Hora
+use('zoologico');
+db.eventos.find({
+    "horario.hora": {
+        $regex: /10:00 AM/i //Cambiar La hora
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> animales_participantes en específicoeventos
+//! TOCA CORREGIR LA BASE DE DATOS PARA QUE ESTE INSERT FUNCIONE
+use('zoologico');
+db.eventos.find({
+    animales_participantes: {
+        $regex: /1/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> animales_participantes en grupo
+use('zoologico');
+db.eventos.find({
+    "animales_participantes": {
+        $elemMatch: {
+            $regex: /Aguila|Cacatúa/i
+        }
+    }
+})
+
+
+//TODO: EVENTOS - horario -> Dia y hora
+use('zoologico');
+db.eventos.find({
+    "horario.dias": {
+        $regex: /Domingos/i //Cambiar "Domingos por el dia que se busque"
+    },
+    "horario.hora": {
+        $regex: /10:00 AM/i //Cambiar La hora
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
