@@ -176,8 +176,59 @@ db.historial_mantenimiento.find({
 
 
 
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO -ID
+use('zoologico');
+db.historial_medico.find({id: 1}) //Cambiar el 1 por el identificador del historial que se desea buscar
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - Animal
+use('zoologico');
+db.historial_medico.find({animal: 3}) //Cambiar el 3 por el identificador del animal que se desea buscar
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario
+use('zoologico');
+db.historial_medico.find({nombre_veterinario: {
+    $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
+}}) //Cambiar el 3 por el identificador del animal que se desea buscar
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - fecha
+use('zoologico');
+db.historial_medico.find({fecha: {
+        $eq:  new Date("2023-08-17T11:00:00Z")
+    }}) //Cambiar el 3 por el identificador del animal que se desea buscar
+.sort({ id: 1 })
+.limit(25)
+.toArray();
 
 
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
+use('zoologico');
+db.historial_medico.find({
+    animal: 3,
+    nombre_veterinario: {
+        $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    }}) //Cambiar el 3 por el identificador del animal que se desea buscar
+.sort({ id: 1 })
+.limit(25)
+.toArray();
 
-
-
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
+use('zoologico');
+db.historial_medico.find({
+    nombre_veterinario: {
+        $regex: /Martínez/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    },
+    fecha: {
+        $eq:  new Date("2023-08-17T11:00:00Z")
+    }})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
