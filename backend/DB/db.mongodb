@@ -1,3 +1,4 @@
+//TODO: EMPLEADOS COMPLETO
 //? CHECK
 use('zoologico');
 db.createCollection("empleados", {
@@ -96,10 +97,10 @@ db.empleados.insertMany([
   {
     id: 5,
     nombre_completo: "Luis Martínez",
-    cc: 987654321,
-    cargo: "Ingeniero de Sistemas",
-    fecha_contratacion: new Date("2023-07-20"),
-    salario: 3200.0,
+    cc: 666999777,
+    cargo: "Ingeniero",
+    fecha_contratacion: null,
+    salario: 3200.25,
     especialidad: "Administración de servidores",
     telefono: 987654322,
     email: "luis@example.com"
@@ -154,7 +155,7 @@ db.empleados.insertMany([
     cc: 987654321,
     cargo: "Diseñador de Interiores",
     fecha_contratacion: new Date("2023-09-05"),
-    salario: 2900.0,
+    salario: 2900.25,
     especialidad: "Diseño de espacios",
     telefono: 789123654,
     email: "maria@example.com"
@@ -203,7 +204,7 @@ db.createCollection('infraestructura', {
     }
   }
 });
-//TODO: DEPARTAMENTOS
+//TODO: DEPARTAMENTOS COMPLETO
 use('zoologico');
 db.infraestructura.insertMany([
   {
@@ -292,7 +293,7 @@ db.infraestructura.insertMany([
   },
 
 ]);
-//TODO: AREAS
+//TODO: AREAS COMPLETO
 //? CHECK
 use('zoologico');
 db.infraestructura.insertMany([
@@ -395,7 +396,7 @@ db.infraestructura.insertMany([
     dimensiones: '1800 m²',
   }
 ]);
-//TODO: HÁBITADS
+//TODO: HÁBITADS COMPLETO
 use('zoologico');
 db.infraestructura.insertMany([
   {
@@ -495,11 +496,7 @@ db.infraestructura.insertMany([
     dimensiones: 'Varios',
   },
 ]);
-
-use('zoologico');
-db.infraestructura.drop()
-
-//TODO: mantenimiento
+//TODO: MANTENIMIENTO COMPLETO
 use('zoologico');
 db.createCollection("historial_mantenimiento", {
   validator: {
@@ -551,7 +548,7 @@ db.historial_mantenimiento.insertOne({
 });
 
 
-//TODO: historial mendico
+//TODO: HISTORIAL MEDICO COMPLETO
 use('zoologico');
 db.createCollection("historial_medico", {
   validator: {
@@ -790,7 +787,7 @@ db.eventos.insertOne({
   animales_participantes: ["Pavos Reales", "Mariposas Monarca", "Conejos"]
 });
 
-//TODO: COMPLETO
+//TODO: FINANZAS COMPLETO
 use('zoologico');
 db.createCollection("finanzas", {
   validator: {
@@ -1129,7 +1126,7 @@ db.createCollection('animales', {
             estado_conservacion: {
               bsonType: 'string',
               enum: [
-                'Exinto en estado salvaje',
+                'En peligro de extinción',
                 'En peligro critico',
                 'En peligro',
                 'Vulnerable',
@@ -1179,49 +1176,47 @@ db.createCollection('animales', {
 
 });
 use('zoologico');
-db.animales.insertOne({
-  id: 1,
-  nombre: "Loki",
-  animal: 'León',
-  edad: 5,
-  genero: "macho",
-  habitat_zoo: 123,
-  cuidados: "Requiere una dieta balanceada...",
-  relacion_animales: "Convive en manadas...",
-  estado_salud: "Bueno",
-  historia: "El león es conocido por ser el rey de la selva...",
-  interaccion_humanos: "Los leones suelen ser cautelosos...",
-  enlaces_geneticos: "Análisis genéticos han revelado...",
-  detalles: {
-    nombre_cientifico: "Panthera leo",
-    clase: "Mamífero",
-    raza: "Africana",
-    especie: "León",
-    tipo_animal: "Felino",
-    invertebrado: false,
-    vertebrado: true,
-    tipo_habitat: "Savana",
-    distribicion_geografica: {
-      habitat_natural: "Savanas de África",
-      region_geografica: "África subsahariana",
-      pais: ["Kenia", "Tanzania", "Sudáfrica"],
-      continente: "África",
-      ecosistema: "Savanas y llanuras"
-    },
-    comportamiento: "Los leones son animales sociales...",
-    estado_conservacion: "Vulnerable",
-    depredadores: ["Cocodrilos", "Hienas"],
-    alimento_principal: ["Antílopes", "Cebúes"],
-    curiosidades: "Los leones machos tienen una melena...",
-    amenazas: ["Pérdida de hábitat", "Caza furtiva"],
-    relacion_con_humanos: "En algunas culturas africanas...",
-    importancia_ecologica: "Alta",
-    origen: "África"
-  }
-});
-use('zoologico');
-db.animales.insertOne({
-},
+db.animales.insertMany([
+  {
+    id: 1,
+    nombre: "Loki",
+    animal: 'León',
+    edad: 5,
+    genero: "macho",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "El león es conocido por ser el rey de la selva...",
+    interaccion_humanos: "Los leones suelen ser cautelosos...",
+    enlaces_geneticos: "Análisis genéticos han revelado...",
+    detalles: {
+      nombre_cientifico: "Panthera leo",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "León",
+      tipo_animal: "Felino",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana",
+      distribicion_geografica: {
+        habitat_natural: "Savanas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Savanas y llanuras"
+      },
+      comportamiento: "Los leones son animales sociales...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Cocodrilos", "Hienas"],
+      alimento_principal: ["Antílopes", "Cebúes"],
+      curiosidades: "Los leones machos tienen una melena...",
+      amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+      relacion_con_humanos: "En algunas culturas africanas...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
   {
     id: 2,
     nombre: "Nala",
@@ -1261,10 +1256,7 @@ db.animales.insertOne({
       importancia_ecologica: "Alta",
       origen: "África"
     }
-  }
-);
-use('zoologico');
-db.animales.insertOne(
+  },
   {
     id: 3,
     nombre: "Simba",
@@ -1304,135 +1296,129 @@ db.animales.insertOne(
       importancia_ecologica: "Alta",
       origen: "África"
     }
-  }
-);
-use('zoologico');
-db.animales.insertOne({
-  id: 31,
-  nombre: "Kiara",
-  animal: 'León',
-  edad: 2,
-  genero: "hembra",
-  habitat_zoo: 123,
-  cuidados: "Requiere una dieta balanceada...",
-  relacion_animales: "Convive en manadas...",
-  estado_salud: "Bueno",
-  historia: "Kiara es la hija de Simba y Nala...",
-  interaccion_humanos: "Kiara es curiosa y amistosa...",
-  enlaces_geneticos: "Análisis genéticos han confirmado...",
-  detalles: {
-    nombre_cientifico: "Panthera leo",
-    clase: "Mamífero",
-    raza: "Africana",
-    especie: "León",
-    tipo_animal: "Felino",
-    invertebrado: false,
-    vertebrado: true,
-    tipo_habitat: "Savana",
-    distribicion_geografica: {
-      habitat_natural: "Savanas de África",
-      region_geografica: "África subsahariana",
-      pais: ["Kenia", "Tanzania", "Sudáfrica"],
-      continente: "África",
-      ecosistema: "Savanas y llanuras"
-    },
-    comportamiento: "Kiara es juguetona y exploradora...",
-    estado_conservacion: "Vulnerable",
-    depredadores: ["Cocodrilos", "Hienas"],
-    alimento_principal: ["Antílopes", "Cebúes"],
-    curiosidades: "Kiara es un personaje de El Rey León 2...",
-    amenazas: ["Pérdida de hábitat", "Caza furtiva"],
-    relacion_con_humanos: "Kiara representa la nueva generación...",
-    importancia_ecologica: "Alta",
-    origen: "África"
-  }
-});
-use('zoologico');
-db.animales.insertOne({
-  id: 32,
-  nombre: "Kovu",
-  animal: 'León',
-  edad: 3,
-  genero: "macho",
-  habitat_zoo: 123,
-  cuidados: "Requiere una dieta balanceada...",
-  relacion_animales: "Convive en manadas...",
-  estado_salud: "Bueno",
-  historia: "Kovu es un león adoptado en la manada...",
-  interaccion_humanos: "Kovu es tímido al principio, pero curioso...",
-  enlaces_geneticos: "Análisis genéticos han demostrado...",
-  detalles: {
-    nombre_cientifico: "Panthera leo",
-    clase: "Mamífero",
-    raza: "Africana",
-    especie: "León",
-    tipo_animal: "Felino",
-    invertebrado: false,
-    vertebrado: true,
-    tipo_habitat: "Savana",
-    distribicion_geografica: {
-      habitat_natural: "Savanas de África",
-      region_geografica: "África subsahariana",
-      pais: ["Kenia", "Tanzania", "Sudáfrica"],
-      continente: "África",
-      ecosistema: "Savanas y llanuras"
-    },
-    comportamiento: "Kovu es leal y protector con su manada...",
-    estado_conservacion: "Vulnerable",
-    depredadores: ["Cocodrilos", "Hienas"],
-    alimento_principal: ["Antílopes", "Cebúes"],
-    curiosidades: "Kovu es un personaje de El Rey León 2...",
-    amenazas: ["Pérdida de hábitat", "Caza furtiva"],
-    relacion_con_humanos: "Kovu muestra resiliencia y superación...",
-    importancia_ecologica: "Alta",
-    origen: "África"
-  }
-});
-use('zoologico');
-db.animales.insertOne({
-  id: 33,
-  nombre: "Zara",
-  animal: 'Jirafa',
-  edad: 6,
-  genero: "hembra",
-  habitat_zoo: 124,
-  cuidados: "Requiere una dieta alta en hojas...",
-  relacion_animales: "Convive con otras jirafas y herbívoros...",
-  estado_salud: "Bueno",
-  historia: "Zara es una jirafa tranquila y curiosa...",
-  interaccion_humanos: "Zara es amigable y se acerca a los visitantes...",
-  enlaces_geneticos: "Análisis genéticos han revelado...",
-  detalles: {
-    nombre_cientifico: "Giraffa camelopardalis",
-    clase: "Mamífero",
-    raza: "Masai",
-    especie: "Jirafa",
-    tipo_animal: "Herbívoro",
-    invertebrado: false,
-    vertebrado: true,
-    tipo_habitat: "Savana y bosques abiertos",
-    distribicion_geografica: {
-      habitat_natural: "Savanas y regiones arboladas de África",
-      region_geografica: "África subsahariana",
-      pais: ["Kenia", "Tanzania", "Uganda"],
-      continente: "África",
-      ecosistema: "Savanas y bosques"
-    },
-    comportamiento: "Las jirafas son sociables y pacíficas...",
-    estado_conservacion: "Preocupación Menor",
-    depredadores: ["Leones", "Hienas"],
-    alimento_principal: ["Hojas de árboles", "Brotes"],
-    curiosidades: "Las jirafas tienen cuellos largos para alcanzar las hojas...",
-    amenazas: ["Pérdida de hábitat", "Caza ilegal"],
-    relacion_con_humanos: "Las jirafas son populares en la cultura...",
-    importancia_ecologica: "Media",
-    origen: "África"
-  }
-});
-use('zoologico');
-db.animales.insertMany([
+  },
   {
-    id: 34,
+    id: 4,
+    nombre: "Kiara",
+    animal: 'León',
+    edad: 2,
+    genero: "hembra",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "Kiara es la hija de Simba y Nala...",
+    interaccion_humanos: "Kiara es curiosa y amistosa...",
+    enlaces_geneticos: "Análisis genéticos han confirmado...",
+    detalles: {
+      nombre_cientifico: "Panthera leo",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "León",
+      tipo_animal: "Felino",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana",
+      distribicion_geografica: {
+        habitat_natural: "Savanas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Savanas y llanuras"
+      },
+      comportamiento: "Kiara es juguetona y exploradora...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Cocodrilos", "Hienas"],
+      alimento_principal: ["Antílopes", "Cebúes"],
+      curiosidades: "Kiara es un personaje de El Rey León 2...",
+      amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+      relacion_con_humanos: "Kiara representa la nueva generación...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 5,
+    nombre: "Kovu",
+    animal: 'León',
+    edad: 3,
+    genero: "macho",
+    habitat_zoo: 123,
+    cuidados: "Requiere una dieta balanceada...",
+    relacion_animales: "Convive en manadas...",
+    estado_salud: "Bueno",
+    historia: "Kovu es un león adoptado en la manada...",
+    interaccion_humanos: "Kovu es tímido al principio, pero curioso...",
+    enlaces_geneticos: "Análisis genéticos han demostrado...",
+    detalles: {
+      nombre_cientifico: "Panthera leo",
+      clase: "Mamífero",
+      raza: "Africana",
+      especie: "León",
+      tipo_animal: "Felino",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana",
+      distribicion_geografica: {
+        habitat_natural: "Savanas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Sudáfrica"],
+        continente: "África",
+        ecosistema: "Savanas y llanuras"
+      },
+      comportamiento: "Kovu es leal y protector con su manada...",
+      estado_conservacion: "Vulnerable",
+      depredadores: ["Cocodrilos", "Hienas"],
+      alimento_principal: ["Antílopes", "Cebúes"],
+      curiosidades: "Kovu es un personaje de El Rey León 2...",
+      amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+      relacion_con_humanos: "Kovu muestra resiliencia y superación...",
+      importancia_ecologica: "Alta",
+      origen: "África"
+    }
+  },
+  {
+    id: 6,
+    nombre: "Zara",
+    animal: 'Jirafa',
+    edad: 6,
+    genero: "hembra",
+    habitat_zoo: 124,
+    cuidados: "Requiere una dieta alta en hojas...",
+    relacion_animales: "Convive con otras jirafas y herbívoros...",
+    estado_salud: "Bueno",
+    historia: "Zara es una jirafa tranquila y curiosa...",
+    interaccion_humanos: "Zara es amigable y se acerca a los visitantes...",
+    enlaces_geneticos: "Análisis genéticos han revelado...",
+    detalles: {
+      nombre_cientifico: "Giraffa camelopardalis",
+      clase: "Mamífero",
+      raza: "Masai",
+      especie: "Jirafa",
+      tipo_animal: "Herbívoro",
+      invertebrado: false,
+      vertebrado: true,
+      tipo_habitat: "Savana y bosques abiertos",
+      distribicion_geografica: {
+        habitat_natural: "Savanas y regiones arboladas de África",
+        region_geografica: "África subsahariana",
+        pais: ["Kenia", "Tanzania", "Uganda"],
+        continente: "África",
+        ecosistema: "Savanas y bosques"
+      },
+      comportamiento: "Las jirafas son sociables y pacíficas...",
+      estado_conservacion: "Preocupación Menor",
+      depredadores: ["Leones", "Hienas"],
+      alimento_principal: ["Hojas de árboles", "Brotes"],
+      curiosidades: "Las jirafas tienen cuellos largos para alcanzar las hojas...",
+      amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+      relacion_con_humanos: "Las jirafas son populares en la cultura...",
+      importancia_ecologica: "Media",
+      origen: "África"
+    }
+  },
+  {
+    id: 7,
     nombre: "Rex",
     animal: 'Tigre',
     edad: 8,
@@ -1472,7 +1458,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 35,
+    id: 8,
     nombre: "Maya",
     animal: 'Elefante',
     edad: 12,
@@ -1512,7 +1498,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 36,
+    id: 9,
     nombre: "Kiko",
     animal: 'Gorila',
     edad: 20,
@@ -1541,7 +1527,7 @@ db.animales.insertMany([
         ecosistema: "Bosques tropicales y montañas"
       },
       comportamiento: "Los gorilas son sociales y viven en grupos familiares...",
-      estado_conservacion: "En peligro crítico",
+      estado_conservacion: "En peligro critico",
       depredadores: ["Humanos", "Caza ilegal"],
       alimento_principal: ["Hojas", "Brotes", "Frutas"],
       curiosidades: "Los gorilas son parientes cercanos de los humanos...",
@@ -1552,7 +1538,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 37,
+    id: 10,
     nombre: "Milo",
     animal: 'Pingüino',
     edad: 4,
@@ -1592,7 +1578,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 38,
+    id: 11,
     nombre: "Luna",
     animal: 'Lobo Gris',
     edad: 5,
@@ -1630,12 +1616,9 @@ db.animales.insertMany([
       importancia_ecologica: "Alta",
       origen: "América del Norte, Europa, Asia"
     }
-  }
-]);
-use('zoologico');
-db.animales.insertMany([
+  },
   {
-    id: 34,
+    id: 12,
     nombre: "Rex",
     animal: 'Tigre',
     edad: 8,
@@ -1675,7 +1658,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 35,
+    id: 13,
     nombre: "Maya",
     animal: 'Elefante',
     edad: 12,
@@ -1715,47 +1698,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 36,
-    nombre: "Kiko",
-    animal: 'Gorila',
-    edad: 20,
-    genero: "macho",
-    habitat_zoo: 127,
-    cuidados: "Requiere una dieta variada y enriquecimiento...",
-    relacion_animales: "Kiko convive con otros gorilas en su grupo...",
-    estado_salud: "Bueno",
-    historia: "Kiko es un gorila de espalda plateada conocido por su liderazgo...",
-    interaccion_humanos: "Kiko es observador y puede acercarse a los cuidadores...",
-    enlaces_geneticos: "Estudios genéticos han proporcionado información...",
-    detalles: {
-      nombre_cientifico: "Gorilla beringei beringei",
-      clase: "Mamífero",
-      raza: "Montaña",
-      especie: "Gorila",
-      tipo_animal: "Herbívoro",
-      invertebrado: false,
-      vertebrado: true,
-      tipo_habitat: "Bosque tropical y montañas",
-      distribicion_geografica: {
-        habitat_natural: "África",
-        region_geografica: "África oriental",
-        pais: ["Ruanda", "Uganda", "República Democrática del Congo"],
-        continente: "África",
-        ecosistema: "Bosques tropicales y montañas"
-      },
-      comportamiento: "Los gorilas son sociales y viven en grupos familiares...",
-      estado_conservacion: "En peligro crítico",
-      depredadores: ["Humanos", "Caza ilegal"],
-      alimento_principal: ["Hojas", "Brotes", "Frutas"],
-      curiosidades: "Los gorilas son parientes cercanos de los humanos...",
-      amenazas: ["Caza ilegal", "Pérdida de hábitat"],
-      relacion_con_humanos: "Los gorilas han sido objeto de estudio y conservación...",
-      importancia_ecologica: "Alta",
-      origen: "África"
-    }
-  },
-  {
-    id: 37,
+    id: 14,
     nombre: "Milo",
     animal: 'Pingüino',
     edad: 4,
@@ -1795,7 +1738,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 38,
+    id: 15,
     nombre: "Luna",
     animal: 'Lobo Gris',
     edad: 5,
@@ -1833,17 +1776,14 @@ db.animales.insertMany([
       importancia_ecologica: "Alta",
       origen: "América del Norte, Europa, Asia"
     }
-  }
-]);
-use('zoologico');
-db.animales.insertMany([
+  },
   {
-    id: 39,
+    id: 16,
     nombre: "Pablo",
     animal: 'Panda Gigante',
     edad: 6,
     genero: "macho",
-    habitat_zoo: 130,
+    habitat_zoo: 12,
     cuidados: "Requiere una dieta de bambú y áreas de juego...",
     relacion_animales: "Pablo vive en un recinto especial con otros pandas...",
     estado_salud: "Bueno",
@@ -1859,7 +1799,7 @@ db.animales.insertMany([
       invertebrado: false,
       vertebrado: true,
       tipo_habitat: "Bosques de bambú",
-      distribucion_geografica: {
+      distribicion_geografica: {
         habitat_natural: "China",
         region_geografica: "Asia oriental",
         pais: ["China"],
@@ -1878,17 +1818,17 @@ db.animales.insertMany([
     }
   },
   {
-    id: 40,
-    nombre: "Nala",
+    id: 17,
+    nombre: "Lila",
     animal: 'Leopardo de las Nieves',
     edad: 4,
     genero: "hembra",
     habitat_zoo: 131,
     cuidados: "Requiere un ambiente frío y dieta de carne magra...",
-    relacion_animales: "Nala vive en un recinto con otros leopardos...",
+    relacion_animales: "Lila vive en un recinto con otros leopardos...",
     estado_salud: "Bueno",
-    historia: "Nala fue rescatada de una situación de tráfico de animales...",
-    interaccion_humanos: "Nala es curiosa y a veces se acerca a los visitantes...",
+    historia: "Lila fue rescatada de una situación de tráfico de animales...",
+    interaccion_humanos: "Lila es curiosa y a veces se acerca a los visitantes...",
     enlaces_geneticos: "Estudios genéticos han proporcionado información...",
     detalles: {
       nombre_cientifico: "Panthera uncia",
@@ -1899,7 +1839,7 @@ db.animales.insertMany([
       invertebrado: false,
       vertebrado: true,
       tipo_habitat: "Montañas y estepas",
-      distribucion_geografica: {
+      distribicion_geografica: {
         habitat_natural: "Asia central y del sur",
         region_geografica: "Asia",
         pais: ["Mongolia", "Rusia", "India"],
@@ -1915,10 +1855,10 @@ db.animales.insertMany([
       relacion_con_humanos: "Los leopardos de las nieves son misteriosos y esquivos...",
       importancia_ecologica: "Alta",
       origen: "Asia central y del sur"
-    }
+    },
   },
   {
-    id: 41,
+    id: 18,
     nombre: "Kiara",
     animal: 'Cebra',
     edad: 5,
@@ -1939,7 +1879,7 @@ db.animales.insertMany([
       invertebrado: false,
       vertebrado: true,
       tipo_habitat: "Praderas y sabanas",
-      distribucion_geografica: {
+      distribicion_geografica: {
         habitat_natural: "África",
         region_geografica: "África subsahariana",
         pais: ["Kenia", "Tanzania", "Sudáfrica"],
@@ -1958,7 +1898,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 42,
+    id: 19,
     nombre: "Kai",
     animal: 'Pavo Real',
     edad: 3,
@@ -1979,7 +1919,7 @@ db.animales.insertMany([
       invertebrado: false,
       vertebrado: true,
       tipo_habitat: "Bosques y praderas",
-      distribucion_geografica: {
+      distribicion_geografica: {
         habitat_natural: "Asia",
         region_geografica: "Asia meridional",
         pais: ["India", "Sri Lanka"],
@@ -1998,7 +1938,7 @@ db.animales.insertMany([
     }
   },
   {
-    id: 43,
+    id: 20,
     nombre: "Rocky",
     animal: 'Iguana Verde',
     edad: 2,
@@ -2019,7 +1959,7 @@ db.animales.insertMany([
       invertebrado: false,
       vertebrado: true,
       tipo_habitat: "Selvas y bosques tropicales",
-      distribucion_geografica: {
+      distribicion_geografica: {
         habitat_natural: "América Central y Sudamérica",
         region_geografica: "América",
         pais: ["México", "Costa Rica", "Brasil"],
