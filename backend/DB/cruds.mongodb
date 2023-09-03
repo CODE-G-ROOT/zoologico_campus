@@ -35,7 +35,10 @@ use('zoologico');
 db.empleados.find({
     nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
     salario: { $gte: 3000 }
-}).sort({ id: 1 }).toArray();
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
 
 //TODO: --> Nombre + Cargo  + Salario
 use('zoologico');
@@ -47,7 +50,42 @@ db.empleados.find({
     }
 })
 .sort({ id: 1 })
+.limit(25)
 .toArray();
+
+
+
+
+//TODO: INFRAESTRUCTURA - ID
+use('zoologico');
+db.infraestructura
+    .find({ id: 1 })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - Tipo
+use('zoologico');
+db.infraestructura
+    .find({ tipo: "Departamento" })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - Nombre del lugar
+use('zoologico');
+db.infraestructura.find({
+    nombre_lugar: {
+        $regex: /Cuidado/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+
+
+
 
 
 
