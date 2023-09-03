@@ -1,49 +1,53 @@
+//TODO: EMPLEADOS -> id
 use('zoologico');
-db.empleados.find({}).toArray();
+db.empleados.find({ id: 1 }).sort({ id: 1 }).toArray();
 
-//TODO: INFRAESTRUCTURA - DEPARTAMENTO
+//TODO: EMPLEADOS -> Nombre 
 use('zoologico');
-db.infraestructura
-    .find({tipo: "Departamento"})
-    .sort({id : 1})
-    .limit(25)
-    .toArray();
-
-//TODO: INFRAESTRUCTURA - AREA
-use('zoologico');
-db.infraestructura
-    .find({tipo: "Area"})
-    .sort({id : 1})
-    .limit(25)
-    .toArray();
-
-//TODO: INFRAESTRUCTURA - HABITAD
-use('zoologico');
-db.infraestructura
-    .find({tipo: "Habitat"})
-    .sort({id : 1})
-    .limit(25)
-    .toArray();
-
-
-
-//TODO: INFRAESTRUCTURA - HISTORIAL_MEDICO
-use('zoologico');
-db.infraestructura.aggregate([
-    {
-        $lookup: {
-          from: "animales",
-          localField: field,
-          foreignField: field,
-          as: result
-        }
-    },
-    {
-        $unwind: "$animales"
+db.empleados.find({
+    nombre_completo: {
+        $regex: /Pérez/i
     }
-])
+});
+
+//TODO: --> Cargo 
+use('zoologico');
+db.empleados.find({ "cargo": "Programador" })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO: --> Salario  (Mayor o igual que)
+use('zoologico');
+db.empleados.find({ "salario": { $gte: 3000 }})
+    .sort({ id: 1 })
+    .toArray();
 
 
+//TODO: EMPLEADOS -> Nombre + Cargo
+use('zoologico');
+db.empleados.find({
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    cargo: "Programador" //AQUÍ VA EL CARGO
+}).sort({ id: 1 }).toArray();
+
+//TODO: EMPLEADOS -> Nombre + Salario
+use('zoologico');
+db.empleados.find({
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    salario: { $gte: 3000 }
+}).sort({ id: 1 }).toArray();
+
+//TODO: --> Nombre + Cargo  + Salario
+use('zoologico');
+db.empleados.find({ 
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    cargo: "Programador",
+    salario: {
+        $gte: 3000.02
+    }
+})
+.sort({ id: 1 })
+.toArray();
 
 
 
