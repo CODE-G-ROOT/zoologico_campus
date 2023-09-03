@@ -7,10 +7,10 @@ export async function getEmpleados(req, res) {
         console.log("get function");
         let colleccion = db.collection("empleados");
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
-        results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
+        results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "No Encontrado" })
     } catch (error) {
         console.log(error); // Agregar este console.log para imprimir detalles del error
-        res.status(500).send({ status: 500, message: "Internal Server Error :(" });
+        res.status(500).send({ status: 500, message: "Internal Server Error" });
     }
 }
 
@@ -19,7 +19,7 @@ export async function getEmpleados(req, res) {
         let db = await con();
         let colleccion = db.collection("empleados");
         const empleadoId = req.params.id;
-        let results = await colleccion.findOne({empleadoId}).toArray();
+        let results = await colleccion.findOne({empleadoId});
         //const results = await collection.findOne({ id: empleadoId });
 
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Empleado no encontrado :(" })
@@ -35,9 +35,8 @@ export async function getEmpleadoId(req, res) {
     try {
         const db = await con();
         const collection = db.collection("empleados");
-        const empleadoId = parseInt(req.params.id); // Convierte el parámetro en un número entero
+        const empleadoId = parseInt(req.params.id);
 
-        // Buscar un empleado por el campo "id"
         const empleado = await collection.findOne({ id: empleadoId });
 
         if (!empleado) {
@@ -62,10 +61,10 @@ export async function postEmpl(req, res){
             fecha_contratacion: new Date(req.body.fecha_contratacion),
         };
         await colleccion.insertOne(newEvento);
-        res.status(201).send({ status:201, message: "Created :)" });
+        res.status(201).send({ status:201, message: "Created" });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ status:500, message: "Internal Server Error :(" });
+        res.status(500).send({ status:500, message: "Internal Server Error" });
     }
 };
 
@@ -116,26 +115,26 @@ export async function putEmpleado(req, res) {
     try {
         const db = await con();
         const collection = db.collection("empleados");
-        const empleadoId = parseInt(req.params.id); // Convierte el parámetro en un número entero
+        const empleadoId = req.params.id;
 
-        // Comprueba si el empleado existe
+        // Verifica si el empleado existe antes de intentar actualizarlo
         const existingEmpleado = await collection.findOne({ id: empleadoId });
 
         if (!existingEmpleado) {
             return res.status(404).send({ status: 404, message: "Empleado no encontrado" });
         }
 
-        // Actualiza el empleado con los datos enviados en la solicitud
+        // Actualiza los datos del empleado
+        const data = req.body;
         const updatedEmpleado = {
-            ...existingEmpleado,
-            ...req.body,
+            ...existingEmpleado, // Mantén los valores existentes
+            ...data, // Actualiza con los nuevos valores proporcionados
             fecha_contratacion: new Date(req.body.fecha_contratacion),
         };
 
-        // Realiza la actualización
         await collection.updateOne({ id: empleadoId }, { $set: updatedEmpleado });
 
-        res.status(200).send({ status: 200, message: "Empleado actualizado exitosamente" });
+        res.status(200).send({ status: 200, message: "Empleado actualizado" });
     } catch (error) {
         console.error(error);
         res.status(500).send({ status: 500, message: "Error interno del servidor" });
@@ -143,14 +142,15 @@ export async function putEmpleado(req, res) {
 }
 
 
+
 export async function deleteEmpleado(req, res){
     try{
         let db = await con();
         let colleccion = db.collection("empleados");
         await colleccion.deleteOne({Id: req.params.id});
-        res.status(200).send({ status:200, message: "Deleted :)" });
+        res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);
-        res.status(500).send({ status:500, message: "Internal Server Error :(" });
+        res.status(500).send({ status:500, message: "Internal Server Error" });
     }
 };

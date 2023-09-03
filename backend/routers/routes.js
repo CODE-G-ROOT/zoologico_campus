@@ -4,7 +4,7 @@ import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } fro
 import { getInfra, postInfra } from "../controllers/infraestructura.js";
 import { getHM, postHM } from "../controllers/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../controllers/historial_medico.js";
-import { getEventos, postEventos } from "../controllers/eventos.js";
+import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
 import { getFinanzas, postFinanzas } from "../controllers/finanzas.js";
 import { getOrg,postOrg } from "../controllers/organizaciones.js";
 
@@ -38,10 +38,10 @@ function configurarApp() {
 
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
-appEmpleados.get("/empl/:id",limitQuery(),getEmpleadoId)
+appEmpleados.get("/empl/:id",limitQuery(),getEmpleadoId);
 appEmpleados.post("/empl",limitQuery(),postEmpl);
-appEmpleados.put("/empl/:1", limitQuery(),putEmpleado)
-appEmpleados.delete("/empl/:1",limitQuery(),deleteEmpleado)
+appEmpleados.put("/empl/:id", limitQuery(),putEmpleado)
+appEmpleados.delete("/empl/:id",limitQuery(),deleteEmpleado)
 
 appInfraestructura.get("/infra",limitQuery(),getInfra);
 appInfraestructura.post("/infra", limitQuery(),postInfra);
@@ -53,7 +53,9 @@ appHMed.get("/hmed",limitQuery(),getHMed);
 appHMed.post("/hmed",limitQuery(),postHMed);
 
 appEventos.get("/eventos", limitQuery(),getEventos);
+appEventos.get("/eventos/:id",limitQuery(),getEventoId);
 appEventos.post("/eventos", limitQuery(),postEventos);
+appEventos.delete("/eventos/:id",limitQuery(),deleteEventos);
 
 appFinanzas.get("/finanzas",limitQuery(),getFinanzas);
 appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
