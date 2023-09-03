@@ -1,10 +1,15 @@
 import dotenv from 'dotenv'
 import {MongoClient} from 'mongodb';
 dotenv.config(); 
+
+const data = JSON.parse(JSON.stringify(process.env))
+
 export async function con() {
   try {
-    const uri = `mongodb+srv://${process.env.ATLAS_USER}:${process.env.ATLAS_PASSWORD}@juandev856.ikw3dq6.mongodb.net/`;
-    const options = {
+
+    const uri = `mongodb+srv://${user}:${data.ATLAS_PASSWORD}@${data.ATLAS_USER.toLowerCase()}.ikw3dq6.mongodb.net/`;
+
+    const options = {  
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
