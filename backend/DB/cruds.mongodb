@@ -1,1 +1,50 @@
-use('zoologico') 
+use('zoologico');
+db.empleados.find({}).toArray();
+
+//TODO: INFRAESTRUCTURA - DEPARTAMENTO
+use('zoologico');
+db.infraestructura
+    .find({tipo: "Departamento"})
+    .sort({id : 1})
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - AREA
+use('zoologico');
+db.infraestructura
+    .find({tipo: "Area"})
+    .sort({id : 1})
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - HABITAD
+use('zoologico');
+db.infraestructura
+    .find({tipo: "Habitat"})
+    .sort({id : 1})
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: INFRAESTRUCTURA - HISTORIAL_MEDICO
+use('zoologico');
+db.infraestructura.aggregate([
+    {
+        $lookup: {
+          from: "animales",
+          localField: field,
+          foreignField: field,
+          as: result
+        }
+    },
+    {
+        $unwind: "$animales"
+    }
+])
+
+
+
+
+
+
