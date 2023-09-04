@@ -1,4 +1,7 @@
 import express from "express";
+import routesVersioning from "express-routes-versioning";
+
+
 import { limitQuery } from "../helpers/limit.js";
 import { getAnimales, postAnimales } from '../controllers/v1/animales.js'; //Esto es temporal mientras se implementan las versiones
 import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/v1/empleados.js';
@@ -24,6 +27,9 @@ import { getOrg,postOrg } from "../controllers/v1/organizaciones.js";
 //const appHMed = express();
 //appHMed.use(express.json());
 
+const versions = routesVersioning();
+
+
 function configurarApp() {
   const app = express();
   app.use(express.json());
@@ -39,45 +45,45 @@ const appEventos = configurarApp();
 const appFinanzas = configurarApp();
 const appOrg = configurarApp();
 
-appAnimales.get("/all", limitQuery(), getAnimales);
-appAnimales.post("/animales", limitQuery(), postAnimales); //PENDIENTE POR TESTEAR
+appAnimales.get("/all", limitQuery(),routesVersioning(  getAnimales ));
+appAnimales.post("/animales", limitQuery(),routesVersioning(  postAnimales )); //PENDIENTE POR TESTEAR
 
-appEmpleados.get("/empl", limitQuery(),getEmpleados);
-appEmpleados.get("/empl/:id",limitQuery(),getEmpleadoId);
-appEmpleados.post("/empl",limitQuery(),postEmpl);
-appEmpleados.put("/empl/:id", limitQuery(),putEmpleado)
-appEmpleados.delete("/empl/:id",limitQuery(),deleteEmpleado)
+appEmpleados.get("/empl", limitQuery(),routesVersioning( getEmpleados ));
+appEmpleados.get("/empl/:id",limitQuery(),routesVersioning( getEmpleadoId ));
+appEmpleados.post("/empl",limitQuery(),routesVersioning( postEmpl ));
+appEmpleados.put("/empl/:id", limitQuery(),routesVersioning( putEmpleado ))
+appEmpleados.delete("/empl/:id",limitQuery(),routesVersioning( deleteEmpleado ))
 
-appInfraestructura.get("/infra",limitQuery(),getInfra);
-appInfraestructura.get("/infra/:id", limitQuery(),getInfraId);
-appInfraestructura.post("/infra", limitQuery(),postInfra);
-appInfraestructura.delete("/infra/:id",limitQuery(),deleteInfra);
+appInfraestructura.get("/infra",limitQuery(),routesVersioning( getInfra ));
+appInfraestructura.get("/infra/:id", limitQuery(),routesVersioning( getInfraId ));
+appInfraestructura.post("/infra", limitQuery(),routesVersioning( postInfra ));
+appInfraestructura.delete("/infra/:id",limitQuery(),routesVersioning( deleteInfra ));
 
-appHMant.get("/hmant",limitQuery(),getHM);
-appHMant.get("/hmant/:id",limitQuery(),getHMId);
-appHMant.post("/hmant",limitQuery(),postHM);
-appHMant.delete("/hmant/:id",limitQuery(),deleteHM);
+appHMant.get("/hmant",limitQuery(),routesVersioning( getHM ));
+appHMant.get("/hmant/:id",limitQuery(),routesVersioning( getHMId ));
+appHMant.post("/hmant",limitQuery(),routesVersioning( postHM ));
+appHMant.delete("/hmant/:id",limitQuery(),routesVersioning( deleteHM ));
 
-appHMed.get("/hmed",limitQuery(),getHMed);
-appHMed.get("/hmed/:id",limitQuery(),getHMedId);
-appHMed.post("/hmed",limitQuery(),postHMed);
-appHMed.delete("/hmed/:id",limitQuery(),deleteHMed)
+appHMed.get("/hmed",limitQuery(),routesVersioning( getHMed ));
+appHMed.get("/hmed/:id",limitQuery(),routesVersioning( getHMedId ));
+appHMed.post("/hmed",limitQuery(),routesVersioning( postHMed ));
+appHMed.delete("/hmed/:id",limitQuery(),routesVersioning( deleteHMed ))
 
-appEventos.get("/eventos", limitQuery(),getEventos);
-appEventos.get("/eventos/:id",limitQuery(),getEventoId);
-appEventos.post("/eventos", limitQuery(),postEventos);
-appEventos.delete("/eventos/:id",limitQuery(),deleteEventos);
+appEventos.get("/eventos", limitQuery(),routesVersioning( getEventos ));
+appEventos.get("/eventos/:id",limitQuery(),routesVersioning( getEventoId ));
+appEventos.post("/eventos", limitQuery(),routesVersioning( postEventos ));
+appEventos.delete("/eventos/:id",limitQuery(),routesVersioning( deleteEventos ));
 
-appFinanzas.get("/finanzas",limitQuery(),getFinanzas);
-appFinanzas.get("/finanzas/:id",limitQuery(),getFinanzaId);
-appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
-appFinanzas.delete("/finanzas/:id",limitQuery(),deleteFinanza);
+appFinanzas.get("/finanzas",limitQuery(),routesVersioning( getFinanzas ));
+appFinanzas.get("/finanzas/:id",limitQuery(),routesVersioning( getFinanzaId ));
+appFinanzas.post('/finanzas',limitQuery(),routesVersioning( postFinanzas ));
+appFinanzas.delete("/finanzas/:id",limitQuery(),routesVersioning( deleteFinanza ));
 
-appFinanzas.get("/finanzas", limitQuery(), getFinanzas);
-appFinanzas.post('/finanzas', limitQuery(), postFinanzas);
+appFinanzas.get("/finanzas", limitQuery(),routesVersioning(  getFinanzas ));
+appFinanzas.post('/finanzas', limitQuery(),routesVersioning(  postFinanzas ));
 
-appOrg.get("/org", limitQuery(), getOrg);
-appOrg.post("/org", limitQuery(), postOrg)
+appOrg.get("/org", limitQuery(),routesVersioning(  getOrg ));
+appOrg.post("/org", limitQuery(),routesVersioning(  postOrg ));
 
 
 export {
