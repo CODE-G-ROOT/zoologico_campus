@@ -334,3 +334,109 @@ db.eventos.find({
     .limit(25)
     .toArray();
 
+
+
+//TODO: EVENTOS - FINANZAS - ID
+use('zoologico');
+db.eventos.find({   
+    Id: 1
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - FINANZAS - Tipo
+use('zoologico');
+db.finanzas.find({   
+    tipo: {
+        $regex: /Ingresos/i
+    }
+    
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Cantidad
+use('zoologico');
+db.finanzas.find({   
+    cantidad: {
+        $gte: 40000
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Fecha
+use('zoologico');
+db.finanzas.find({   
+    fecha: {
+        $eq:  new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + cantidad
+use('zoologico');
+db.finanzas.find({   
+    tipo: {
+        $regex: /Ingresos/i
+    },
+    cantidad: {
+        $gte: 40000
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + fecha
+use('zoologico');
+db.finanzas.find({   
+    tipo: {
+        $regex: /Ingresos/i
+    },
+    fecha: {
+        $eq:  new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - cantidad + fecha
+use('zoologico');
+db.finanzas.find({   
+    cantidad: {
+        $gte: 40000
+    },
+    fecha: {
+        $eq:  new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + cantidad + fecha
+use('zoologico');
+db.finanzas.find({ 
+    tipo: {
+        $regex: /Financiera/i
+    },   
+    cantidad: {
+        $gte: 15000
+    },
+    fecha: {
+        $eq:  new Date("2023-08-05")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
