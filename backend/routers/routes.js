@@ -5,7 +5,7 @@ import { getInfra, postInfra } from "../controllers/infraestructura.js";
 import { getHM, postHM } from "../controllers/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../controllers/historial_medico.js";
 import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
-import { getFinanzas, postFinanzas } from "../controllers/finanzas.js";
+import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/finanzas.js";
 import { getOrg,postOrg } from "../controllers/organizaciones.js";
 
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
@@ -58,7 +58,9 @@ appEventos.post("/eventos", limitQuery(),postEventos);
 appEventos.delete("/eventos/:id",limitQuery(),deleteEventos);
 
 appFinanzas.get("/finanzas",limitQuery(),getFinanzas);
+appFinanzas.get("/finanzas/:id",limitQuery(),getFinanzaId);
 appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
+appFinanzas.delete("/finanzas/:id",limitQuery(),deleteFinanza);
 
 appOrg.get("/org",limitQuery(),getOrg);
 appOrg.post("/org",limitQuery(),postOrg)

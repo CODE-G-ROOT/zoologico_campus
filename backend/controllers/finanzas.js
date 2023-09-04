@@ -14,6 +14,25 @@ export async function getFinanzas(req, res) {
     }
 }
 
+export async function getFinanzaId(req, res) {
+    try {
+        const db = await con();
+        const collection = db.collection("finanzas");
+        const finanzaId = parseInt(req.params.id);
+
+        const finanza = await collection.findOne({ id:finanzaId });
+
+        if (!finanza) {
+            return res.status(404).send({ status: 404, message: "Finanzas no encontradas" });
+        }
+
+        res.status(200).json(finanza);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status: 500, message: "Error interno del servidor" });
+    }
+};
+
 export async function postFinanzas(req, res){
     try{
         let db = await con();
@@ -29,5 +48,26 @@ export async function postFinanzas(req, res){
     } catch (error) {
         console.error(error);
         res.status(500).send({ status:500, message: "Internal Server Error :(" });
+    }
+};
+
+export async function deleteFinanza(req, res){
+    try{
+        let db = await con();
+        let colleccion = db.collection("finanzas");
+        const finanzaId = parseInt(req.params.id);
+
+        const finanza = await colleccion.findOne({ id: finanzaId });
+
+        if (!finanza) {
+            return res.status(404).send({ status: 404, message: "finanza no encontrado" });
+        }
+
+        const deletionResult = await colleccion.deleteOne({ id: finanzaId });
+        //console.log(deletionResult);
+        res.status(200).send({ status:200, message: "Deleted" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ status:500, message: "Internal Server Error" });
     }
 };
