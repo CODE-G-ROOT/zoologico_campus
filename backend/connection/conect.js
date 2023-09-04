@@ -11,14 +11,13 @@ export async function con() {
   try {
 
     const uri = `mongodb+srv://${user}:${pasword}@${other}.ikw3dq6.mongodb.net/`;
-
     const options = {  
       useNewUrlParser: true,
       useUnifiedTopology: true,
     };
 
     const client = await MongoClient.connect(uri, options);
-    console.log(client);
+   // console.log(client);
     return client.db(`${process.env.ATLAS_DB}`);
   } catch (error) {
     return {status: 500, message: error}, Promise.reject(error);;
