@@ -1,8 +1,8 @@
 import express from "express";
 import routesVersioning from "express-routes-versioning";
 
+import { limitQuery } from "../helpers/others/limit.js";
 
-import { limitQuery } from "../helpers/limit.js";
 import { getAnimales, postAnimales } from '../controllers/v1/animales.js'; //Esto es temporal mientras se implementan las versiones
 import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/v1/empleados.js';
 import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/v1/infraestructura.js";
@@ -11,7 +11,6 @@ import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/v1/hist
 import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/v1/eventos.js";
 import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/v1/finanzas.js";
 import { getOrg,postOrg } from "../controllers/v1/organizaciones.js";
-
 
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
@@ -31,19 +30,19 @@ const versions = routesVersioning();
 
 
 function configurarApp() {
-  const app = express();
-  app.use(express.json());
-  return app;
-}
-
-const appAnimales = configurarApp();
-const appEmpleados = configurarApp();
-const appInfraestructura = configurarApp();
-const appHMant = configurarApp();
-const appHMed = configurarApp();
-const appEventos = configurarApp();
-const appFinanzas = configurarApp();
-const appOrg = configurarApp();
+    const app = express();
+    app.use(express.json());
+    return app;
+  }
+  
+  const appAnimales = configurarApp();
+  const appEmpleados = configurarApp();
+  const appInfraestructura = configurarApp();
+  const appHMant = configurarApp();
+  const appHMed = configurarApp();
+  const appEventos = configurarApp();
+  const appFinanzas = configurarApp();
+  const appOrg=configurarApp();
 
 appAnimales.get("/all", limitQuery(),routesVersioning(  getAnimales ));
 appAnimales.post("/animales", limitQuery(),routesVersioning(  postAnimales )); //PENDIENTE POR TESTEAR
@@ -79,11 +78,11 @@ appFinanzas.get("/finanzas/:id",limitQuery(),routesVersioning( getFinanzaId ));
 appFinanzas.post('/finanzas',limitQuery(),routesVersioning( postFinanzas ));
 appFinanzas.delete("/finanzas/:id",limitQuery(),routesVersioning( deleteFinanza ));
 
-appFinanzas.get("/finanzas", limitQuery(),routesVersioning(  getFinanzas ));
-appFinanzas.post('/finanzas', limitQuery(),routesVersioning(  postFinanzas ));
+appFinanzas.get("/finanzas", limitQuery(), getFinanzas);
+appFinanzas.post('/finanzas', limitQuery(), postFinanzas);
 
-appOrg.get("/org", limitQuery(),routesVersioning(  getOrg ));
-appOrg.post("/org", limitQuery(),routesVersioning(  postOrg ));
+appOrg.get("/org", limitQuery(), getOrg);
+appOrg.post("/org", limitQuery(), postOrg)
 
 
 export {
@@ -94,5 +93,5 @@ export {
   appHMed,
   appEventos,
   appFinanzas,
-  appOrg
+  appOrg,
 };

@@ -3,14 +3,14 @@ import { plainToClass, classToPlain } from 'class-transformer';
 import dotenv from 'dotenv';
 import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
-import { animales } from "../models/animales.js";
-import { empleados } from "../models/empleados.js";
-import { infraestrutura} from "../models/infraestructura.js"
-import { historial_mantenimiento } from '../models/historial_mantenimiento.js'
-import { historial_medico } from '../models/historial_medico.js'
-import { eventos } from '../models/evento.js'
-import { finanzas } from '../models/finanzas.js'
-import { organizaciones } from '../models/organizaciones.js'
+import { animales } from "../../models/animales.js";
+import { empleados } from "../../models/empleados.js";
+import { infraestrutura} from "../../models/infraestructura.js"
+import { historial_mantenimiento } from '../../models/historial_mantenimiento.js'
+import { historial_medico } from '../../models/historial_medico.js'
+import { eventos } from '../../models/evento.js'
+import { finanzas } from '../../models/finanzas.js'
+import { organizaciones } from '../../models/organizaciones.js'
 
 dotenv.config("../");
 const appToken = Router();
@@ -25,7 +25,8 @@ const DTO = (p1) => {
         'hmed':historial_medico,
         'eventos':eventos,
         'finanzas':finanzas,
-        'org':organizaciones
+        'org':organizaciones,
+        'animal':animales
     };
     const inst = match[p1];
     if(!inst) throw {status: 404, message: "Token solicitado no valido"}
