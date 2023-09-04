@@ -440,3 +440,58 @@ db.finanzas.find({
     .toArray();
 
 
+
+//TODO: ORGANIZACIÓNES - ID
+use('zoologico');
+db.organizaciones.find({ 
+    id: 1
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO: ORGANIZACIÓNES - nombre
+use('zoologico');
+db.organizaciones.find({ 
+    nombre: {
+        $regex: /Asociación/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+
+//TODO ORGANIZACIÓNES - Ubicación
+use('zoologico');
+db.organizaciones.find({ 
+    ubicacion: {
+        $regex: /Estados Unidos/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+//TODO ORGANIZACIÓNES - Area
+use('zoologico');
+db.organizaciones.find({ 
+    area_encargada: {
+        $regex: /Conservación/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
+
+
+//TODO ORGANIZACIÓNES - Encargado
+use('zoologico');
+db.organizaciones.find({ 
+    encargado: {
+        $regex: /Maria/i
+    }
+})
+.sort({ id: 1 })
+.limit(25)
+.toArray();
