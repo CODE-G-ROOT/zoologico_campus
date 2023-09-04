@@ -1,13 +1,14 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
-import { getAnimales, postAnimales } from '../controllers/v1/animales.js'; //Esto es temporal mientras se implementan las versiones
-import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/empleados.js';
-import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/infraestructura.js";
-import { deleteHM, getHM, getHMId, postHM } from "../controllers/historial_mantenimiento.js";
-import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/historial_medico.js";
-import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
-import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/finanzas.js";
-import { getOrg,postOrg } from "../controllers/organizaciones.js";
+
+import { getAnimales, postAnimales } from '../controllers/v1/animales.js';
+import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/v1/empleados.js';
+import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/v1/infraestructura.js";
+import { deleteHM, getHM, getHMId, postHM } from "../controllers/v1/historial_mantenimiento.js";
+import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/v1/historial_medico.js";
+import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/v1/eventos.js";
+import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/v1/finanzas.js";
+import { getOrg,postOrg } from "../controllers/v1/organizaciones.js";
 
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
@@ -29,6 +30,7 @@ function configurarApp() {
     return app;
   }
   
+  const appAnimales = configurarApp();
   const appEmpleados = configurarApp();
   const appInfraestructura = configurarApp();
   const appHMant = configurarApp();
@@ -84,5 +86,4 @@ export {
   appEventos,
   appFinanzas,
   appOrg,
-  appAnimal
 };
