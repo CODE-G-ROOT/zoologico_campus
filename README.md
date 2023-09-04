@@ -303,9 +303,13 @@ Para poder acceder a la información almacenada en esta api, es importante tener
 
 - `/org`: Obtiene toda la informacíón de la api
 
+- **GET** `/org/:id`
+
+Este endpoint permite consultar una organización específica por su identificador (ID).
+
 **POST**
 
-- `/empl` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+- `/org` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
 
   | **Campo**   | Tipo de dato     |
   | ----------- | ---------------- |
@@ -315,7 +319,16 @@ Para poder acceder a la información almacenada en esta api, es importante tener
   | cantidad    | Number           |
   | fecha       | ISODate          |
 
+
+- **DELETE** 
+
+-`/org/:id`:Este endpoint permite eliminar una organización específica por su identificador (ID).
+
 <br>
+
+**TABLA BASE DE DATOS**
+
+![diagrama zoologico](image.png)
 
 <br>
 
@@ -349,3 +362,4 @@ Habiendo hecho esto ya podemos enviar la data, si esta está bien estructurada y
 **UPDATE**: Para utilzar este meto es muy simple, solo necesitamos dos cosas, el identificador del documento que se a actualzar y el campo o los campos a los que queremos agregares o cambiarles los datos que tienen. Claro, cumpliendo con las restricciones explicadas en el punto anterior
 
 **DELETE**: Este es el más facil de todos, pero **¡OJO! ** Hay que tener cuidado, si lo utilzas mal, perderás toda la informacíon de dicho documento. Pero bueno, para utilizarso solo basta con agregar el identificador único del documento que se desee eliminar, y listo, esto es todo amigos, hasta la próxima....
+
