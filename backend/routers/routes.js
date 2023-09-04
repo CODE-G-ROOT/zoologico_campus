@@ -6,7 +6,9 @@ import { deleteHM, getHM, getHMId, postHM } from "../controllers/historial_mante
 import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/historial_medico.js";
 import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
 import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/finanzas.js";
-import { getOrg,postOrg } from "../controllers/organizaciones.js";
+import { deleteOrg, getOrg,getOrgId,postOrg } from "../controllers/organizaciones.js";
+import { deleteAnimal, getAnimal, getAnimalId, postAnimal } from "../controllers/animales.js";
+import { limitAnim } from "../helpers/limitAnim.js";
 
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
@@ -35,6 +37,7 @@ function configurarApp() {
   const appEventos = configurarApp();
   const appFinanzas = configurarApp();
   const appOrg=configurarApp();
+  const appAnimal=configurarApp();
 
 
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
@@ -69,7 +72,14 @@ appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
 appFinanzas.delete("/finanzas/:id",limitQuery(),deleteFinanza);
 
 appOrg.get("/org",limitQuery(),getOrg);
-appOrg.post("/org",limitQuery(),postOrg)
+appOrg.get("/org/:id",limitQuery(),getOrgId);
+appOrg.post("/org",limitQuery(),postOrg);
+appOrg.delete("/org/:id",limitQuery(),deleteOrg);
+
+appAnimal.get("/animales",limitAnim(),getAnimal);
+appAnimal.get("/animales/:id",limitAnim(),getAnimalId);
+appAnimal.post("/animales",limitAnim(),postAnimal);
+appAnimal.delete("/animales/:id",limitAnim(),deleteAnimal);
 
 
 export {
@@ -79,5 +89,6 @@ export {
   appHMed,
   appEventos,
   appFinanzas,
-  appOrg
+  appOrg,
+  appAnimal
 };

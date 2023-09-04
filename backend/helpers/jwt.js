@@ -25,7 +25,8 @@ const DTO = (p1) => {
         'hmed':historial_medico,
         'eventos':eventos,
         'finanzas':finanzas,
-        'org':organizaciones
+        'org':organizaciones,
+        'animal':animales
     };
     const inst = match[p1];
     if(!inst) throw {status: 404, message: "Token solicitado no valido"}
