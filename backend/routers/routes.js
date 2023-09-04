@@ -1,7 +1,7 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
 import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/empleados.js';
-import { getInfra, postInfra } from "../controllers/infraestructura.js";
+import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/infraestructura.js";
 import { deleteHM, getHM, getHMId, postHM } from "../controllers/historial_mantenimiento.js";
 import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/historial_medico.js";
 import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
@@ -44,7 +44,9 @@ appEmpleados.put("/empl/:id", limitQuery(),putEmpleado)
 appEmpleados.delete("/empl/:id",limitQuery(),deleteEmpleado)
 
 appInfraestructura.get("/infra",limitQuery(),getInfra);
+appInfraestructura.get("/infra/:id", limitQuery(),getInfraId);
 appInfraestructura.post("/infra", limitQuery(),postInfra);
+appInfraestructura.delete("/infra/:id",limitQuery(),deleteInfra);
 
 appHMant.get("/hmant",limitQuery(),getHM);
 appHMant.get("/hmant/:id",limitQuery(),getHMId);
