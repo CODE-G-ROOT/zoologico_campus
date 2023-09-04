@@ -1,4 +1,4 @@
-import { con} from "../connection/conect.js";
+import { con} from "../../connection/conect.js";
 import { ObjectId } from "mongodb";
 
 export async function getEmpleados(req, res) {

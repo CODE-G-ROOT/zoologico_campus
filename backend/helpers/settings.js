@@ -1,10 +1,10 @@
 import fs from 'fs/promises';
 
 const contenido = `
-ATLAS_USER="JuanDev856"
-ATLAS_PASSWORD="juan856"
+ATLAS_USER=""
+ATLAS_PASSWORD=""
 ATLAS_DB="zoologico"
-JWT_PRIVATE_KEY= cc
+JWT_PRIVATE_KEY="cc"
 MY_SERVER={"hostname":"127.1.1.1","port":5510}
 `;
 

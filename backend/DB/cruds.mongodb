@@ -1,0 +1,1059 @@
+//TODO: EMPLEADOS -> id
+use('zoologico');
+db.empleados.find({ id: 1 }).sort({ id: 1 }).toArray();
+
+//TODO: EMPLEADOS -> Nombre 
+use('zoologico');
+db.empleados.find({
+    nombre_completo: {
+        $regex: /Pérez/i
+    }
+});
+
+//TODO: --> Cargo 
+use('zoologico');
+db.empleados.find({ "cargo": "Programador" })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO: --> Salario  (Mayor o igual que)
+use('zoologico');
+db.empleados.find({ "salario": { $gte: 3000 } })
+    .sort({ id: 1 })
+    .toArray();
+
+
+//TODO: EMPLEADOS -> Nombre + Cargo
+use('zoologico');
+db.empleados.find({
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    cargo: "Programador" //AQUÍ VA EL CARGO
+}).sort({ id: 1 }).toArray();
+
+//TODO: EMPLEADOS -> Nombre + Salario
+use('zoologico');
+db.empleados.find({
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    salario: { $gte: 3000 }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: --> Nombre + Cargo  + Salario
+use('zoologico');
+db.empleados.find({
+    nombre_completo: { $regex: /Juan/i },//AQUÍ VA EL NOMBRE
+    cargo: "Programador",
+    salario: {
+        $gte: 3000.02
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+
+//TODO: INFRAESTRUCTURA - ID
+use('zoologico');
+db.infraestructura
+    .find({ id: 1 })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - Tipo
+use('zoologico');
+db.infraestructura
+    .find({ tipo: "Departamento" })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: INFRAESTRUCTURA - Nombre del lugar
+use('zoologico');
+db.infraestructura.find({
+    nombre_lugar: {
+        $regex: /Cuidado/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: HISTORIAL DE MANTENIMIENTO - ID
+use('zoologico');
+db.historial_mantenimiento.find({ id: 1 })
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - area
+use('zoologico');
+db.historial_mantenimiento.find({
+    area: {
+        $regex: /Hábitats/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - fecha
+use('zoologico');
+db.historial_mantenimiento.find({
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + area
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    area: {
+        $regex: /Hábitats/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - nombre_empleado + fecha + area
+use('zoologico');
+db.historial_mantenimiento.find({
+    nombre_empleado: {
+        $regex: /Pérez/i
+    },
+    area: {
+        $regex: /Hábitats/i
+    },
+    fecha: {
+        $eq: new Date("2023-08-15T10:00:00Z")
+        //PARA HACER ESTAS BUSQUEDAS VAMOS A DIVIR POR YY/mm/DD-T-/HH/MM/SS
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO -ID
+use('zoologico');
+db.historial_medico.find({ id: 1 }) //Cambiar el 1 por el identificador del historial que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - Animal
+use('zoologico');
+db.historial_medico.find({ animal: 3 }) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario
+use('zoologico');
+db.historial_medico.find({
+    nombre_veterinario: {
+        $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - fecha
+use('zoologico');
+db.historial_medico.find({
+    fecha: {
+        $eq: new Date("2023-08-17T11:00:00Z")
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
+use('zoologico');
+db.historial_medico.find({
+    animal: 3,
+    nombre_veterinario: {
+        $regex: /García/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    }
+}) //Cambiar el 3 por el identificador del animal que se desea buscar
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: HISTORIAL DE MANTENIMIENTO - HISTORIAL MEDICO - nombre_veterinario + Animal
+use('zoologico');
+db.historial_medico.find({
+    nombre_veterinario: {
+        $regex: /Martínez/i //Cambiar "Garcia" por el nombre o apellido del doctor
+    },
+    fecha: {
+        $eq: new Date("2023-08-17T11:00:00Z")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: EVENTOS - ID
+use('zoologico');
+db.eventos.find({
+    id: 1
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - Nombre del show
+use('zoologico');
+db.eventos.find({
+    nombre: {
+        $regex: /Show/i //Cambiar show por el nombre que se desee buscar
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - encargado
+use('zoologico');
+db.eventos.find({
+    encargado: {
+        $regex: /Pérez/i //Cambiar "domingo por el encargado que se desee buscar"
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> Dias
+use('zoologico');
+db.eventos.find({
+    "horario.dias": {
+        $regex: /Domingos/i //Cambiar "Domingos por el dia que se busque"
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - horario -> Hora
+use('zoologico');
+db.eventos.find({
+    "horario.hora": {
+        $regex: /10:00 AM/i //Cambiar La hora
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> animales_participantes en específicoeventos
+//! TOCA CORREGIR LA BASE DE DATOS PARA QUE ESTE INSERT FUNCIONE
+use('zoologico');
+db.eventos.find({
+    animales_participantes: {
+        $regex: /1/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - horario -> animales_participantes en grupo
+use('zoologico');
+db.eventos.find({
+    "animales_participantes": {
+        $elemMatch: {
+            $regex: /Aguila|Cacatúa/i
+        }
+    }
+})
+
+
+//TODO: EVENTOS - horario -> Dia y hora
+use('zoologico');
+db.eventos.find({
+    "horario.dias": {
+        $regex: /Domingos/i //Cambiar "Domingos por el dia que se busque"
+    },
+    "horario.hora": {
+        $regex: /10:00 AM/i //Cambiar La hora
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: EVENTOS - FINANZAS - ID
+use('zoologico');
+db.eventos.find({
+    Id: 1
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO: EVENTOS - FINANZAS - Tipo
+use('zoologico');
+db.finanzas.find({
+    tipo: {
+        $regex: /Ingresos/i
+    }
+
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Cantidad
+use('zoologico');
+db.finanzas.find({
+    cantidad: {
+        $gte: 40000
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Fecha
+use('zoologico');
+db.finanzas.find({
+    fecha: {
+        $eq: new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + cantidad
+use('zoologico');
+db.finanzas.find({
+    tipo: {
+        $regex: /Ingresos/i
+    },
+    cantidad: {
+        $gte: 40000
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + fecha
+use('zoologico');
+db.finanzas.find({
+    tipo: {
+        $regex: /Ingresos/i
+    },
+    fecha: {
+        $eq: new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - cantidad + fecha
+use('zoologico');
+db.finanzas.find({
+    cantidad: {
+        $gte: 40000
+    },
+    fecha: {
+        $eq: new Date("2023-07-20")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: EVENTOS - FINANZAS - Tipo + cantidad + fecha
+use('zoologico');
+db.finanzas.find({
+    tipo: {
+        $regex: /Financiera/i
+    },
+    cantidad: {
+        $gte: 15000
+    },
+    fecha: {
+        $eq: new Date("2023-08-05")
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+
+//TODO: ORGANIZACIÓNES - ID
+use('zoologico');
+db.organizaciones.find({
+    id: 1
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO: ORGANIZACIÓNES - nombre
+use('zoologico');
+db.organizaciones.find({
+    nombre: {
+        $regex: /Asociación/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO ORGANIZACIÓNES - Ubicación
+use('zoologico');
+db.organizaciones.find({
+    ubicacion: {
+        $regex: /Estados Unidos/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+//TODO ORGANIZACIÓNES - Area
+use('zoologico');
+db.organizaciones.find({
+    area_encargada: {
+        $regex: /Conservación/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO ORGANIZACIÓNES - Encargado
+use('zoologico');
+db.organizaciones.find({
+    encargado: {
+        $regex: /Maria/i
+    }
+})
+    .sort({ id: 1 })
+    .limit(25)
+    .toArray();
+
+
+//TODO ANIMALES -  Busqueda basica
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - ID 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $match: { id: 1 }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - name 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $match: {
+            nombre: {
+                $regex: /Loki/i
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - animal 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $match: {
+            animal: {
+                $regex: /León/i
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - edad 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $match: {
+            edad: {
+                $gte: 5
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - genero 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat
+    },
+    {
+        $match: {
+            genero: {
+                $regex: /macho/i
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES -> Busqueda basica - habitat_zoo 
+use('zoologico');
+db.animales.aggregate([
+    {
+        $lookup: {
+            from: "infraestructura",
+            localField: "habitat_zoo",
+            foreignField: "id",
+            as: "habitat"
+        }
+    },
+    {
+        $unwind: $habitat_zoo
+    },
+    {
+        $match: {
+            habitat_zoo: {
+                $eq: 1
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: "$habitat_zoo",
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+
+//TODO ANIMALES - Salud - Busqueda basica
+use('zoologico');
+db.animales.aggregate([
+    {
+        $match: {
+            estado_salud: {
+                $regex: /Bueno/i
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$id",
+            nombre: { $first: "$nombre" },
+            animal: { $first: "$animal" },
+            edad: { $first: "$edad" },
+            genero: { $first: "$genero" },
+            habitat_zoo: { $addToSet: "$habitat" },
+            cuidados: { $first: "$cuidados" },
+            relacion_animales: { $first: "$relacion_animales" },
+            estado_salud: { $first: "$estado_salud" },
+            historia: { $first: "$historia" },
+            interaccion_humanos: { $first: "$interaccion_humanos" },
+        }
+    },
+    {
+        $project: {
+            id: 1,
+            nombre: 1,
+            animal: 1,
+            edad: 1,
+            genero: 1,
+            habitat_zoo: 1,
+            cuidados: 1,
+            relacion_animales: 1,
+            estado_salud: 1,
+            historia: 1,
+            interaccion_humanos: 1,
+        }
+    }
+])
+    .sort({ id: 1 })
+    .toArray();
+
+
+
+//TODO ANIMALES - ID -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ id: 1 })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - nombre_cientifico -> Busqueda avanzada
+use('zoologico');
+db.animales.find({
+    "detalles.nombre_cientifico": {
+        $regex: /Panthera/i
+    }
+})
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - clase -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.clase": {
+    $regex: /Mamífero/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - raza -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.raza": {
+    $regex: /Africana/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - especie -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.especie": {
+    $regex: /León/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - tipo_animal -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.tipo_animal": {
+    $regex: /Felino/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - invertebrado o invertebrado -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.invertebrado": false })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - tipo_habitat -> Busqueda avanzada
+use('zoologico');
+db.animales.find({ "detalles.tipo_habitat": {
+    $regex: /Savana/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - habitat_natural -> Busqueda avanzada
+db.animales.find({ "detalles.distribicion_geografica.habitat_natural": {
+    $regex: /Savanas/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - region_geografica -> Busqueda avanzada
+db.animales.find({ "detalles.distribicion_geografica.region_geografica": {
+    $regex: /África/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - pais -> Busqueda avanzada
+db.animales.find({ "detalles.distribicion_geografica.pais": {
+    $regex: /Kenia/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - continente -> Busqueda avanzada
+db.animales.find({ "detalles.distribicion_geografica.continente": {
+    $regex: /África/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - ecosistema -> Busqueda avanzada
+db.animales.find({ "detalles.distribicion_geografica.ecosistema": {
+    $regex: /Savanas/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+
+//TODO ANIMALES - estado_conservacion -> Busqueda avanzada
+db.animales.find({ "detalles.estado_conservacion": {
+    $regex: /Vulnerable/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - depredadores -> Busqueda avanzada
+db.animales.find({ "detalles.depredadores": {
+    $regex: /Cocodrilos/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - alimento_principal -> Busqueda avanzada
+db.animales.find({ "detalles.alimento_principal": {
+    $regex: /Antílopes/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - importancia_ecologica -> Busqueda avanzada
+db.animales.find({ "detalles.importancia_ecologica": {
+    $regex: /Alta/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+//TODO ANIMALES - origen -> Busqueda avanzada
+db.animales.find({ "detalles.origen": {
+    $regex: /África/i
+} })
+    .sort({ id: 1 })
+    .toArray();
+
+
+
+
+
+
+
