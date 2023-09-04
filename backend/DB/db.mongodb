@@ -558,13 +558,13 @@ db.createCollection("historial_medico", {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["id", "nombre_animal", "nombre_veterinario", "descripcion", "fecha"],
+      required: ["id", "animal", "nombre_veterinario", "descripcion", "fecha"],
       properties: {
         id: {
           bsonType: "int",
           description: "ID",
         },
-        animal:{
+        nombre_animal:{
           bsonType: "int",
           description: "asfd",
         },
@@ -572,11 +572,7 @@ db.createCollection("historial_medico", {
           bsonType: "string",
           description: "descripcion",
         },
-        area: {
-          bsonType: "string",
-          description: "area",
-        },
-        nombre_empleado: {
+        nombre_veterinario: {
           bsonType: "string",
           description: "nombre_empleado",
         },
