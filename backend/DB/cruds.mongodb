@@ -1016,35 +1016,35 @@ db.animales.find({ "detalles.distribicion_geografica.ecosistema": {
     .toArray();
 
 
-//TODO ANIMALES - ecosistema -> Busqueda avanzada
+//TODO ANIMALES - estado_conservacion -> Busqueda avanzada
 db.animales.find({ "detalles.estado_conservacion": {
     $regex: /Vulnerable/i
 } })
     .sort({ id: 1 })
     .toArray();
 
-//TODO ANIMALES - ecosistema -> Busqueda avanzada
+//TODO ANIMALES - depredadores -> Busqueda avanzada
 db.animales.find({ "detalles.depredadores": {
     $regex: /Cocodrilos/i
 } })
     .sort({ id: 1 })
     .toArray();
 
-//TODO ANIMALES - ecosistema -> Busqueda avanzada
+//TODO ANIMALES - alimento_principal -> Busqueda avanzada
 db.animales.find({ "detalles.alimento_principal": {
     $regex: /Antílopes/i
 } })
     .sort({ id: 1 })
     .toArray();
 
-//TODO ANIMALES - ecosistema -> Busqueda avanzada
+//TODO ANIMALES - importancia_ecologica -> Busqueda avanzada
 db.animales.find({ "detalles.importancia_ecologica": {
     $regex: /Alta/i
 } })
     .sort({ id: 1 })
     .toArray();
 
-//TODO ANIMALES - ecosistema -> Busqueda avanzada
+//TODO ANIMALES - origen -> Busqueda avanzada
 db.animales.find({ "detalles.origen": {
     $regex: /África/i
 } })
