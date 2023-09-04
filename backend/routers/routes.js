@@ -1,5 +1,5 @@
 import express from "express";
-import { limitQuery } from "../helpers/limit.js";
+import { limitQuery } from "../helpers/others/limit.js";
 
 import { getAnimales, postAnimales } from '../controllers/v1/animales.js';
 import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/v1/empleados.js';

@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { appAnimales, appEmpleados,appInfraestructura,appHMant,appHMed,appEventos, appFinanzas,appOrg} from './routers/routes.js';
-import { appToken, appVerify} from './helpers/jwt.js';
+import { appToken, appVerify} from './helpers/token/jwt.js';
 
 dotenv.config();
 let app = express();
