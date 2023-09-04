@@ -35,7 +35,7 @@ db.createCollection("empleados", {
           description: "especialidad",
         },
         telefono: {
-          bsonType: ["int", "null"],
+          bsonType: ["string", "null"],
           description: "telefono",
         },
         email: {
