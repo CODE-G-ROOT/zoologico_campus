@@ -2,7 +2,7 @@ import express from "express";
 import { limitQuery } from "../helpers/limit.js";
 import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/empleados.js';
 import { getInfra, postInfra } from "../controllers/infraestructura.js";
-import { getHM, postHM } from "../controllers/historial_mantenimiento.js";
+import { deleteHM, getHM, getHMId, postHM } from "../controllers/historial_mantenimiento.js";
 import { getHMed, postHMed } from "../controllers/historial_medico.js";
 import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
 import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/finanzas.js";
@@ -47,7 +47,9 @@ appInfraestructura.get("/infra",limitQuery(),getInfra);
 appInfraestructura.post("/infra", limitQuery(),postInfra);
 
 appHMant.get("/hmant",limitQuery(),getHM);
+appHMant.get("/hmant/:id",limitQuery(),getHMId);
 appHMant.post("/hmant",limitQuery(),postHM);
+appHMant.delete("/hmant/:id",limitQuery(),deleteHM);
 
 appHMed.get("/hmed",limitQuery(),getHMed);
 appHMed.post("/hmed",limitQuery(),postHMed);
