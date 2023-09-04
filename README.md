@@ -1,8 +1,10 @@
 
 
-# Zoológico - Api de prueba
+<h1 align="center">Zoológico - Api de prueba</h1>
 
-![Become an API expert while creating some epic memes - Admin coding](https://i0.wp.com/www.admincoding.com/wp-content/uploads/2020/05/APIs-everywhere.jpg?resize=735%2C499&ssl=1)
+<div align="center">
+<img style="border-radius: 50px; cursor: none;" src="https://i0.wp.com/www.admincoding.com/wp-content/uploads/2020/05/APIs-everywhere.jpg?resize=735%2C499&ssl=1" alt="Descripción de la imagen">
+</div>
 
 Esta API de Zoológico de Prueba es una herramienta diseñada para simular el funcionamiento básico de un zoológico. Permite a los desarrolladores experimentar con la gestión de animales, hábitats y visitantes en un  entorno controlado y ficticio.
 
