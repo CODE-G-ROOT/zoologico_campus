@@ -149,17 +149,6 @@ db.empleados.insertMany([
     especialidad: "Marketing digital",
     telefono: 789123457,
     email: "jose@example.com"
-  },
-  {
-    id: 10,
-    nombre_completo: "María López",
-    cc: 987654321,
-    cargo: "Diseñador de Interiores",
-    fecha_contratacion: new Date("2023-09-05"),
-    salario: 2900.25,
-    especialidad: "Diseño de espacios",
-    telefono: 789123654,
-    email: "maria@example.com"
   }
 ]);
 
