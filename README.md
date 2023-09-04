@@ -2,11 +2,21 @@
 
 # Zoológico - Api de prueba
 
-[Investigación](./assets/REAME.md)
+![Become an API expert while creating some epic memes - Admin coding](https://i0.wp.com/www.admincoding.com/wp-content/uploads/2020/05/APIs-everywhere.jpg?resize=735%2C499&ssl=1)
+
+Esta API de Zoológico de Prueba es una herramienta diseñada para simular el funcionamiento básico de un zoológico. Permite a los desarrolladores experimentar con la gestión de animales, hábitats y visitantes en un  entorno controlado y ficticio.
+
+## Menú
+
+[Investigación](./assets/readme/README.md)
 
 [Despliege](#despliege)
 
 [Uso](#uso)
+
+[¿Cómo utilizar los métodos?](#¿cómo-utilizar-los-métodos?)
+
+<br>
 
 ## Despliege:
 
@@ -31,6 +41,10 @@ Seguir los pasos para le buen funcionamiento de esta herramienta
    `npm run dev`
 
 6. Habiendo hecho esto te aparecerá en la terminal la url de tu api. Más adelante te explicaremos como usarla.
+
+   <br>
+
+   #### 
 
 ## Uso:
 
@@ -63,13 +77,273 @@ Para poder acceder a la información almacenada en esta api, es importante tener
 
    Este es el listado de las rutas a las que puedes acceder, pero claro, para cada una de ellas necesitas un token en especifico:
 
-1. **animales** : `/animales`
-   1. las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente
-   2. 
-2. **empleados**: `/empleado`
-3. **eventos**: `/infra`
-4. **finanzas**: `/hmant`
-5. **historial_mantenimiento**: `/hmed`
-6. **historial_medico**: `/eventos`
-7. **infraestructura**: `/finanzas`
-8. **organizaciones**: `/org`
+<br>
+
+<hr>
+
+#### 
+
+### **animales** : `/animales`
+
+>  las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente de la siguiente forma: http://tushost:4000/animales/all
+
+​	**GET** :  `/all`
+
+​	**Post** : `/animales`
+
+<br>
+
+<hr>
+
+### **empleados**: `/empleado`
+
+**GET**: 
+
+- `/empl`: Obtiene toda la informacíón de la api
+- `/empl/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/empl` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**          | Tipo de dato                               |
+  | ------------------ | ------------------------------------------ |
+  | id                 | Number (32 bits)                           |
+  | nombre_completo    | String                                     |
+  | cc                 | Number ( 32 bits)                          |
+  | cargo              | String                                     |
+  | fecha_contratacion | IsoDate: **ejem**: new Date("2023-07-15"), |
+  | salario            | Double                                     |
+  | especialidad       | String                                     |
+  | telefono           | Int o Null                                 |
+  | email              | String o Null                              |
+
+**PUT**
+
+- `/empl/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/empl/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+#### 
+
+### **eventos**: `/eventos`
+
+**GET**: 
+
+- `/infra`: Obtiene toda la informacíón de la api
+- `/infra/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/infra` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**              | Tipo de dato     |
+  | ---------------------- | ---------------- |
+  | id                     | Number (32 bits) |
+  | nombre                 | string           |
+  | descripcion            | string           |
+  | horario                | object           |
+  | animales_participantes | array o null     |
+
+**PUT**
+
+- `/infra/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/infra/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+#### 
+
+### **finanzas**: `/finanzas`
+
+**GET**: 
+
+- `/finanzas`: Obtiene toda la informacíón de la api
+- `/finanzas/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/finanzas` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**   | Tipo de dato     |
+  | ----------- | ---------------- |
+  | id          | Number (32 bits) |
+  | tipo        | String           |
+  | descripcion | string           |
+  | cantidad    | Number           |
+  | fecha       | ISODate          |
+
+**PUT**
+
+- `/finanzas/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/finanzas/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+#### 
+
+### **historial_mantenimiento**: `/hmant`
+
+**GET**: 
+
+- `/hmant`: Obtiene toda la informacíón de la api
+- `/hmant/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/empl` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**       | Tipo de dato     |
+  | --------------- | ---------------- |
+  | id              | Number (32 bits) |
+  | area            | String           |
+  | nombre_empleado | string           |
+  | descripcion     | string           |
+  | fecha           | ISODate          |
+
+**PUT**
+
+- `/hmant/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/hmant/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+#### 
+
+### **historial_medico**: `/hmed`
+
+**GET**: 
+
+- `/hmed`: Obtiene toda la informacíón de la api
+- `/hmed/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/hmed` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**          | Tipo de dato     |
+  | ------------------ | ---------------- |
+  | id                 | Number (32 bits) |
+  | nombre_animal      | String           |
+  | nombre_veterinario | string           |
+  | descripcion        | Number           |
+  | fecha              | ISODate          |
+
+**PUT**
+
+- `/hmed/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/hmant/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+#### 
+
+### **infraestructura**: `/infra`
+
+**GET**: 
+
+- `/infra`: Obtiene toda la informacíón de la api
+- `/infra/:id ` Realiza una consulta a un documento a un documento en específico por medio de su identificador
+
+**POST**
+
+- `/infra` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**   | Tipo de dato     |
+  | ----------- | ---------------- |
+  | id          | Number (32 bits) |
+  | tipo        | String           |
+  | descripcion | string           |
+  | cantidad    | Number           |
+  | fecha       | ISODate          |
+
+**PUT**
+
+- `/infra/:id` Acualiza un documento, para ello necesitas agregar el campo que deseas actualizar y su nuevo valor
+
+**DELETE**
+
+-  `/infra/:id` Elimina un documento en específico por medio de su identificador
+
+<br>
+
+<hr>
+
+### **organizaciones**: `/org`
+
+**GET**: 
+
+- `/org`: Obtiene toda la informacíón de la api
+
+**POST**
+
+- `/empl` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+
+  | **Campo**   | Tipo de dato     |
+  | ----------- | ---------------- |
+  | id          | Number (32 bits) |
+  | tipo        | String           |
+  | descripcion | string           |
+  | cantidad    | Number           |
+  | fecha       | ISODate          |
+
+<br>
+
+<br>
+
+<hr>
+
+# ¿Cómo utilizar los métodos?
+
+**Get** Para utilizar el metodo Get es muy facil, simplemente es pararte en la selección de tipo de consulta y donde está la [flechita](/home/dev/snap/typora/82/.config/Typora/typora-user-images/image-20230904001435724.png) seleccionas el tipo de metodo que deseas utilizar, en este caso es el metodo **GET** el cual es el que más se usa para optener información
+
+![image-20230904001435724](./assets/img/readme.png)
+
+**POST**: Para utilizar el metodo post también es muy simple, para ello primero hay que conocer como están construidos o apodados los campos de los documentos de la colección a la que deseas insertar el documento valga la redundacia. Para ello vamos a tomar el ejemplo de historial de mantenimiento: Esta colección tiene los siguientes datos:
+
+| CAMPO       | TIPO-DE-DATO       |
+| ----------- | ------------------ |
+| id          | Interger (32 bits) |
+| area        | string             |
+| descripcion | string             |
+| fecha       | ISODate            |
+| nombre      | string             |
+
+Teniendo esto en cuenta ahora vamos a insertar los datos en el **"body"** de la misma forma que está en la tabla, sin embargo hay que tener en cuenta que:
+
+1. Debemos remplazar los "tipos de dato" por un dato que cumpla con la condición
+2. La inserción de datos debe estar encapsulada como un JSON
+
+Habiendo hecho esto ya podemos enviar la data, si esta está bien estructurada y todos los campos cumples los requerimientos, pasarán perfectamente, si no, te saldrá un error, suerte
+
+
+
+**UPDATE**: Para utilzar este meto es muy simple, solo necesitamos dos cosas, el identificador del documento que se a actualzar y el campo o los campos a los que queremos agregares o cambiarles los datos que tienen. Claro, cumpliendo con las restricciones explicadas en el punto anterior
+
+**DELETE**: Este es el más facil de todos, pero **¡OJO! ** Hay que tener cuidado, si lo utilzas mal, perderás toda la informacíon de dicho documento. Pero bueno, para utilizarso solo basta con agregar el identificador único del documento que se desee eliminar, y listo, esto es todo amigos, hasta la próxima....
