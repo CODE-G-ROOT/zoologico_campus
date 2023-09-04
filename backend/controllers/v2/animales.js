@@ -282,7 +282,7 @@ export async function getAnimales_busqueda_simple_edad(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = parseInt(req.params.animal);
+        let query = parseInt(req.params.edad);
 
         let results = await colleccion.aggregate([
             {
@@ -353,7 +353,7 @@ export async function getAnimales_busqueda_simple_genero(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.gen;
 
         let results = await colleccion.aggregate([
             {
@@ -428,7 +428,7 @@ export async function getAnimales_busqueda_simple_habitat_zoo(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.habitad;
 
         let results = await colleccion.aggregate([
             {
@@ -503,7 +503,7 @@ export async function getAnimales_busqueda_simple_Salud(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.salud;
 
         let results = await colleccion.aggregate([
             {
@@ -600,7 +600,7 @@ export async function getAnimales_busqueda_Avanzada_id(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.id;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({
@@ -627,7 +627,7 @@ export async function getAnimales_busqueda_Avanzada_clase(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.clase;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({
@@ -654,7 +654,7 @@ export async function getAnimales_busqueda_Avanzada_raza(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.raza;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({
@@ -681,7 +681,7 @@ export async function getAnimales_busqueda_Avanzada_especie(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.espe;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({
@@ -707,7 +707,7 @@ export async function getAnimales_busqueda_Avanzada_tipo_animal(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.tipo;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({
@@ -733,7 +733,7 @@ export async function getAnimales_busqueda_Avanzada_vertebrado(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.vertebrado;
         if (query != (true || false)) {
             return res.status(404).send({
                 status: 404, message: "Param not found"
@@ -764,7 +764,7 @@ export async function getAnimales_busqueda_Avanzada_tipo_habitad(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.tipo_habitad;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.tipo_habitat": {
@@ -788,7 +788,7 @@ export async function getAnimales_busqueda_Avanzada_habitad_natual(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.habi_nat;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.distribicion_geografica.habitat_natural": {
@@ -811,7 +811,7 @@ export async function getAnimales_busqueda_Avanzada_region_geografica(req, res) 
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.reg_geo;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.distribicion_geografica.region_geografica": {
@@ -835,7 +835,7 @@ export async function getAnimales_busqueda_Avanzada_pais(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.pais;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.distribicion_geografica.pais": {
@@ -859,34 +859,10 @@ export async function getAnimales_busqueda_Avanzada_continente(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.cont;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.distribicion_geografica.continente": {
-            $regex: `/${query}/i`
-        } })
-            .sort({ id: 1 })
-            .toArray();
-
-        results.length > 0
-            ? res.send(results).status(200)
-            : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
-    } catch (error) {
-        console.log(error); // Agregar este console.log para imprimir detalles del error
-        res.status(500).send({ status: 500, message: "Internal Server Error :(" });
-    }
-}
-
-export async function getAnimales_busqueda_Avanzada_continente(req, res) {
-    try {
-        let db = await con();
-        console.log("get function");
-        let colleccion = db.collection("animales");
-
-        let query = req.params.animal;
-
-        let results = await colleccion.use('zoologico');
-        db.animales.find({ "detalles.distribicion_geografica.ecosistema": {
             $regex: `/${query}/i`
         } })
             .sort({ id: 1 })
@@ -907,7 +883,7 @@ export async function getAnimales_busqueda_Avanzada_ecosistema(req, res) {
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.eco;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.estado_conservacion": {
@@ -931,7 +907,7 @@ export async function getAnimales_busqueda_Avanzada_estado_conservacion(req, res
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.est_conser;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.estado_conservacion": {
@@ -955,7 +931,7 @@ export async function getAnimales_busqueda_Avanzada_estado_depredadores(req, res
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.dep;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.depredadores": {
@@ -979,7 +955,7 @@ export async function getAnimales_busqueda_Avanzada_alimento_principal(req, res)
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.ali_prin;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.alimento_principal": {
@@ -1003,7 +979,7 @@ export async function getAnimales_busqueda_Avanzada_importancia_ecologica(req, r
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.impor_eco;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.importancia_ecologica": {
@@ -1021,13 +997,13 @@ export async function getAnimales_busqueda_Avanzada_importancia_ecologica(req, r
     }
 }
 
-export async function getAnimales_busqueda_Avanzada_origen(req, res) {
+export async function getAnimales_busqueda_Avanzada_origen(req, res) {ge
     try {
         let db = await con();
         console.log("get function");
         let colleccion = db.collection("animales");
 
-        let query = req.params.animal;
+        let query = req.params.ori;
 
         let results = await colleccion.use('zoologico');
         db.animales.find({ "detalles.origen": {
