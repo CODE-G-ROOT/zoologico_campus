@@ -87,12 +87,38 @@ Para poder acceder a la información almacenada en esta api, es importante tener
 
 ### **animales** : `/animales`
 
->  las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente de la siguiente forma: http://tushost:4000/animales/all
+>  las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente de la siguiente forma: http://tushost:4000/animales/animales
 
-​	**GET** :  `/all`
+​	**GET** 
 
-​	**Post** : `/animales`
+-`/animales`:Obtener todos los animales registrados
+-`/animales/:id`: Obtiene el animal con ese ID
 
+​	**POST**
+
+-`/animales`:crear una nueva entidad animal 
+Claro, aquí tienes la tabla para tu README.md con las variables y sus tipos de datos:
+
+| **Campo**            | Tipo de dato                                   |
+| -------------------- | ---------------------------------------------- |
+| id                   | Number (32 bits)                               |
+| nombre_animal        | String                                         |
+| animal               | String                                         |
+| edad_animal          | Number                                         |
+| genero_animal        | String                                         |
+| habitat_zoo          | Number                                         |
+| cuidados             | String                                         |
+| relacion_animales    | String                                         |
+| estado_salud         | String                                         |
+| historia             | String                                         |
+| interaccion_humanos  | String                                         |
+| enlaces_geneticos    | String                                         |
+
+Puedes copiar y pegar esta tabla en tu README.md y reemplazar los nombres de las variables y los tipos de datos según sea necesario. Esto ayudará a los usuarios de tu API a comprender la estructura de los datos que deben enviar o recibir al interactuar con ella.
+
+**DELETE**
+
+-`/animales/:id`: Elimina el animal con ese ID
 <br>
 
 <hr>
@@ -303,9 +329,7 @@ Para poder acceder a la información almacenada en esta api, es importante tener
 
 - `/org`: Obtiene toda la informacíón de la api
 
-- **GET** `/org/:id`
-
-Este endpoint permite consultar una organización específica por su identificador (ID).
+- `/org/:id`: Este endpoint permite consultar una organización específica por su identificador (ID).
 
 **POST**
 
