@@ -55,9 +55,9 @@ export async function deleteHM(req, res){
         let colleccion = db.collection("historial_mantenimiento");
         const hmId = parseInt(req.params.id);
 
-        const finanza = await colleccion.findOne({ id: hmId });
+        const hmant = await colleccion.findOne({ id: hmId });
 
-        if (!finanza) {
+        if (!hmant) {
             return res.status(404).send({ status: 404, message: "historial mantenimiento no encontrado" });
         }
 
