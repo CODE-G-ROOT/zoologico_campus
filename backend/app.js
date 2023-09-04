@@ -9,7 +9,7 @@ let app = express();
 app.use(express.json());
 //app.use("/productos",appVerify, appBodegas);
 app.use("/token", appToken);
-app.use("/animales",appVerify,appAnimales);
+app.use("/,",appVerify,appAnimales);
 app.use("/empleado",appVerify,appEmpleados);
 app.use("/infra",appVerify,appInfraestructura)
 app.use("/hmant",appVerify,appHMant)

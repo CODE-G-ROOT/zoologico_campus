@@ -31,4 +31,4 @@ export async function postAnimales(req, res){
         console.error(error);
         res.status(500).send({ status:500, message: "Internal Server Error :(" });
     }
-};X
+};

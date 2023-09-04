@@ -1,20 +1,14 @@
 import express from "express";
 import { limitQuery } from "../helpers/limit.js";
-import { getAnimales } from '../controllers/v1/animales.js'; //Esto es temporal mientras se implementan las versiones
-import { getEmpleados, postEmpl } from '../controllers/v1/empleados.js'; //Esto es temporal mientras se implementan las versiones
-import { getInfra, postInfra } from "../controllers/v1/infraestructura.js"; //Esto es temporal mientras se implementan las versiones
-import { getHM, postHM } from "../controllers/v1/historial_mantenimiento.js"; //Esto es temporal mientras se implementan las versiones
-import { getHMed, postHMed } from "../controllers/v1/historial_medico.js"; //Esto es temporal mientras se implementan las versiones
-import { getEventos, postEventos } from "../controllers/v1/eventos.js"; //Esto es temporal mientras se implementan las versiones
-import { getFinanzas, postFinanzas } from "../controllers/v1/finanzas.js"; //Esto es temporal mientras se implementan las versiones
-import { getOrg, postOrg } from "../controllers/v1/organizaciones.js"; //Esto es temporal mientras se implementan las versiones
-import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/empleados.js';
-import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/infraestructura.js";
-import { deleteHM, getHM, getHMId, postHM } from "../controllers/historial_mantenimiento.js";
-import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/historial_medico.js";
-import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/eventos.js";
-import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/finanzas.js";
-import { getOrg,postOrg } from "../controllers/organizaciones.js";
+import { getAnimales, postAnimales } from '../controllers/v1/animales.js'; //Esto es temporal mientras se implementan las versiones
+import { deleteEmpleado, getEmpleadoId, getEmpleados,postEmpl, putEmpleado } from '../controllers/v1/empleados.js';
+import { deleteInfra, getInfra, getInfraId, postInfra } from "../controllers/v1/infraestructura.js";
+import { deleteHM, getHM, getHMId, postHM } from "../controllers/v1/historial_mantenimiento.js";
+import { deleteHMed, getHMed, getHMedId, postHMed } from "../controllers/v1/historial_medico.js";
+import { deleteEventos, getEventoId, getEventos, postEventos } from "../controllers/v1/eventos.js";
+import { deleteFinanza, getFinanzaId, getFinanzas, postFinanzas } from "../controllers/v1/finanzas.js";
+import { getOrg,postOrg } from "../controllers/v1/organizaciones.js";
+
 
 //import {appValidateEmpl,middlewareEmpl,DTOEmpl} from '../middleware/empleados.js'
 
@@ -46,22 +40,8 @@ const appFinanzas = configurarApp();
 const appOrg = configurarApp();
 
 appAnimales.get("/all", limitQuery(), getAnimales);
-appAnimales.post("/animales", limitQuery(), postEmpl); //PENDIENTE POR TESTEAR
+appAnimales.post("/animales", limitQuery(), postAnimales); //PENDIENTE POR TESTEAR
 
-appEmpleados.get("/empl", limitQuery(), getEmpleados);
-appEmpleados.post("/empl", limitQuery(), postEmpl);
-
-appInfraestructura.get("/infra", limitQuery(), getInfra);
-appInfraestructura.post("/infra", limitQuery(), postInfra);
-
-appHMant.get("/hmant", limitQuery(), getHM);
-appHMant.post("/hmant", limitQuery(), postHM);
-
-appHMed.get("/hmed", limitQuery(), getHMed);
-appHMed.post("/hmed", limitQuery(), postHMed);
-
-appEventos.get("/eventos", limitQuery(), getEventos);
-appEventos.post("/eventos", limitQuery(), postEventos);
 appEmpleados.get("/empl", limitQuery(),getEmpleados);
 appEmpleados.get("/empl/:id",limitQuery(),getEmpleadoId);
 appEmpleados.post("/empl",limitQuery(),postEmpl);
@@ -99,9 +79,9 @@ appFinanzas.post('/finanzas', limitQuery(), postFinanzas);
 appOrg.get("/org", limitQuery(), getOrg);
 appOrg.post("/org", limitQuery(), postOrg)
 
-export {  appAnimales,  appEmpleados, appInfraestructura, appHMant, appHMed, appEventos, appFinanzas, appOrg };
 
 export {
+  appAnimales,
   appEmpleados,
   appInfraestructura,
   appHMant,
