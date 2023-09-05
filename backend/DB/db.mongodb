@@ -8,7 +8,7 @@ db.createCollection("empleados", {
       required: ["id", "nombre_completo", "cc", "cargo", "salario", "especialidad"],
       properties: {
         id: {
-          bsonType: "int",
+          bsonType: "number",
           description: "ID del empleado",
         },
         nombre_completo: {
@@ -16,7 +16,7 @@ db.createCollection("empleados", {
           description: "Nombre del empleado",
         },
         cc: {
-          bsonType: "int",
+          bsonType: "number",
           description: "cc del usuario",
         },
         cargo: {
@@ -28,7 +28,7 @@ db.createCollection("empleados", {
           description: "Fecha de fecha_contratacion",
         },
         salario: {
-          bsonType: "double",
+          bsonType: "number",
           description: "salario",
         },
         especialidad: {
@@ -36,7 +36,7 @@ db.createCollection("empleados", {
           description: "especialidad",
         },
         telefono: {
-          bsonType: ["string", "null"],
+          bsonType: ['number', "null"],
           description: "telefono",
         },
         email: {
