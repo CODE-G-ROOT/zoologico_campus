@@ -17,7 +17,7 @@ export async function con() {
     };
 
     const client = await MongoClient.connect(uri, options);
-   // console.log(client);
+    
     return client.db(`${process.env.ATLAS_DB}`);
   } catch (error) {
     return {status: 500, message: error}, Promise.reject(error);;

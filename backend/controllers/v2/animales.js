@@ -4,9 +4,9 @@ import { ObjectId } from "mongodb";
 export async function getAnimales_busqueda_simple(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
-        console.log(colleccion);
+        
 
         let results = await colleccion.aggregate([
             {
@@ -67,7 +67,7 @@ export async function getAnimales_busqueda_simple(req, res) {
 export async function getAnimales_busqueda_simple_id(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.id;
@@ -133,7 +133,7 @@ export async function getAnimales_busqueda_simple_id(req, res) {
 export async function getAnimales_busqueda_simple_name(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.name;
@@ -207,7 +207,7 @@ export async function getAnimales_busqueda_simple_name(req, res) {
 export async function getAnimales_busqueda_simple_animal(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.animal;
@@ -281,7 +281,7 @@ export async function getAnimales_busqueda_simple_animal(req, res) {
 export async function getAnimales_busqueda_simple_edad(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = parseInt(req.params.edad);
@@ -352,7 +352,7 @@ export async function getAnimales_busqueda_simple_edad(req, res) {
 export async function getAnimales_busqueda_simple_genero(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.gen;
@@ -427,7 +427,7 @@ export async function getAnimales_busqueda_simple_genero(req, res) {
 export async function getAnimales_busqueda_simple_habitat_zoo(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.habitad;
@@ -502,7 +502,7 @@ export async function getAnimales_busqueda_simple_habitat_zoo(req, res) {
 export async function getAnimales_busqueda_simple_Salud(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.salud;
@@ -577,7 +577,7 @@ export async function getAnimales_busqueda_simple_Salud(req, res) {
 export async function getAnimales_busqueda_Avanzada(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         // let query = req.params.animal;
@@ -599,7 +599,7 @@ export async function getAnimales_busqueda_Avanzada(req, res) {
 export async function getAnimales_busqueda_Avanzada_id(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.id;
@@ -626,7 +626,7 @@ export async function getAnimales_busqueda_Avanzada_id(req, res) {
 export async function getAnimales_busqueda_Avanzada_clase(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.clase;
@@ -653,7 +653,7 @@ export async function getAnimales_busqueda_Avanzada_clase(req, res) {
 export async function getAnimales_busqueda_Avanzada_raza(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.raza;
@@ -680,7 +680,7 @@ export async function getAnimales_busqueda_Avanzada_raza(req, res) {
 export async function getAnimales_busqueda_Avanzada_especie(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.espe;
@@ -706,7 +706,7 @@ export async function getAnimales_busqueda_Avanzada_especie(req, res) {
 export async function getAnimales_busqueda_Avanzada_tipo_animal(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.tipo;
@@ -732,7 +732,7 @@ export async function getAnimales_busqueda_Avanzada_tipo_animal(req, res) {
 export async function getAnimales_busqueda_Avanzada_vertebrado(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.vertebrado;
@@ -763,7 +763,7 @@ export async function getAnimales_busqueda_Avanzada_vertebrado(req, res) {
 export async function getAnimales_busqueda_Avanzada_tipo_habitad(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.tipo_habitad;
@@ -787,7 +787,7 @@ export async function getAnimales_busqueda_Avanzada_tipo_habitad(req, res) {
 export async function getAnimales_busqueda_Avanzada_habitad_natual(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.habi_nat;
@@ -810,7 +810,7 @@ export async function getAnimales_busqueda_Avanzada_habitad_natual(req, res) {
 export async function getAnimales_busqueda_Avanzada_region_geografica(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.reg_geo;
@@ -834,7 +834,7 @@ export async function getAnimales_busqueda_Avanzada_region_geografica(req, res) 
 export async function getAnimales_busqueda_Avanzada_pais(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.pais;
@@ -858,7 +858,7 @@ export async function getAnimales_busqueda_Avanzada_pais(req, res) {
 export async function getAnimales_busqueda_Avanzada_continente(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.cont;
@@ -882,7 +882,7 @@ export async function getAnimales_busqueda_Avanzada_continente(req, res) {
 export async function getAnimales_busqueda_Avanzada_ecosistema(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.eco;
@@ -906,7 +906,7 @@ export async function getAnimales_busqueda_Avanzada_ecosistema(req, res) {
 export async function getAnimales_busqueda_Avanzada_estado_conservacion(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.est_conser;
@@ -930,7 +930,7 @@ export async function getAnimales_busqueda_Avanzada_estado_conservacion(req, res
 export async function getAnimales_busqueda_Avanzada_estado_depredadores(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.dep;
@@ -954,7 +954,7 @@ export async function getAnimales_busqueda_Avanzada_estado_depredadores(req, res
 export async function getAnimales_busqueda_Avanzada_alimento_principal(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.ali_prin;
@@ -978,7 +978,7 @@ export async function getAnimales_busqueda_Avanzada_alimento_principal(req, res)
 export async function getAnimales_busqueda_Avanzada_importancia_ecologica(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.impor_eco;
@@ -1002,7 +1002,7 @@ export async function getAnimales_busqueda_Avanzada_importancia_ecologica(req, r
 export async function getAnimales_busqueda_Avanzada_origen(req, res) {ge
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("animales");
 
         let query = req.params.ori;

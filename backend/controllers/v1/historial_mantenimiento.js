@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export async function getHM(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("historial_mantenimiento");
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "historial mantenimiento no encontrado" })
@@ -62,7 +62,7 @@ export async function deleteHM(req, res){
         }
 
         const deletionResult = await colleccion.deleteOne({ id: hmId });
-        //console.log(deletionResult);
+        
         res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);

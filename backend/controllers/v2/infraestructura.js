@@ -1,1 +1,1 @@
-console.log();
+console.log('El apartado de infraestrucura V2 será implementado en futuras veriones de codigo');

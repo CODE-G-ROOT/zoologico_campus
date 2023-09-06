@@ -9,11 +9,10 @@ export async function getAnimales(req, res) {
 
         let results = await colleccion.find({ id: 1 }).sort({ id: 1 }).toArray();
         
-        console.log(results);
         
         results.length > 0 
             ? res.send(results).status(200) 
-            : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
+            : res.status(404).send({ status: 404, message: "Found But Without Contain :(" });
 
     } catch (error) {
         console.log(error); // Agregar este console.log para imprimir detalles del error

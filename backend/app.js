@@ -20,13 +20,14 @@ app.use(express.json());
 app.use("/token", appToken); 
 
 app.use("/animales",appVerify,appAnimales);
-app.use("/empleado",appVerify,appEmpleados);
+app.use("/empleados",appVerify,appEmpleados);
 app.use("/infra",appVerify,appInfraestructura)
 app.use("/hmant",appVerify,appHMant)
 app.use("/hmed",appVerify,appHMed)
 app.use("/eventos",appVerify,appEventos)
 app.use("/finanzas",appVerify,appFinanzas)
 app.use("/org",appVerify,appOrg)
+
 
 const server_config = JSON.parse(process.env.MY_SERVER)
 app.listen(server_config, ()=>{

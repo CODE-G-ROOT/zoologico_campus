@@ -4,9 +4,9 @@ import { limitQuery } from "../helpers/others/limit.js";
 
 const appInfraestructura = configurarApp();
 
-appInfraestructura.get("/infra",limitQuery(),getInfra);
-appInfraestructura.get("/infra/:id", limitQuery(),getInfraId);
-appInfraestructura.post("/infra", limitQuery(),postInfra);
-appInfraestructura.delete("/infra/:id",limitQuery(),deleteInfra);
+appInfraestructura.get("/",limitQuery(),getInfra);
+appInfraestructura.get("/:id", limitQuery(),getInfraId);
+appInfraestructura.post("/", limitQuery(),postInfra);
+appInfraestructura.delete("/delete/:id",limitQuery(),deleteInfra);
 
 export default appInfraestructura

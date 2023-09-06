@@ -4,9 +4,9 @@ import configurarApp from "./config_app.js";
 
 const appHMant = configurarApp();
 
-appHMant.get("/hmant",limitQuery(),getHM);
-appHMant.get("/hmant/:id",limitQuery(),getHMId);
-appHMant.post("/hmant",limitQuery(),postHM);
-appHMant.delete("/hmant/:id",limitQuery(),deleteHM);
+appHMant.get("/",limitQuery(),getHM);
+appHMant.get("/:id",limitQuery(),getHMId);
+appHMant.post("/",limitQuery(),postHM);
+appHMant.delete("/delete/:id",limitQuery(),deleteHM);
 
 export default appHMant;

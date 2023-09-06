@@ -13,23 +13,6 @@ export async function getEmpleados(req, res) {
     }
 }
 
-/* export async function getEmpleadoId(req,res){
-    try{
-        let db = await con();
-        let colleccion = db.collection("empleados");
-        const empleadoId = req.params.id;
-        let results = await colleccion.findOne({empleadoId});
-        //const results = await collection.findOne({ id: empleadoId });
-
-        results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Empleado no encontrado :(" })
-    
-        res.send(results).status(200);
-    } catch(error){
-        console.log(error); // Agregar este console.log para imprimir detalles del error
-        res.status(500).send({ status: 500, message: "Internal Server Error :(" });
-    }
-} */
-
 export async function getEmpleadoId(req, res) {
     try {
         const db = await con();

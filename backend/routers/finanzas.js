@@ -4,9 +4,9 @@ import configurarApp from "./config_app.js";
 
 const appFinanzas = configurarApp();
 
-appFinanzas.get("/finanzas",limitQuery(),getFinanzas);
-appFinanzas.get("/finanzas/:id",limitQuery(),getFinanzaId);
-appFinanzas.post('/finanzas',limitQuery(),postFinanzas);
-appFinanzas.delete("/finanzas/:id",limitQuery(),deleteFinanza);
+appFinanzas.get("/",limitQuery(),getFinanzas);
+appFinanzas.get("/:id",limitQuery(),getFinanzaId);
+appFinanzas.post('/',limitQuery(),postFinanzas);
+appFinanzas.delete("/delete/:id",limitQuery(),deleteFinanza);
 
 export default appFinanzas;

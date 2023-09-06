@@ -4,9 +4,9 @@ import configurarApp from "./config_app.js";
 
 const appHMed = configurarApp();
 
-appHMed.get("/hmed",limitQuery(),getHMed);
-appHMed.get("/hmed/:id",limitQuery(),getHMedId);
-appHMed.post("/hmed",limitQuery(),postHMed);
-appHMed.delete("/hmed/:id",limitQuery(),deleteHMed)
+appHMed.get("/",limitQuery(),getHMed);
+appHMed.get("/:id",limitQuery(),getHMedId);
+appHMed.post("/",limitQuery(),postHMed);
+appHMed.delete("/delete/:id",limitQuery(),deleteHMed)
 
 export default appHMed;

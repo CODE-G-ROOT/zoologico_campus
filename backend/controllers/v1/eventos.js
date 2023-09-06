@@ -53,7 +53,7 @@ export async function postEventos(req, res){
 export async function deleteEventos(req, res){
     try{
         let db = await con();
-        console.log("connect delete");
+
         let colleccion = db.collection("eventos");
         const eventoId = parseInt(req.params.id);
 
@@ -64,7 +64,7 @@ export async function deleteEventos(req, res){
         }
 
         const deletionResult = await colleccion.deleteOne({ id: eventoId });
-        //console.log(deletionResult);
+
         res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);

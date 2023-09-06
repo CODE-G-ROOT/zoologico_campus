@@ -61,7 +61,7 @@ export async function deleteHMed(req, res){
         }
 
         const deletionResult = await colleccion.deleteOne({ id: hmedId });
-        //console.log(deletionResult);
+        
         res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);

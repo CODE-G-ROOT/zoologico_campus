@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export async function getEventos(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
         results.length > 0 ? res.send(results).status(200) : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
@@ -17,7 +17,7 @@ export async function getEventos(req, res) {
 export async function getEventos_id(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = parseInt(req.params.id);
@@ -41,7 +41,7 @@ export async function getEventos_id(req, res) {
 export async function getEventos_nombre_show(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = req.params.name;
@@ -67,7 +67,7 @@ export async function getEventos_nombre_show(req, res) {
 export async function getEventos_encargado(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = req.params.encarg;
@@ -93,7 +93,7 @@ export async function getEventos_encargado(req, res) {
 export async function getEventos_horario_dias(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = {
@@ -127,7 +127,7 @@ export async function getEventos_horario_dias(req, res) {
 export async function getEventos_animales_participantes(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = req.params.ani_p;
@@ -154,7 +154,7 @@ export async function getEventos_animales_participantes(req, res) {
 export async function getEventos_animales_participantes_grupo(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("eventos");
         let results = await colleccion.use('zoologico');
         let query = [req.params.ani_p, req.params.ani_p2]

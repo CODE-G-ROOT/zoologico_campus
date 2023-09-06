@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export async function getInfra(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+
         let colleccion = db.collection("infraestructura");
         let results = await colleccion.find({}).toArray();
 
@@ -67,7 +67,7 @@ export async function deleteInfra(req, res){
         }
 
         const deletionResult = await colleccion.deleteOne({ id: infraId });
-        //console.log(deletionResult);
+        
         res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);

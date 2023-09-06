@@ -4,7 +4,7 @@ import configurarApp from "./config_app.js";
 
 const appOrg = configurarApp();
 
-appOrg.get("/org",limitQuery(),getOrg);
-appOrg.post("/org",limitQuery(),postOrg);
+appOrg.get("/",limitQuery(),getOrg);
+appOrg.post("/",limitQuery(),postOrg);
 
 export default appOrg;

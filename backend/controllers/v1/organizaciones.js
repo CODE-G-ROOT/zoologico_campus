@@ -63,7 +63,7 @@ export async function deleteOrg(req, res){
         }
 
         const deletionResult = await colleccion.deleteOne({ id: orgId });
-        //console.log(deletionResult);
+        
         res.status(200).send({ status:200, message: "Deleted" });
     } catch (error) {
         console.error(error);

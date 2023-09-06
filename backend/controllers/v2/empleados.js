@@ -4,7 +4,7 @@ import { ObjectId } from "mongodb";
 export async function getEmpleados(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
 
         let results = await colleccion.find({}).sort({ fecha: -1 }).toArray();
@@ -22,7 +22,7 @@ export async function getEmpleados(req, res) {
 export async function getEmpleados_id(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = parseInt(req.params.id);
 
@@ -41,7 +41,7 @@ export async function getEmpleados_id(req, res) {
 export async function getEmpleados_nombre(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = req.params.name;
 
@@ -64,7 +64,7 @@ export async function getEmpleados_nombre(req, res) {
 export async function getEmpleados_cargo(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = req.params.carg;
 
@@ -86,7 +86,7 @@ export async function getEmpleados_cargo(req, res) {
 export async function getEmpleados_salario(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = parseInt(req.params.sal);
 
@@ -108,7 +108,7 @@ export async function getEmpleados_salario(req, res) {
 export async function getEmpleados_nombre_cargo(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = {
             nombre_completo: { $regex: `/${req.params.name_compl}/i` },//AQUÍ VA EL NOMBRE
@@ -130,7 +130,7 @@ export async function getEmpleados_nombre_cargo(req, res) {
 export async function getEmpleados_nombre_salario(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = {
             nombre_completo: { $regex: `/${req.params.name_compl}/i` },//AQUÍ VA EL NOMBRE
@@ -152,7 +152,7 @@ export async function getEmpleados_nombre_salario(req, res) {
 export async function getEmpleados_nombre_salario_cargo(req, res) {
     try {
         let db = await con();
-        console.log("get function");
+        
         let colleccion = db.collection("empleados");
         let query = {
             nombre_completo: { $regex: `/${req.params.name_compl}/i` },//AQUÍ VA EL NOMBRE

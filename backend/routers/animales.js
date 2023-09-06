@@ -34,8 +34,8 @@ import {
 
 const appAnimales = configurarApp();
 
-appAnimales.get("/all", limitQuery(), getAnimales);
-appAnimales.post("/animales", limitQuery(), postAnimales); //PENDIENTE POR TESTEAR
+appAnimales.get("/", limitQuery(), getAnimales_busqueda_simple);
+appAnimales.post("/", limitQuery(), postAnimales); //PENDIENTE POR TESTEAR
 
 export { configurarApp };
 export default appAnimales;

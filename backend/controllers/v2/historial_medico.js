@@ -1,1 +1,1 @@
-console.log();
+console.log('El apartado de historial_medico V2 será implementado en futuras veriones de codigo');
