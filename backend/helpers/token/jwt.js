@@ -1,16 +1,17 @@
-import 'reflect-metadata';
 import { plainToClass, classToPlain } from 'class-transformer';
-import dotenv from 'dotenv';
-import { Router } from 'express';
 import { SignJWT, jwtVerify } from 'jose';
-import { animales } from "../../models/animales.js";
-import { empleados } from "../../models/empleados.js";
-import { infraestrutura} from "../../models/infraestructura.js"
+import { Router } from 'express';
+import dotenv from 'dotenv';
+import 'reflect-metadata';
+
 import { historial_mantenimiento } from '../../models/historial_mantenimiento.js'
 import { historial_medico } from '../../models/historial_medico.js'
-import { eventos } from '../../models/evento.js'
-import { finanzas } from '../../models/finanzas.js'
+import { infraestrutura} from "../../models/infraestructura.js"
 import { organizaciones } from '../../models/organizaciones.js'
+import { empleados } from "../../models/empleados.js";
+import { animales } from "../../models/animales.js";
+import { finanzas } from '../../models/finanzas.js'
+import { eventos } from '../../models/evento.js'
 
 dotenv.config("../");
 const appToken = Router();
@@ -18,14 +19,14 @@ const appVerify = Router();
 
 const DTO = (p1) => {
     const match = {
-        'animales': animales,
-        'empleados': empleados,
         'infraestructura':infraestrutura,
         'hmant':historial_mantenimiento,
         'hmed':historial_medico,
-        'eventos':eventos,
-        'finanzas':finanzas,
+        'empleados': empleados,
+        'animales': animales,
         'org':organizaciones,
+        'finanzas':finanzas,
+        'eventos':eventos,
         'animal':animales
     };
     const inst = match[p1];
@@ -70,4 +71,4 @@ export {
     appToken,
     appVerify,
     DTO
-}
+};
