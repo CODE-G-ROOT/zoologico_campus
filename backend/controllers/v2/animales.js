@@ -6,6 +6,7 @@ export async function getAnimales_busqueda_simple(req, res) {
         let db = await con();
         console.log("get function");
         let colleccion = db.collection("animales");
+        console.log(colleccion);
 
         let results = await colleccion.aggregate([
             {
@@ -17,7 +18,7 @@ export async function getAnimales_busqueda_simple(req, res) {
                 }
             },
             {
-                $unwind: $habitat
+                $unwind: "$habitat"
             },
             {
                 $group: {
@@ -50,12 +51,13 @@ export async function getAnimales_busqueda_simple(req, res) {
                 }
             }
         ])
-            .sort({ id: 1 })
-            .toArray();;
+        .sort({ id: 1 })
+        .toArray();
 
         results.length > 0
             ? res.send(results).status(200)
             : res.status(404).send({ status: 404, message: "Found But Without Contain :(" })
+
     } catch (error) {
         console.log(error); // Agregar este console.log para imprimir detalles del error
         res.status(500).send({ status: 500, message: "Internal Server Error :(" });

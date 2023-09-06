@@ -497,6 +497,7 @@ db.organizaciones.find({
     .toArray();
 
 
+
 //TODO ANIMALES -  Busqueda basica
 use('zoologico');
 db.animales.aggregate([
@@ -542,8 +543,8 @@ db.animales.aggregate([
         }
     }
 ])
-    .sort({ id: 1 })
-    .toArray();
+.sort({ id: 1 })
+.toArray();
 
 //TODO ANIMALES -> Busqueda basica - ID 
 use('zoologico');
@@ -913,9 +914,8 @@ db.animales.aggregate([
         }
     }
 ])
-    .sort({ id: 1 })
-    .toArray();
-
+.sort({ id: 1 })
+.toArray();
 
 
 //TODO ANIMALES - ID -> Busqueda avanzada
