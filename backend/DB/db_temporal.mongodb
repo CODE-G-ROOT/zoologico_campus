@@ -1,0 +1,2469 @@
+use('zoologico')
+
+
+function siguiente_id(coleccion) {
+    const sequenceDocument = db.counters.findOneAndUpdate(
+        { _id: `${coleccion}id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return sequenceDocument.sequence_value;
+};
+
+// COLECCIÓN DE AUTOINCREMENTABLES  
+db.createCollection("counters");
+db.counters.insertMany([
+    { _id: "empleados_id", sequence_value: 0 },
+    { _id: "infraestructura_id", sequence_value: 0 },
+    { _id: "historial_mantenimiento_id", sequence_value: 0 },
+    { _id: "historial_medico_id", sequence_value: 0 },
+    { _id: "eventos_id", sequence_value: 0 },
+    { _id: "finanzas_id", sequence_value: 0 },
+    { _id: "organizaciones_id", sequence_value: 0 },
+    { _id: "animales_id", sequence_value: 0 },
+]);
+
+db.createCollection("usuarios", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["user", "password", "rol"],
+            properties: {
+                user: {
+                    bsonType: "string",
+                    description: "El campo 'usuario' es requerido"
+                },
+                password: {
+                    bsonType: "string",
+                    description: "El campo 'password' es requerido"
+                },
+                rol: {
+                    bsonType: "string",
+                    description: "Rol del user"
+                }
+            }
+        }
+    }
+});
+db.usuarios.insertMany([
+    {
+        user: "sudo",
+        password: "sudo_123",
+        rol: "admin"
+    },
+    {
+        user: "gerente",
+        password: "gerente_321",
+        rol: "gerente"
+    },
+    {
+        user: "visitante",
+        password: "visitante123",
+        rol: "visitante"
+    },
+    {
+        user: "empleado_comun",
+        password: "empleado_comun_comun",
+        rol: "empleado"
+    }
+]);
+
+db.createCollection("empleados", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "cc", "email"],
+            properties: {
+                id: {
+                    bsonType: "number",
+                    description: "id field is required and must be type number"
+                },
+                nombre_completo: {
+                    bsonType: "string",
+                    description: "nombre field is required and must be type number"
+                },
+                cc: {
+                    bsonType: "number",
+                    description: "cc field is required and must be type number",
+                },
+                cargo: {
+                    bsonType: "string",
+                    description: "cargo field must be type string",
+                },
+                departamento: {
+                    bsonType: "number",
+                    description: "departamento field must be type string",
+                },
+                fecha_contratacion: {
+                    bsonType: "date",
+                    description: "fecha_con must be type date or null",
+                },
+                salario: {
+                    bsonType: "number",
+                    description: "salario field must be type number",
+                },
+                especialidad: {
+                    bsonType: "string",
+                    description: "especialidad field must be type string",
+                },
+                funcion: {
+                    bsonType: "string",
+                    description: "funcion field must be type string",
+                },
+                telefono: {
+                    bsonType: ['number', "null"],
+                    description: "telefono field must be type number or null",
+                },
+                email: {
+                    bsonType: ["string", "null"],
+                    description: "email field ir required and must be type string or null",
+                },
+            }
+        }
+    }
+});
+db.empleados.insertMany([
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: 'Juan Pérez',
+        cc: 123456779,
+        cargo: 'Dirección',
+        departamento: "Cuidado Animal",
+        especialidad: 'Biología, veterinaria',
+        funcion: "Planificación, supervisión y funcionamiento del zoológico",
+        fecha_contratacion: new Date("2020-01-01"),
+        salario: 3000.02,
+        telefono: 555512345,
+        email: 'juan@example.com',
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Ana Gómez",
+        cc: 987654321,
+        cargo: "Administradora",
+        departamento: "Departamento Veterinario",
+        especialidad: "Administración, marketing, finanzas",
+        funcion: "Gestión de las finanzas, el marketing y otras tareas administrativas",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2500.5,
+        telefono: 777777777,
+        email: "ana@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carlos Rodríguez",
+        cc: 456789123,
+        cargo: "Educador",
+        departamento: "Diseño y Exhibiciones",
+        especialidad: "Educación, ciencias, biología",
+        funcion: "Actividades educativas y de divulgación",
+        fecha_contratacion: new Date("2023-08-01"),
+        salario: 3500.75,
+        telefono: 888888888,
+        email: "carlos@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "María González",
+        cc: 789123456,
+        cargo: "Cuidador",
+        departamento: "Enriquecimiento Animal",
+        especialidad: "Zoología, biología",
+        funcion: "Cuidado y bienestar de los animales",
+        fecha_contratacion: new Date("2023-09-05"),
+        salario: 2800.25,
+        telefono: 1023456789,
+        email: "maria@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Luis Martínez",
+        cc: 666999777,
+        cargo: "Cuidador",
+        departamento: "Educación y Conservación",
+        especialidad: "Educación, ciencias, biología",
+        funcion: "Desarrollo de programas educativos y de conservación",
+        fecha_contratacion: new Date("2023-09-05"),
+        salario: 3200.25,
+        telefono: 987654322,
+        email: "luis@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Elena Fernández",
+        cc: 123456799,
+        cargo: "Investigador",
+        departamento: "Investigación y Desarrollo",
+        especialidad: "Biología, veterinaria",
+        funcion: "Investigación científica",
+        fecha_contratacion: new Date("2023-06-15"),
+        salario: 2800.5,
+        telefono: 555555554,
+        email: "elena@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Andrés López",
+        cc: 987654320,
+        cargo: "Mantenimiento",
+        departamento: "Mantenimiento y Paisajismo",
+        especialidad: "Construcción, electricidad, mecánica",
+        funcion: 'Mantenimiento y limpieza de las instalaciones',
+        fecha_contratacion: new Date("2023-08-10"),
+        salario: 3000.75,
+        telefono: 987654322,
+        email: "andres@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Laura Pérez",
+        cc: 456789023,
+        cargo: "Nutricionistas",
+        especialidad: "	Nutrición",
+        departamento: "Alimentación y Nutrición",
+        funcion: 'Desarrollo de dietas para los animales',
+        fecha_contratacion: new Date("2023-07-01"),
+        salario: 3400.25,
+        telefono: 888888845,
+        email: "laura@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "José González",
+        cc: 789120456,
+        cargo: "Biólogo",
+        departamento: "Conservación de Especies",
+        especialidad: "Biología, conservación",
+        funcion: "Investigación y conservación de especies",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2600.5,
+        telefono: 789123457,
+        email: "jose@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Juan Pérez",
+        cc: 123456789,
+        cargo: "Seguridad",
+        departamento: "Seguridad",
+        especialidad: "Seguridad",
+        funcion: "Seguridad",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2000.0,
+        telefono: 123456789,
+        email: "empleado1@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "María González",
+        cc: 234567890,
+        cargo: "Veterinarios",
+        departamento: "Bienestar Animal",
+        especialidad: "Medicina veterinaria",
+        funcion: "Atención veterinaria a los animales",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2200.0,
+        telefono: 234567890,
+        email: "empleado2@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Luis Rodríguez",
+        cc: 345678901,
+        cargo: "Comunicadores",
+        departamento: "Marketing y Relaciones Públicas",
+        especialidad: "Comunicación",
+        funcion: "Promoción del zoológico",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1800.0,
+        telefono: 345678901,
+        email: "empleado3@example.com"
+    },
+
+
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Ana Martínez",
+        cc: 456789012,
+        cargo: "Veterinarios",
+        departamento: "Área de Exhibición",
+        especialidad: "Medicina veterinaria",
+        funcion: "Atención veterinaria a los animales de exhibición",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2200.0,
+        telefono: 456789012,
+        email: "empleado4@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carlos Sánchez",
+        cc: 567890123,
+        cargo: "Botánicos",
+        departamento: "Jardín Botánico",
+        especialidad: "Botánica",
+        funcion: "Mantenimiento y cuidado de las plantas",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1900.0,
+        telefono: 567890123,
+        email: "empleado5@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Laura López",
+        cc: 678901234,
+        cargo: "Biólogos",
+        departamento: "Acuario",
+        especialidad: "Biología marina",
+        funcion: "Cuidado de los animales marinos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2100.0,
+        telefono: 678901234,
+        email: "empleado6@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Pedro Ramírez",
+        cc: 789012345,
+        cargo: "Ornitólogos",
+        departamento: "Aviario",
+        especialidad: "Ornitología",
+        funcion: "Cuidado de las aves",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2000.0,
+        telefono: 789012345,
+        email: "empleado7@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Rosa Torres",
+        cc: 890123456,
+        cargo: "Biólogos",
+        departamento: "Hábitats Nocturnos",
+        especialidad: "Biología nocturna",
+        funcion: "Cuidado de los animales nocturnos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2100.0,
+        telefono: 890123456,
+        email: "empleado8@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Javier Fernández",
+        cc: 901234567,
+        cargo: "Biólogos",
+        departamento: "Zona de Animales Exóticos",
+        especialidad: "Biología de especies exóticas",
+        funcion: "Cuidado de los animales exóticos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2100.0,
+        telefono: 901234567,
+        email: "empleado9@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Isabel Castro",
+        cc: 123345678,
+        cargo: "Biólogos",
+        departamento: "Zona de Animales en Peligro",
+        especialidad: "Biología de especies en peligro",
+        funcion: "Cuidado de los animales en peligro",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2100.0,
+        telefono: 123345678,
+        email: "empleado10@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Martín Ruiz",
+        cc: 234456789,
+        cargo: "Biólogos",
+        departamento: "Zona de Aves Rapaces",
+        especialidad: "Biología de aves rapaces",
+        funcion: "Cuidado de las aves rapaces",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2100.0,
+        telefono: 234456789,
+        email: "empleado11@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carmen Morales",
+        cc: 345567890,
+        cargo: "Educador",
+        departamento: "Granja Educativa",
+        especialidad: "Educación, ciencias, biología",
+        funcion: "Desarrollo y ejecución de programas educativos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1900.0,
+        telefono: 345567890,
+        email: "empleado12@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Sergio Ortega",
+        cc: 456678901,
+        cargo: "Personal de mantenimiento",
+        departamento: "Área de Recreación y Juegos",
+        especialidad: "Mantenimiento",
+        funcion: "Mantenimiento y limpieza del área de recreación y juegos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1700.0,
+        telefono: 456678901,
+        email: "empleado13@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Elena García",
+        cc: 567789012,
+        cargo: "Personal de mantenimiento",
+        departamento: "Área de Exhibición",
+        especialidad: "Mantenimiento",
+        funcion: "Mantenimiento y limpieza del área de exhibición",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1700.0,
+        telefono: 567789012,
+        email: "empleado14@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Jorge Díaz",
+        cc: 678890123,
+        cargo: "Personal de mantenimiento",
+        departamento: "Zona de Alimentación y Descanso",
+        especialidad: "Mantenimiento",
+        funcion: "Mantenimiento y limpieza de la zona de alimentación y descanso",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1700.0,
+        telefono: 678890123,
+        email: "empleado15@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Patricia Silva",
+        cc: 789901234,
+        cargo: "Educador",
+        departamento: "Centro de Educación y Exhibiciones Interactivas",
+        especialidad: "Educación, ciencias, biología",
+        funcion: "Desarrollo y ejecución de programas educativos",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 1900.0,
+        telefono: 789901234,
+        email: "empleado16@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Diego Torres",
+        cc: 890012345,
+        cargo: "Personal técnico",
+        departamento: "Área de Espectáculos y Presentaciones",
+        especialidad: "Iluminación, sonido, tecnología",
+        funcion: "Operación de equipos y sistemas para espectáculos y presentaciones",
+        fecha_contratacion: new Date("2023-06-10"),
+        salario: 2200.0,
+        telefono: 890012345,
+        email: "empleado17@example.com"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "María López",
+        cc: 987654301,
+        cargo: "Zoólogo",
+        departamento: "Sabana Africana",
+        especialidad: "Biología de la sabana",
+        funcion: "Estudio y cuidado de animales de la sabana",
+        fecha_contratacion: new Date("2023-06-15"),
+        salario: 2400.0,
+        telefono: 987654322,
+        email: "maria@example.com",
+        habitat: "Sabana Africana"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carlos Martínez",
+        cc: 123450789,
+        cargo: "Ecologista",
+        departamento: "Bosque Tropical",
+        especialidad: "Ecología de bosques tropicales",
+        funcion: "Conservación y estudio de bosques tropicales",
+        fecha_contratacion: new Date("2023-06-20"),
+        salario: 2300.0,
+        telefono: 123456790,
+        email: "carlos@example.com",
+        habitat: "Bosque Tropical"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Ana Rodríguez",
+        cc: 234560890,
+        cargo: "Biología Marina",
+        departamento: "Selva Amazónica",
+        especialidad: "Biología acuática",
+        funcion: "Estudio de vida acuática en la selva amazónica",
+        fecha_contratacion: new Date("2023-06-25"),
+        salario: 2450.0,
+        telefono: 234567891,
+        email: "ana@example.com",
+        habitat: "Selva Amazónica"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Pedro Sánchez",
+        cc: 345670901,
+        cargo: "Ornitólogo",
+        departamento: "Selva Africana",
+        especialidad: "Ornitología",
+        funcion: "Cuidado y estudio de aves en la selva africana",
+        fecha_contratacion: new Date("2023-06-30"),
+        salario: 2350.0,
+        telefono: 345678902,
+        email: "pedro@example.com",
+        habitat: "Selva Africana"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Laura Pérez",
+        cc: 456789022,
+        cargo: "Veterinario",
+        departamento: "Montaña de los Gorilas",
+        especialidad: "Medicina veterinaria de gorilas",
+        funcion: "Cuidado y salud de gorilas en la montaña",
+        fecha_contratacion: new Date("2023-07-05"),
+        salario: 2550.0,
+        telefono: 456789013,
+        email: "laura@example.com",
+        habitat: "Montaña de los Gorilas"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carlos López",
+        cc: 567800123,
+        cargo: "Biología Marina",
+        departamento: "Pingüinera",
+        especialidad: "Biología marina",
+        funcion: "Estudio y cuidado de pingüinos",
+        fecha_contratacion: new Date("2023-07-10"),
+        salario: 2500.0,
+        telefono: 567890124,
+        email: "carlos.l@example.com",
+        habitat: "Pingüinera"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Sofía Torres",
+        cc: 678900234,
+        cargo: "Zoólogo",
+        departamento: "Bosque de Lobos",
+        especialidad: "Estudio de lobos",
+        funcion: "Conservación y estudio de lobos",
+        fecha_contratacion: new Date("2023-07-15"),
+        salario: 2350.0,
+        telefono: 678901235,
+        email: "sofia@example.com",
+        habitat: "Bosque de Lobos"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Diego Rodríguez",
+        cc: 780012345,
+        cargo: "Ecologista",
+        departamento: "Tierras Tropicales",
+        especialidad: "Ecología de tierras tropicales",
+        funcion: "Conservación y estudio de tierras tropicales",
+        fecha_contratacion: new Date("2023-07-20"),
+        salario: 2300.0,
+        telefono: 789012346,
+        email: "diego@example.com",
+        habitat: "Tierras Tropicales"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Isabella Martínez",
+        cc: 890103456,
+        cargo: "Veterinario",
+        departamento: "Leopardo de las Nieves",
+        especialidad: "Medicina veterinaria de leopardos",
+        funcion: "Cuidado y salud de leopardos de las nieves",
+        fecha_contratacion: new Date("2023-07-25"),
+        salario: 2550.0,
+        telefono: 890123457,
+        email: "isabella@example.com",
+        habitat: "Leopardo de las Nieves"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Lucas Sánchez",
+        cc: 901034567,
+        cargo: "Biología Marina",
+        departamento: "Pradera Africana",
+        especialidad: "Biología marina en praderas",
+        funcion: "Estudio y cuidado de vida marina en praderas",
+        fecha_contratacion: new Date("2023-07-30"),
+        salario: 2500.0,
+        telefono: 901234568,
+        email: "lucas@example.com",
+        habitat: "Pradera Africana"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "Carolina Torres",
+        cc: 1122334455,
+        cargo: "Ornitóloga",
+        departamento: "Jardín de Pavos Reales",
+        especialidad: "Ornitología de pavos reales",
+        funcion: "Cuidado y estudio de pavos reales",
+        fecha_contratacion: new Date("2023-08-05"),
+        salario: 2350.0,
+        telefono: 1122334456,
+        email: "carolina@example.com",
+        habitat: "Jardín de Pavos Reales"
+    },
+    {
+        id: siguiente_id("empleados"),
+        nombre_completo: "David López",
+        cc: 2233445566,
+        cargo: "Zoólogo",
+        departamento: "Terrario de Iguanas",
+        especialidad: "Estudio de iguanas",
+        funcion: "Conservación y estudio de iguanas",
+        fecha_contratacion: new Date("2023-08-10"),
+        salario: 2300.0,
+        telefono: 2233445567,
+        email: "david@example.com",
+        habitat: "Terrario de Iguanas"
+    }
+
+]);
+
+db.createCollection('infraestructura', {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: [
+                "id",
+                'tipo',
+            ],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "zone indentify must be integer type"
+                },
+                cc_encargado: {
+                    bsonType: "number",
+                    description: "encargado must be string type"
+                },
+                tipo: {
+                    bsonType: "string",
+                    enum: [
+                        'Departamento',
+                        'Area',
+                        'Habitat'
+                    ],
+                    description: "place name must be string type"
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "description place must be string type"
+                },
+                dimensiones: {
+                    bsonType: "string",
+                    description: 'dimensiones de la estructura'
+                }
+            }
+        }
+    }
+});
+//TODO: DEPARTAMENTOS COMPLETO
+db.infraestructura.insertMany([
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Cuidado Animal',
+        cc_encargado: 123456779,
+        tipo: 'Departamento',
+        descripcion: 'Equipo encargado del cuidado y bienestar de los animales en el zoológico.',
+        dimensiones: '1000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Departamento Veterinario',
+        tipo: 'Departamento',
+        cc_encargado: 987654321,
+        descripcion: 'Profesionales de la salud animal que garantizan el bienestar médico de los habitantes del zoológico.',
+        dimensiones: '800 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Diseño y Exhibiciones',
+        tipo: 'Departamento',
+        cc_encargado: 456789123,
+        descripcion: 'Expertos en crear hábitats y entornos que imitan los lugares naturales de los animales.',
+        dimensiones: '1200 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Enriquecimiento Animal',
+        tipo: 'Departamento',
+        cc_encargado: 789123456,
+        descripcion: 'Personal que desarrolla actividades y estímulos para mantener a los animales activos y saludables.',
+        dimensiones: '600 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Educación y Conservación',
+        tipo: 'Departamento',
+        cc_encargado: 666999777,
+        descripcion: 'Equipo responsable de la educación de los visitantes y de la promoción de la conservación de la vida silvestre.',
+        dimensiones: '1500 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Investigación y Desarrollo',
+        tipo: 'Departamento',
+        cc_encargado: 123456799,
+        descripcion: 'Científicos que estudian el comportamiento y necesidades de los animales, y desarrollan nuevos métodos de cuidado.',
+        dimensiones: '700 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Mantenimiento y Paisajismo',
+        tipo: 'Departamento',
+        cc_encargado: 987654320,
+        descripcion: 'Equipo que se encarga de mantener los espacios limpios, seguros y estéticamente atractivos para los visitantes.',
+        dimensiones: '2000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Alimentación y Nutrición',
+        tipo: 'Departamento',
+        cc_encargado: 456789023,
+        descripcion: 'Profesionales que planifican y preparan las dietas adecuadas para los diferentes animales.',
+        dimensiones: '500 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Conservación de Especies',
+        tipo: 'Departamento',
+        cc_encargado: 789120456,
+        descripcion: 'Especialistas que trabajan para la reproducción y conservación de especies en peligro de extinción.',
+        dimensiones: '1000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Seguridad',
+        tipo: 'Departamento',
+        cc_encargado: 123456789,
+        descripcion: '	Personal de seguridad que garantiza la seguridad de visitantes y trabajadores cerca de los animales.',
+        dimensiones: '800 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Bienestar Animal',
+        tipo: 'Departamento',
+        cc_encargado: 234567890,
+        descripcion: 'Responsables de monitorear el bienestar físico y emocional de los animales para asegurarse de su salud.',
+        dimensiones: '1200 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Marketing y Relaciones Públicas',
+        tipo: 'Departamento',
+        cc_encargado: 345678901,
+        descripcion: 'Equipo que comunica información sobre el zoológico y sus habitantes al público.',
+        dimensiones: '600 m²',
+    },
+
+]);
+
+//TODO: AREAS COMPLETO
+db.infraestructura.insertMany([
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Área de Exhibición',
+        tipo: 'Area',
+        cc_encargado: 456789012,
+        descripcion: 'Espacio para mostrar diversas especies de animales en hábitats diseñados.',
+        dimensiones: '2000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Jardín Botánico',
+        tipo: 'Area',
+        cc_encargado: 567890123,
+        descripcion: 'Colección de plantas y vegetación de diferentes partes del mundo.',
+        dimensiones: '1500 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Acuario',
+        tipo: 'Area',
+        cc_encargado: 678901234,
+        descripcion: 'Zona con tanques y piscinas para exhibir una variedad de vida acuática.',
+        dimensiones: '1000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Aviario',
+        tipo: 'Area',
+        cc_encargado: 789012345,
+        descripcion: 'Área con estructuras para exhibir diversas especies de aves.',
+        dimensiones: '1200 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Hábitats Nocturnos',
+        tipo: 'Area',
+        cc_encargado: 890123456,
+        descripcion: '	Espacio oscuro para exhibir animales activos durante la noche.',
+        dimensiones: '800 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Zona de Animales Exóticos',
+        tipo: 'Area',
+        cc_encargado: 901234567,
+        descripcion: 'Exhibición de animales de regiones lejanas y exóticas.',
+        dimensiones: '1800 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Zona de Animales en Peligro',
+        tipo: 'Area',
+        cc_encargado: 123345678,
+        descripcion: 'Área dedicada a especies en peligro de extinción y sus necesidades de conservación.',
+        dimensiones: '1600 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Zona de Aves Rapaces',
+        tipo: 'Area',
+        cc_encargado: 234456789,
+        descripcion: 'Espacio para aves de presa con vuelos y demostraciones.',
+        dimensiones: '1400 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Granja Educativa',
+        tipo: 'Area',
+        cc_encargado: 345567890,
+        descripcion: '	Área interactiva para aprender sobre animales domesticados y la vida en la granja.',
+        dimensiones: '1200 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Área de Recreación y Juegos',
+        tipo: 'Area',
+        cc_encargado: 456678901,
+        descripcion: 'Espacio para actividades recreativas y juegos para los visitantes.',
+        dimensiones: '2500 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Área de Exhibición',
+        tipo: 'Area',
+        cc_encargado: 567789012,
+        descripcion: 'Exhibición de animales en hábitats naturales o diseñados.',
+        dimensiones: '1800 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Zona de Alimentación y Descanso',
+        tipo: 'Area',
+        cc_encargado: 678890123,
+        descripcion: 'Área con restaurantes, cafeterías y lugares para descansar.',
+        dimensiones: '2000 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Centro de Educación y Exhibiciones Interactivas',
+        tipo: 'Area',
+        cc_encargado: 789901234,
+        descripcion: 'Espacio educativo con presentaciones interactivas y programas educativos.',
+        dimensiones: '1500 m²',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Área de Espectáculos y Presentaciones',
+        tipo: 'Area',
+        cc_encargado: 890012345,
+        descripcion: 'Escenario para espectáculos con animales y presentaciones.',
+        dimensiones: '1800 m²',
+    }
+]);
+
+//TODO: HÁBITADS COMPLETO
+db.infraestructura.insertMany([
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Sabana Africana',
+        tipo: 'Habitat',
+        cc_encargado: 987654301,
+        tipo_habitad: 'Sabana',
+        descripcion: 'Amplia sabana africana con pastizales y árboles dispersos.',
+        dimensiones: '200 x 300',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Bosque Tropical',
+        tipo: 'Habitat',
+        cc_encargado: 123450789,
+        tipo_habitad: 'Bosque',
+        descripcion: 'Bosque tropical con densa vegetación y riachuelos.',
+        dimensiones: '150 x 200',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Selva Amazónica',
+        tipo: 'Habitat',
+        cc_encargado: 234560890,
+        tipo_habitad: 'Selva',
+        descripcion: 'Selva tropical del Amazonas con vegetación exuberante.',
+        dimensiones: '100 x 150',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Selva Africana',
+        tipo: 'Habitat',
+        cc_encargado: 345670901,
+        tipo_habitad: 'Selva',
+        descripcion: 'Selva africana con árboles altos y enredaderas.',
+        dimensiones: '120 x 180',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Montaña de los Gorilas',
+        tipo: 'Habitat',
+        cc_encargado: 456789022,
+        tipo_habitad: 'Montaña',
+        descripcion: 'Montaña rocosa con vegetación alpina.',
+        dimensiones: '80 x 100',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Pingüinera',
+        tipo: 'Habitat',
+        cc_encargado: 567800123,
+        tipo_habitad: 'Zona Acuática',
+        descripcion: 'Piscina con agua fría y plataformas rocosas.',
+        dimensiones: 'Piscina grande',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Bosque de Lobos',
+        tipo: 'Habitat',
+        cc_encargado: 678900234,
+        tipo_habitad: 'Bosque',
+        descripcion: 'Bosque de coníferas con áreas de escondite.',
+        dimensiones: '60 x 80',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Tierras Tropicales',
+        tipo: 'Habitat',
+        cc_encargado: 780012345,
+        tipo_habitad: 'Bosque',
+        descripcion: 'Área tropical con selva y ríos.',
+        dimensiones: '200 x 250',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Leopardo de las Nieves',
+        tipo: 'Habitat',
+        cc_encargado: 890103456,
+        tipo_habitad: 'Bosque',
+        descripcion: 'Bosque frío con nieve y rocas.',
+        dimensiones: '100 x 150',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Pradera Africana',
+        tipo: 'Habitat',
+        cc_encargado: 901034567,
+        tipo_habitad: 'Pradera',
+        descripcion: 'Amplia pradera africana con hierba alta.',
+        dimensiones: '300 x 400',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Jardín de Pavos Reales',
+        tipo: 'Habitat',
+        cc_encargado: 1122334455,
+        tipo_habitad: 'Jardín',
+        descripcion: 'Jardín decorado con áreas de exhibición.',
+        dimensiones: '30 x 40',
+    },
+    {
+        id: siguiente_id("infraestructura"),
+        nombre_lugar: 'Terrario de Iguanas',
+        tipo: 'Habitat',
+        cc_encargado: 2233445566,
+        tipo_habitad: 'Terrario',
+        descripcion: 'Espacio cerrado con rocas y vegetación.',
+        dimensiones: 'Varios',
+    },
+]);
+
+//TODO: MANTENIMIENTO COMPLETO
+db.createCollection("historial_mantenimiento", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "ID",
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                area: {
+                    bsonType: "string",
+                    description: "dimensiones",
+                },
+                cc_empleado: {
+                    bsonType: "number",
+                    description: "departamentos",
+                },
+                fecha: {
+                    bsonType: "date",
+                    description: "fecha"
+                }
+            }
+        }
+    },
+});
+db.historial_mantenimiento.insertMany([
+    {
+        id: siguiente_id("historial_mantenimiento"),
+        descripcion: "Reparación de valla en el hábitat de leones.",
+        area: "Hábitats Nocturnos",
+        cc_empleado: 456678901,
+        fecha: new Date("2023-08-15T10:00:00Z")
+    },
+    {
+        id: siguiente_id("historial_mantenimiento"),
+        descripcion: "Limpieza y mantenimiento de tanques de peces en el acuario.",
+        area: "Acuario",
+        cc_empleado: 567789012,
+        fecha: new Date("2023-08-20T14:30:00Z")
+    }
+]);
+// db.historial_mantenimiento.insertOne();
+
+
+//TODO: HISTORIAL MEDICO COMPLETO
+db.createCollection("historial_medico", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "ID",
+                },
+                nombre_animal: {
+                    bsonType: "int",
+                    description: "asfd",
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                nombre_veterinario: {
+                    bsonType: "string",
+                    description: "nombre_empleado",
+                },
+                cc_veterinario: {
+                    bsonType: "number",
+                    description: "cc_veterinario must be type number",
+                },
+                fecha: {
+                    bsonType: "date",
+                    description: "fecha"
+                }
+            }
+        }
+    },
+});
+db.historial_medico.insertMany([
+    {
+        id: 1,
+        animal: 3,
+        cc_veterinario: 890103456,
+        descripcion: "Examen médico de rutina.",
+        fecha: new Date("2023-08-15T09:30:00Z")
+    },
+    {
+        id: 2,
+        animal: 11,
+        cc_veterinario: 890103456,
+        descripcion: "Tratamiento para infección respiratoria.",
+        fecha: new Date("2023-09-17T11:00:00Z")
+    },
+    {
+        id: 3,
+        animal: 1,
+        cc_veterinario: 890103456,
+        descripcion: "Control de parásitos y vacunación.",
+        fecha: new Date("2023-10-20T14:00:00Z")
+    },
+    {
+        id: 4,
+        animal: 4,
+        cc_veterinario: 456789022,
+        descripcion: "Cirugía para extracción de dientes.",
+        fecha: new Date("2023-08-22T10:30:00Z")
+    },
+    {
+        id: 5,
+        animal: 9,
+        cc_veterinario: 456789022,
+        descripcion: "Radiografía para evaluar fractura.",
+        fecha: new Date("2023-08-25T15:45:00Z")
+    },
+    {
+        id: 6,
+        animal: 18,
+        cc_veterinario: 456789022,
+        descripcion: "Tratamiento de herida en pata.",
+        fecha: new Date("2023-08-28T12:15:00Z")
+    },
+    {
+        id: 7,
+        animal: 19,
+        cc_veterinario: 456789012,
+        descripcion: "Consulta por problemas gastrointestinales.",
+        fecha: new Date("2023-08-30T13:30:00Z")
+    },
+    {
+        id: 8,
+        animal: 12,
+        cc_veterinario: 456789012,
+        descripcion: "Examen preoperatorio para castración.",
+        fecha: new Date("2023-09-02T11:45:00Z")
+    },
+    {
+        id: 9,
+        animal: 20,
+        cc_veterinario: 456789012,
+        descripcion: "Control de peso y recomendaciones dietéticas.",
+        fecha: new Date("2023-12-05T10:00:00Z")
+    },
+    {
+        id: 10,
+        animal: 14,
+        cc_veterinario: 234567890,
+        descripcion: "Examen ocular y administración de medicamentos.",
+        fecha: new Date("2023-12-08T14:15:00Z")
+    }
+]);
+
+//TODO: EVENTOS COMPLETO
+db.createCollection("eventos", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id"],
+            properties: {
+                id: {
+                    bsonType: "number",
+                    description: "ID",
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "nombre",
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                cc_encargado: {
+                    bsonType: "number",
+                    description: "encargado",
+                },
+                horario: {
+                    bsonType: "object",
+                    properties: {
+                        dias: {
+                            bsonType: 'string',
+                            enum: [
+                                'Lunes a Viernes',
+                                'Sábados y Domingos',
+                                'Todos los Días',
+                                "Lunes",
+                                "Martes",
+                                "Miércoles",
+                                "Jueves",
+                                "Viernes",
+                                "Sábado",
+                                "Sábados",
+                                "Domingo",
+                                "Domingos",
+                            ],
+                            description: 'horario del evento'
+                        },
+                        hora: {
+                            bsonType: 'string',
+                            enum: [
+                                '8:00 AM - 11:00 AM',
+                                '9:00 AM - 5:00 PM',
+                                '9:00 AM - 6:00 PM',
+                                '9:00 AM - 7:00 PM',
+                                '9:00 AM - 1:00 PM',
+                                '1:00 PM - 5:00 PM',
+                                '10:00 AM - 6:00 PM',
+                                '10:00 AM - 2:00 PM',
+                                '2:00 PM - 6:00 PM',
+                                '6:00 PM - 10:00 PM'
+                            ],
+                            description: 'horario de horas del evento'
+                        }
+                    }
+                },
+                animales_participantes: {
+                    bsonType: ['array', 'null'],
+                    description: 'animales que participan en el evento'
+                }
+            }
+        }
+    },
+});
+
+db.eventos.insertMany([
+    {
+        id: siguiente_id("eventos"),
+        nombre: "Show de Aves Exóticas",
+        descripcion: "Disfruta de un emocionante espectáculo con aves de todo el mundo.",
+        cc_encargado: 456789123,
+        horario: {
+            dias: "Sábados y Domingos",
+            hora: "10:00 AM - 2:00 PM"
+        },
+        animales_participantes: ["Aguila Calva", "Guacamaya Azul", "Cacatúa"]
+    },
+    {
+        id: siguiente_id("eventos"),
+        nombre: "Visita Nocturna",
+        descripcion: "Explora el zoológico en la noche y descubre cómo se comportan los animales en la oscuridad.",
+        cc_encargado: 345567890,
+        horario: {
+            dias: "Viernes",
+            hora: "6:00 PM - 10:00 PM"
+        },
+        animales_participantes: ["Búho Real", "Lince Ibérico", "Murciélagos"]
+    },
+    {
+        id: siguiente_id("eventos"),
+        nombre: "Carrera por la Conservación",
+        descripcion: "Participa en una carrera a favor de la conservación de especies en peligro de extinción.",
+        cc_encargado: 456789123,
+        horario: {
+            dias: "Domingos",
+            hora: "8:00 AM - 11:00 AM"
+        },
+        animales_participantes: ["Tigre de Bengala", "Gorila de Montaña", "Cóndor de los Andes"]
+    },
+    {
+        id: siguiente_id("eventos"),
+        nombre: "Festival de la Primavera",
+        descripcion: "Celebra la llegada de la primavera con actividades para toda la familia.",
+        cc_encargado: 789901234,
+        horario: {
+            dias: "Todos los Días",
+            hora: "9:00 AM - 6:00 PM"
+        },
+        animales_participantes: ["Pavos Reales", "Mariposas Monarca", "Conejos"]
+    }
+]);
+
+
+//TODO: FINANZAS COMPLETO
+db.createCollection("finanzas", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "fecha"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "ID",
+                },
+                tipo: {
+                    bsonType: "string",
+                    description: "tipo",
+                },
+                cantidad: {
+                    bsonType: "number",
+                    description: "cantidad",
+                },
+                objetivo: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                fecha: {
+                    bsonType: "date",
+                    description: "fecha"
+                }
+            }
+        }
+    },
+});
+
+db.finanzas.insertMany([
+    {
+        id: siguiente_id("finanzas"),
+        tipo: "Fuentes de Ingresos",
+        cantidad: 75000.00,
+        descripcion: "Ingresos generados por la venta de entradas y membresías durante el mes de julio",
+        fecha: new Date("2023-07-15")
+    },
+    {
+        id: siguiente_id("finanzas"),
+        tipo: "Gastos Operativos",
+        cantidad: 40000.00,
+        descripcion: "Gastos incurridos en la adquisición de alimentos y atención médica para los animales del zoológico",
+        fecha: new Date("2023-07-20")
+    },
+    {
+        id: siguiente_id("finanzas"),
+        tipo: "Administración Financiera",
+        cantidad: 15000.00,
+        descripcion: "Gasto destinado a la implementación de sistemas de venta de boletos en línea y aplicaciones móviles",
+        fecha: new Date("2023-08-05")
+    },
+    {
+        id: siguiente_id("finanzas"),
+        tipo: "Conservación y Educación",
+        cantidad: 2000.00,
+        descripcion: "Donación realizada a un programa de conservación de tigres en colaboración con una organización aliada",
+        fecha: new Date("2023-08-10")
+    },
+    {
+        id: siguiente_id("finanzas"),
+        tipo: "Marketing y Publicidad",
+        cantidad: 8000.00,
+        descripcion: "Gasto en campañas publicitarias y material de promoción para el próximo festival de la primavera",
+        fecha: new Date("2023-08-18")
+    }
+]);
+
+
+//TODO: ORGANIZACIÓNES COMPLETADO
+
+db.createCollection("organizaciones", {
+    validator: {
+        $jsonSchema: {
+            bsonType: "object",
+            required: ["id", "nombre", "ubicacion", "encargado"],
+            properties: {
+                id: {
+                    bsonType: "int",
+                    description: "ID",
+                },
+                nombre: {
+                    bsonType: "string",
+                    description: "nombre",
+                },
+                descripcion: {
+                    bsonType: "string",
+                    description: "ubicacion",
+                },
+                ubicacion: {
+                    bsonType: "string",
+                    description: "ubicacion",
+                },
+                encargado: {
+                    bsonType: "string",
+                    description: "descripcion",
+                },
+                fecha_creacion: {
+                    bsonType: "date",
+                    description: "fecha"
+                },
+                area_encargada: {
+                    bsonType: "string",
+                    description: "area_encargada"
+                }
+            }
+        }
+    },
+});
+db.organizaciones.insertMany([
+    {
+        id: siguiente_id("finanzas"),
+        nombre: "AZA - Asociación de Zoológicos y Acuarios",
+        descripcion: "Promueve la conservación, educación y bienestar animal a través de la colaboración entre zoológicos y acuarios acreditados.",
+        ubicacion: "Estados Unidos",
+        encargado: "John Smith",
+        fecha_creacion: new Date("1924-01-01"),
+        area_encargada: "Área de Conservación y Educación"
+    },
+    {
+        id: siguiente_id("finanzas"),
+        nombre: "WAZA - Asociación Mundial de Zoológicos y Acuarios",
+        descripcion: "Red global de zoológicos y acuarios que trabajan juntos para la conservación y la promoción de la biodiversidad.",
+        ubicacion: "Internacional",
+        encargado: "Maria García",
+        fecha_creacion: new Date("1935-01-01"),
+        area_encargada: "Departamento de Conservación"
+    },
+    {
+        id: siguiente_id("finanzas"),
+        nombre: "WCS - Sociedad de Conservación de la Vida Silvestre",
+        descripcion: "Trabaja para salvar la vida silvestre y los hábitats en todo el mundo, colaborando con zoológicos en programas de conservación.",
+        ubicacion: "Global",
+        encargado: "David Johnson",
+        fecha_creacion: new Date("1895-01-01"),
+        area_encargada: "Área de Investigación y Conservación"
+    },
+    {
+        id: siguiente_id("finanzas"),
+        nombre: "FZS - Fundación para la Conservación de la Vida Silvestre",
+        descripcion: "Dedicada a la protección de la biodiversidad en hábitats naturales y trabaja con zoológicos para apoyar la conservación in situ.",
+        ubicacion: "Internacional",
+        encargado: "Anna Müller",
+        fecha_creacion: new Date("1996-01-01"),
+        area_encargada: "Departamento de Conservación Ex situ"
+    },
+    {
+        id: siguiente_id("finanzas"),
+        nombre: "EAZA - Asociación Europea de Zoológicos y Acuarios",
+        descripcion: "Une a zoológicos y acuarios europeos para la conservación y educación, y coordina programas de cría y liberación de especies amenazadas.",
+        ubicacion: "Europa",
+        encargado: "Peter Klein",
+        fecha_creacion: new Date("1992-01-01"),
+        area_encargada: "Departamento de Programas Europeos"
+    }
+]);
+
+//TODO: ANIMALES COMPLEATADO
+db.createCollection('animales', {
+    validator: {
+        $jsonSchema: {
+            bsonType: 'object',
+            required: [
+                "id",
+                "nombre",
+                "edad",
+                "genero",
+                "habitat_zoo",
+                "cuidados",
+                "relacion_animales",
+                "estado_salud",
+                "historia",
+                "interaccion_humanos",
+                "enlaces_geneticos",
+                "detalles",
+            ],
+            properties: {
+                id: {
+                    bsonType: 'int', //32 bits
+                    description: 'Identify animal bust be interger type'
+                },
+                nombre: {
+                    bsonType: 'string',
+                    pattern: '^[A-Za-zÁáÉéÍíÓóÚúÑñ\s]+$',
+                    description: 'Animal name must be of type string'
+                },
+                animal: {
+                    bsonType: 'string',
+                    description: 'animal field must be of type string'
+                },
+                edad: {
+                    bsonType: 'int',
+                    description: 'Edad field must be of type interger'
+                },
+                genero: {
+                    bsonType: 'string',
+                    enum: ['macho', 'hembra'],
+                    description: 'genero field must be of or macho hembra'
+                },
+                habitat_zoo: {
+                    bsonType: 'int',
+                    description: 'habitat must be of type interger, is a fk'
+                },
+                cuidados: {
+                    bsonType: 'string',
+                    description: 'cuidados field must be of type string'
+                },
+                relacion_animales: {
+                    bsonType: 'string',
+                    description: 'relatoin with others animals field must be of type string'
+                },
+                estado_salud: {
+                    bsonType: 'string',
+                    enum: [
+                        'Bueno',
+                        'Malo',
+                        'Cautela',
+                        'En observación',
+                        'Regular',
+                        'Preocupante',
+                        'Grave',
+                        'Terminal'],
+                    description: 'health status must be of type string, Bueno, Malo, Cautela, En, Regular, Preocupante, Grave, Terminal,'
+                },
+                historia: {
+                    bsonType: 'string',
+                    description: 'history field must be of type string'
+                },
+                interaccion_humanos: {
+                    bsonType: 'string',
+                    description: 'interaction with humans must be of type string'
+                },
+                enlaces_geneticos: {
+                    bsonType: 'string',
+                    description: 'genetic strings field must be of type string'
+                },
+                detalles: {
+                    bsonType: 'object',
+                    required: [
+                        "nombre_cientifico",
+                        "clase",
+                        "raza",
+                        "especie",
+                        "tipo_animal",
+                        "invertebrado",
+                        "vertebrado",
+                        "tipo_habitat",
+                        "distribicion_geografica",
+                        "comportamiento",
+                        "estado_conservacion",
+                        "depredadores",
+                        "alimento_principal",
+                        "curiosidades",
+                        "amenazas",
+                        "relacion_con_humanos",
+                        "importancia_ecologica",
+                        "origen",
+                    ],
+                    properties: {
+                        nombre_cientifico: {
+                            bsonType: 'string',
+                            description: 'ciencist name field must be of type string'
+                        },
+                        clase: {
+                            bsonType: 'string',
+                            description: 'class field must be of type string'
+                        },
+                        raza: {
+                            bsonType: 'string',
+                            description: 'raza field must be of type string'
+                        },
+                        especie: {
+                            bsonType: 'string',
+                            description: 'especie field must be of type string'
+                        },
+                        tipo_animal: {
+                            bsonType: 'string',
+                            description: 'animal type must be of type string'
+                        },
+                        invertebrado: {
+                            bsonType: 'bool',
+                            description: 'invertebrado field must be of type bool'
+                        },
+                        vertebrado: {
+                            bsonType: 'bool',
+                            description: 'vertebrado field must be of type bool'
+                        },
+                        tipo_habitat: {
+                            bsonType: 'string',
+                            description: 'habitat type must be of type string'
+                        },
+                        distribicion_geografica: {
+                            bsonType: 'object',
+                            required: [
+                                "habitat_natural",
+                                "region_geografica",
+                                "pais",
+                                "continente",
+                                "ecosistema",
+                            ],
+                            properties: {
+                                habitat_natural: {
+                                    bsonType: 'string',
+                                    description: 'natural habitat must be of type string'
+                                },
+                                region_geografica: {
+                                    bsonType: 'string',
+                                    description: 'geographic region must be of type string'
+                                },
+                                pais: {
+                                    bsonType: 'array',
+                                    description: 'country field must be of type array'
+                                },
+                                continente: {
+                                    bsonType: 'string',
+                                    description: 'continente field must be of type string'
+                                },
+                                ecosistema: {
+                                    bsonType: 'string',
+                                    description: 'ecosistema field must be of type string'
+                                }
+                            }
+                        },
+                        comportamiento: {
+                            bsonType: 'string',
+                            description: 'comportamiento field must be of type string'
+                        },
+                        estado_conservacion: {
+                            bsonType: 'string',
+                            enum: [
+                                'En peligro de extinción',
+                                'En peligro critico',
+                                'En peligro',
+                                'Vulnerable',
+                                'Casi amenazado',
+                                'Preocupación Menor',
+                                'Datos Insuficientes',
+                                'No Evaluado',
+                                'Sin amenaza',
+                                'Es más, son una plaga xd',
+                            ],
+                            description: 'conservation status must be of type string and could countain something the it options: Exinto en estado salvaje, En peligro critico, En peligro, Vulnerable, Casi amenazado, Preocupación Menor, Datos Insuficientes, No Evaluado, Sin amenaza, Es más, son una plaga xd',
+                        },
+                        depredadores: {
+                            bsonType: 'array',
+                            description: 'depredadores field must be of type array'
+                        },
+                        alimento_principal: {
+                            bsonType: 'array',
+                            description: 'alimento_principal field must be of type alimento_principal'
+                        },
+                        curiosidades: {
+                            bsonType: 'string',
+                            description: 'curiosidades field must be of type string'
+                        },
+                        amenazas: {
+                            bsonType: 'array',
+                            description: 'amenazas field must be of type array'
+                        },
+                        relacion_con_humanos: {
+                            bsonType: 'string',
+                            description: 'relationship with humans must be of type string'
+                        },
+                        importancia_ecologica: {
+                            bsonType: 'string',
+                            enum: ['Alta', 'Media', 'Baja'],
+                            description: 'importancia field must be fo type string'
+                        },
+                        origen: {
+                            bsonType: 'string',
+                            description: 'origen field must be of type string'
+                        },
+                    }
+                }
+            }
+        }
+    },
+
+});
+db.animales.insertMany([
+    {
+        id: siguiente_id("animales"),
+        nombre: "Loki",
+        animal: 'León',
+        edad: 5,
+        genero: "macho",
+        habitat_zoo: 123,
+        cuidados: "Requiere una dieta balanceada...",
+        relacion_animales: "Convive en manadas...",
+        estado_salud: "Bueno",
+        historia: "El león es conocido por ser el rey de la selva...",
+        interaccion_humanos: "Los leones suelen ser cautelosos...",
+        enlaces_geneticos: "Análisis genéticos han revelado...",
+        detalles: {
+            nombre_cientifico: "Panthera leo",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "León",
+            tipo_animal: "Felino",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana",
+            distribicion_geografica: {
+                habitat_natural: "Savanas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Savanas y llanuras"
+            },
+            comportamiento: "Los leones son animales sociales...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Cocodrilos", "Hienas"],
+            alimento_principal: ["Antílopes", "Cebúes"],
+            curiosidades: "Los leones machos tienen una melena...",
+            amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+            relacion_con_humanos: "En algunas culturas africanas...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Nala",
+        animal: 'León',
+        edad: 4,
+        genero: "hembra",
+        habitat_zoo: 123,
+        cuidados: "Requiere una dieta balanceada...",
+        relacion_animales: "Convive en manadas...",
+        estado_salud: "Bueno",
+        historia: "Nala es una leona valiente...",
+        interaccion_humanos: "Las leonas suelen ser más curiosas...",
+        enlaces_geneticos: "Estudios genéticos han revelado...",
+        detalles: {
+            nombre_cientifico: "Panthera leo",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "León",
+            tipo_animal: "Felino",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana",
+            distribicion_geografica: {
+                habitat_natural: "Savanas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Savanas y llanuras"
+            },
+            comportamiento: "Las leonas cazan en grupo...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Cocodrilos", "Hienas"],
+            alimento_principal: ["Antílopes", "Cebúes"],
+            curiosidades: "Las leonas lideran la caza...",
+            amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+            relacion_con_humanos: "En algunas culturas africanas...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Simba",
+        animal: 'León',
+        edad: 3,
+        genero: "macho",
+        habitat_zoo: 123,
+        cuidados: "Requiere una dieta balanceada...",
+        relacion_animales: "Convive en manadas...",
+        estado_salud: "Bueno",
+        historia: "Simba es un joven león aventurero...",
+        interaccion_humanos: "Simba es curioso y suele acercarse...",
+        enlaces_geneticos: "Análisis genéticos han mostrado...",
+        detalles: {
+            nombre_cientifico: "Panthera leo",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "León",
+            tipo_animal: "Felino",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana",
+            distribicion_geografica: {
+                habitat_natural: "Savanas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Savanas y llanuras"
+            },
+            comportamiento: "Simba es curioso y valiente...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Cocodrilos", "Hienas"],
+            alimento_principal: ["Antílopes", "Cebúes"],
+            curiosidades: "Simba es el protagonista de El Rey León...",
+            amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+            relacion_con_humanos: "Simba es un símbolo popular en la cultura...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Kiara",
+        animal: 'León',
+        edad: 2,
+        genero: "hembra",
+        habitat_zoo: 123,
+        cuidados: "Requiere una dieta balanceada...",
+        relacion_animales: "Convive en manadas...",
+        estado_salud: "Bueno",
+        historia: "Kiara es la hija de Simba y Nala...",
+        interaccion_humanos: "Kiara es curiosa y amistosa...",
+        enlaces_geneticos: "Análisis genéticos han confirmado...",
+        detalles: {
+            nombre_cientifico: "Panthera leo",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "León",
+            tipo_animal: "Felino",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana",
+            distribicion_geografica: {
+                habitat_natural: "Savanas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Savanas y llanuras"
+            },
+            comportamiento: "Kiara es juguetona y exploradora...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Cocodrilos", "Hienas"],
+            alimento_principal: ["Antílopes", "Cebúes"],
+            curiosidades: "Kiara es un personaje de El Rey León 2...",
+            amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+            relacion_con_humanos: "Kiara representa la nueva generación...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Kovu",
+        animal: 'León',
+        edad: 3,
+        genero: "macho",
+        habitat_zoo: 123,
+        cuidados: "Requiere una dieta balanceada...",
+        relacion_animales: "Convive en manadas...",
+        estado_salud: "Bueno",
+        historia: "Kovu es un león adoptado en la manada...",
+        interaccion_humanos: "Kovu es tímido al principio, pero curioso...",
+        enlaces_geneticos: "Análisis genéticos han demostrado...",
+        detalles: {
+            nombre_cientifico: "Panthera leo",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "León",
+            tipo_animal: "Felino",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana",
+            distribicion_geografica: {
+                habitat_natural: "Savanas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Savanas y llanuras"
+            },
+            comportamiento: "Kovu es leal y protector con su manada...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Cocodrilos", "Hienas"],
+            alimento_principal: ["Antílopes", "Cebúes"],
+            curiosidades: "Kovu es un personaje de El Rey León 2...",
+            amenazas: ["Pérdida de hábitat", "Caza furtiva"],
+            relacion_con_humanos: "Kovu muestra resiliencia y superación...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Zara",
+        animal: 'Jirafa',
+        edad: 6,
+        genero: "hembra",
+        habitat_zoo: 124,
+        cuidados: "Requiere una dieta alta en hojas...",
+        relacion_animales: "Convive con otras jirafas y herbívoros...",
+        estado_salud: "Bueno",
+        historia: "Zara es una jirafa tranquila y curiosa...",
+        interaccion_humanos: "Zara es amigable y se acerca a los visitantes...",
+        enlaces_geneticos: "Análisis genéticos han revelado...",
+        detalles: {
+            nombre_cientifico: "Giraffa camelopardalis",
+            clase: "Mamífero",
+            raza: "Masai",
+            especie: "Jirafa",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Savana y bosques abiertos",
+            distribicion_geografica: {
+                habitat_natural: "Savanas y regiones arboladas de África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Uganda"],
+                continente: "África",
+                ecosistema: "Savanas y bosques"
+            },
+            comportamiento: "Las jirafas son sociables y pacíficas...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Leones", "Hienas"],
+            alimento_principal: ["Hojas de árboles", "Brotes"],
+            curiosidades: "Las jirafas tienen cuellos largos para alcanzar las hojas...",
+            amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+            relacion_con_humanos: "Las jirafas son populares en la cultura...",
+            importancia_ecologica: "Media",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Rex",
+        animal: 'Tigre',
+        edad: 8,
+        genero: "macho",
+        habitat_zoo: 125,
+        cuidados: "Requiere una dieta variada y ejercicio...",
+        relacion_animales: "Suele estar solo debido a su naturaleza territorial...",
+        estado_salud: "Bueno",
+        historia: "Rex es un tigre imponente con un pasado misterioso...",
+        interaccion_humanos: "Rex suele ser cauteloso y observador...",
+        enlaces_geneticos: "Análisis genéticos han arrojado luz sobre...",
+        detalles: {
+            nombre_cientifico: "Panthera tigris",
+            clase: "Mamífero",
+            raza: "Bengala",
+            especie: "Tigre",
+            tipo_animal: "Carnívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Selvas y bosques tropicales",
+            distribicion_geografica: {
+                habitat_natural: "Asia",
+                region_geografica: "Asia oriental y meridional",
+                pais: ["India", "China", "Rusia"],
+                continente: "Asia",
+                ecosistema: "Selvas y bosques tropicales"
+            },
+            comportamiento: "Los tigres son solitarios y cazadores nocturnos...",
+            estado_conservacion: "En peligro",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Cérvidos", "Cerdos salvajes"],
+            curiosidades: "Los tigres tienen un patrón único de rayas...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los tigres han sido venerados y temidos...",
+            importancia_ecologica: "Media",
+            origen: "Asia"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Maya",
+        animal: 'Elefante',
+        edad: 12,
+        genero: "hembra",
+        habitat_zoo: 126,
+        cuidados: "Requiere una dieta rica en vegetales y cuidado dental...",
+        relacion_animales: "Interactúa con otros elefantes en el recinto...",
+        estado_salud: "Bueno",
+        historia: "Maya es una elefanta rescatada de la caza furtiva...",
+        interaccion_humanos: "Maya es amistosa y suele interactuar...",
+        enlaces_geneticos: "Estudios genéticos han demostrado...",
+        detalles: {
+            nombre_cientifico: "Loxodonta africana",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "Elefante",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Sabana y selva",
+            distribicion_geografica: {
+                habitat_natural: "África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Zimbabue"],
+                continente: "África",
+                ecosistema: "Sabanas y selvas"
+            },
+            comportamiento: "Los elefantes son sociales y tienen fuertes lazos...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Humanos", "Leones"],
+            alimento_principal: ["Vegetales", "Frutas"],
+            curiosidades: "Los elefantes africanos son los animales terrestres más grandes...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los elefantes han sido símbolos culturales y religiosos...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Kiko",
+        animal: 'Gorila',
+        edad: 20,
+        genero: "macho",
+        habitat_zoo: 127,
+        cuidados: "Requiere una dieta variada y enriquecimiento...",
+        relacion_animales: "Kiko convive con otros gorilas en su grupo...",
+        estado_salud: "Bueno",
+        historia: "Kiko es un gorila de espalda plateada conocido por su liderazgo...",
+        interaccion_humanos: "Kiko es observador y puede acercarse a los cuidadores...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Gorilla beringei beringei",
+            clase: "Mamífero",
+            raza: "Montaña",
+            especie: "Gorila",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Bosque tropical y montañas",
+            distribicion_geografica: {
+                habitat_natural: "África",
+                region_geografica: "África oriental",
+                pais: ["Ruanda", "Uganda", "República Democrática del Congo"],
+                continente: "África",
+                ecosistema: "Bosques tropicales y montañas"
+            },
+            comportamiento: "Los gorilas son sociales y viven en grupos familiares...",
+            estado_conservacion: "En peligro critico",
+            depredadores: ["Humanos", "Caza ilegal"],
+            alimento_principal: ["Hojas", "Brotes", "Frutas"],
+            curiosidades: "Los gorilas son parientes cercanos de los humanos...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los gorilas han sido objeto de estudio y conservación...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Milo",
+        animal: 'Pingüino',
+        edad: 4,
+        genero: "macho",
+        habitat_zoo: 128,
+        cuidados: "Requiere un ambiente frío y alimentación acuática...",
+        relacion_animales: "Milo forma parte de una colonia de pingüinos...",
+        estado_salud: "Bueno",
+        historia: "Milo es un pingüino explorador y juguetón...",
+        interaccion_humanos: "Milo suele acercarse a los visitantes y chapotear...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Spheniscidae",
+            clase: "Aves",
+            raza: "Emperador",
+            especie: "Pingüino",
+            tipo_animal: "Ave marina",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Hielo marino y aguas costeras",
+            distribicion_geografica: {
+                habitat_natural: "Antártida",
+                region_geografica: "Antártida",
+                pais: ["Antártida"],
+                continente: "Antártida",
+                ecosistema: "Hielo marino y aguas costeras"
+            },
+            comportamiento: "Los pingüinos son sociables y viven en colonias...",
+            estado_conservacion: "Casi amenazado",
+            depredadores: ["Orca", "Leopardos marinos"],
+            alimento_principal: ["Peces", "Krill"],
+            curiosidades: "Los pingüinos emperadores son famosos por su crianza...",
+            amenazas: ["Cambio climático", "Pesca incidental"],
+            relacion_con_humanos: "Los pingüinos son un símbolo icónico de la Antártida...",
+            importancia_ecologica: "Alta",
+            origen: "Antártida"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Luna",
+        animal: 'Lobo Gris',
+        edad: 5,
+        genero: "hembra",
+        habitat_zoo: 129,
+        cuidados: "Requiere un espacio amplio y estimulación mental...",
+        relacion_animales: "Luna es parte de una manada de lobos...",
+        estado_salud: "Bueno",
+        historia: "Luna es una loba rescatada de un entorno hostil...",
+        interaccion_humanos: "Luna es cautelosa pero puede acercarse a los cuidadores...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Canis lupus",
+            clase: "Mamífero",
+            raza: "Gris",
+            especie: "Lobo",
+            tipo_animal: "Carnívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Bosques, tundras y praderas",
+            distribicion_geografica: {
+                habitat_natural: "América del Norte, Europa, Asia",
+                region_geografica: "Hemisferio norte",
+                pais: ["Estados Unidos", "Canadá", "Rusia"],
+                continente: "América del Norte, Europa, Asia",
+                ecosistema: "Bosques, tundras y praderas"
+            },
+            comportamiento: "Los lobos viven en manadas y tienen una estructura social...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Cérvidos", "Conejos", "Roedores"],
+            curiosidades: "Los lobos tienen una comunicación vocal compleja...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los lobos han sido temidos y malentendidos...",
+            importancia_ecologica: "Alta",
+            origen: "América del Norte, Europa, Asia"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Rex",
+        animal: 'Tigre',
+        edad: 8,
+        genero: "macho",
+        habitat_zoo: 125,
+        cuidados: "Requiere una dieta variada y ejercicio...",
+        relacion_animales: "Suele estar solo debido a su naturaleza territorial...",
+        estado_salud: "Bueno",
+        historia: "Rex es un tigre imponente con un pasado misterioso...",
+        interaccion_humanos: "Rex suele ser cauteloso y observador...",
+        enlaces_geneticos: "Análisis genéticos han arrojado luz sobre...",
+        detalles: {
+            nombre_cientifico: "Panthera tigris",
+            clase: "Mamífero",
+            raza: "Bengala",
+            especie: "Tigre",
+            tipo_animal: "Carnívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Selvas y bosques tropicales",
+            distribicion_geografica: {
+                habitat_natural: "Asia",
+                region_geografica: "Asia oriental y meridional",
+                pais: ["India", "China", "Rusia"],
+                continente: "Asia",
+                ecosistema: "Selvas y bosques tropicales"
+            },
+            comportamiento: "Los tigres son solitarios y cazadores nocturnos...",
+            estado_conservacion: "En peligro",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Cérvidos", "Cerdos salvajes"],
+            curiosidades: "Los tigres tienen un patrón único de rayas...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los tigres han sido venerados y temidos...",
+            importancia_ecologica: "Media",
+            origen: "Asia"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Maya",
+        animal: 'Elefante',
+        edad: 12,
+        genero: "hembra",
+        habitat_zoo: 126,
+        cuidados: "Requiere una dieta rica en vegetales y cuidado dental...",
+        relacion_animales: "Interactúa con otros elefantes en el recinto...",
+        estado_salud: "Bueno",
+        historia: "Maya es una elefanta rescatada de la caza furtiva...",
+        interaccion_humanos: "Maya es amistosa y suele interactuar...",
+        enlaces_geneticos: "Estudios genéticos han demostrado...",
+        detalles: {
+            nombre_cientifico: "Loxodonta africana",
+            clase: "Mamífero",
+            raza: "Africana",
+            especie: "Elefante",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Sabana y selva",
+            distribicion_geografica: {
+                habitat_natural: "África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Zimbabue"],
+                continente: "África",
+                ecosistema: "Sabanas y selvas"
+            },
+            comportamiento: "Los elefantes son sociales y tienen fuertes lazos...",
+            estado_conservacion: "Vulnerable",
+            depredadores: ["Humanos", "Leones"],
+            alimento_principal: ["Vegetales", "Frutas"],
+            curiosidades: "Los elefantes africanos son los animales terrestres más grandes...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los elefantes han sido símbolos culturales y religiosos...",
+            importancia_ecologica: "Alta",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Milo",
+        animal: 'Pingüino',
+        edad: 4,
+        genero: "macho",
+        habitat_zoo: 128,
+        cuidados: "Requiere un ambiente frío y alimentación acuática...",
+        relacion_animales: "Milo forma parte de una colonia de pingüinos...",
+        estado_salud: "Bueno",
+        historia: "Milo es un pingüino explorador y juguetón...",
+        interaccion_humanos: "Milo suele acercarse a los visitantes y chapotear...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Spheniscidae",
+            clase: "Aves",
+            raza: "Emperador",
+            especie: "Pingüino",
+            tipo_animal: "Ave marina",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Hielo marino y aguas costeras",
+            distribicion_geografica: {
+                habitat_natural: "Antártida",
+                region_geografica: "Antártida",
+                pais: ["Antártida"],
+                continente: "Antártida",
+                ecosistema: "Hielo marino y aguas costeras"
+            },
+            comportamiento: "Los pingüinos son sociables y viven en colonias...",
+            estado_conservacion: "Casi amenazado",
+            depredadores: ["Orca", "Leopardos marinos"],
+            alimento_principal: ["Peces", "Krill"],
+            curiosidades: "Los pingüinos emperadores son famosos por su crianza...",
+            amenazas: ["Cambio climático", "Pesca incidental"],
+            relacion_con_humanos: "Los pingüinos son un símbolo icónico de la Antártida...",
+            importancia_ecologica: "Alta",
+            origen: "Antártida"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Luna",
+        animal: 'Lobo Gris',
+        edad: 5,
+        genero: "hembra",
+        habitat_zoo: 129,
+        cuidados: "Requiere un espacio amplio y estimulación mental...",
+        relacion_animales: "Luna es parte de una manada de lobos...",
+        estado_salud: "Bueno",
+        historia: "Luna es una loba rescatada de un entorno hostil...",
+        interaccion_humanos: "Luna es cautelosa pero puede acercarse a los cuidadores...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Canis lupus",
+            clase: "Mamífero",
+            raza: "Gris",
+            especie: "Lobo",
+            tipo_animal: "Carnívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Bosques, tundras y praderas",
+            distribicion_geografica: {
+                habitat_natural: "América del Norte, Europa, Asia",
+                region_geografica: "Hemisferio norte",
+                pais: ["Estados Unidos", "Canadá", "Rusia"],
+                continente: "América del Norte, Europa, Asia",
+                ecosistema: "Bosques, tundras y praderas"
+            },
+            comportamiento: "Los lobos viven en manadas y tienen una estructura social...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Cérvidos", "Conejos", "Roedores"],
+            curiosidades: "Los lobos tienen una comunicación vocal compleja...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los lobos han sido temidos y malentendidos...",
+            importancia_ecologica: "Alta",
+            origen: "América del Norte, Europa, Asia"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Pablo",
+        animal: 'Panda Gigante',
+        edad: 6,
+        genero: "macho",
+        habitat_zoo: 12,
+        cuidados: "Requiere una dieta de bambú y áreas de juego...",
+        relacion_animales: "Pablo vive en un recinto especial con otros pandas...",
+        estado_salud: "Bueno",
+        historia: "Pablo fue un regalo diplomático de China...",
+        interaccion_humanos: "Pablo es tímido pero puede ser cariñoso con los cuidadores...",
+        enlaces_geneticos: "Estudios genéticos han revelado su parentesco con otros pandas...",
+        detalles: {
+            nombre_cientifico: "Ailuropoda melanoleuca",
+            clase: "Mamífero",
+            raza: "Gigante",
+            especie: "Panda",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Bosques de bambú",
+            distribicion_geografica: {
+                habitat_natural: "China",
+                region_geografica: "Asia oriental",
+                pais: ["China"],
+                continente: "Asia",
+                ecosistema: "Bosques de bambú"
+            },
+            comportamiento: "Los pandas gigantes son solitarios y pacíficos...",
+            estado_conservacion: "En peligro de extinción",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Bambú"],
+            curiosidades: "Los pandas gigantes son conocidos por su aspecto tierno...",
+            amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+            relacion_con_humanos: "Los pandas son símbolos de conservación y protección...",
+            importancia_ecologica: "Alta",
+            origen: "China"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Lila",
+        animal: 'Leopardo de las Nieves',
+        edad: 4,
+        genero: "hembra",
+        habitat_zoo: 131,
+        cuidados: "Requiere un ambiente frío y dieta de carne magra...",
+        relacion_animales: "Lila vive en un recinto con otros leopardos...",
+        estado_salud: "Bueno",
+        historia: "Lila fue rescatada de una situación de tráfico de animales...",
+        interaccion_humanos: "Lila es curiosa y a veces se acerca a los visitantes...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Panthera uncia",
+            clase: "Mamífero",
+            raza: "Leopardo de las Nieves",
+            especie: "Leopardo",
+            tipo_animal: "Carnívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Montañas y estepas",
+            distribicion_geografica: {
+                habitat_natural: "Asia central y del sur",
+                region_geografica: "Asia",
+                pais: ["Mongolia", "Rusia", "India"],
+                continente: "Asia",
+                ecosistema: "Montañas y estepas"
+            },
+            comportamiento: "Los leopardos de las nieves son solitarios...",
+            estado_conservacion: "En peligro",
+            depredadores: ["Humanos"],
+            alimento_principal: ["Íbices", "Marmotas", "Aves"],
+            curiosidades: "Los leopardos de las nieves son maestros del camuflaje...",
+            amenazas: ["Caza ilegal", "Pérdida de hábitat"],
+            relacion_con_humanos: "Los leopardos de las nieves son misteriosos y esquivos...",
+            importancia_ecologica: "Alta",
+            origen: "Asia central y del sur"
+        },
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Kiara",
+        animal: 'Cebra',
+        edad: 5,
+        genero: "hembra",
+        habitat_zoo: 132,
+        cuidados: "Requiere acceso a pastizales y atención veterinaria...",
+        relacion_animales: "Kiara vive en un grupo de cebras y herbívoros...",
+        estado_salud: "Bueno",
+        historia: "Kiara llegó al zoológico después de ser rescatada de la caza furtiva...",
+        interaccion_humanos: "Kiara es curiosa y se acerca a los visitantes...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Equus zebra",
+            clase: "Mamífero",
+            raza: "Plains",
+            especie: "Cebra",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Praderas y sabanas",
+            distribicion_geografica: {
+                habitat_natural: "África",
+                region_geografica: "África subsahariana",
+                pais: ["Kenia", "Tanzania", "Sudáfrica"],
+                continente: "África",
+                ecosistema: "Praderas y sabanas"
+            },
+            comportamiento: "Las cebras viven en grupos para protegerse...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Leones", "Hienas"],
+            alimento_principal: ["Pasto", "Hojas", "Brotes"],
+            curiosidades: "Las cebras tienen un patrón único de rayas...",
+            amenazas: ["Pérdida de hábitat", "Caza ilegal"],
+            relacion_con_humanos: "Las cebras son un símbolo icónico de la fauna africana...",
+            importancia_ecologica: "Media",
+            origen: "África"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Kai",
+        animal: 'Pavo Real',
+        edad: 3,
+        genero: "macho",
+        habitat_zoo: 133,
+        cuidados: "Requiere un espacio amplio y una dieta variada...",
+        relacion_animales: "Kai convive con otros pavos reales en su área...",
+        estado_salud: "Bueno",
+        historia: "Kai es un pavo real con hermoso plumaje...",
+        interaccion_humanos: "Kai suele exhibir su plumaje y acercarse a los visitantes...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Pavo cristatus",
+            clase: "Aves",
+            raza: "Común",
+            especie: "Pavo Real",
+            tipo_animal: "Ave",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Bosques y praderas",
+            distribicion_geografica: {
+                habitat_natural: "Asia",
+                region_geografica: "Asia meridional",
+                pais: ["India", "Sri Lanka"],
+                continente: "Asia",
+                ecosistema: "Bosques y praderas"
+            },
+            comportamiento: "Los pavos reales son conocidos por su despliegue de plumaje...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Depredadores naturales"],
+            alimento_principal: ["Insectos", "Frutas", "Semillas"],
+            curiosidades: "Los pavos reales machos exhiben sus plumas para atraer a las hembras...",
+            amenazas: ["Depredadores naturales", "Caza ocasional"],
+            relacion_con_humanos: "Los pavos reales han sido apreciados por su belleza...",
+            importancia_ecologica: "Baja",
+            origen: "Asia"
+        }
+    },
+    {
+        id: siguiente_id("animales"),
+        nombre: "Rocky",
+        animal: 'Iguana Verde',
+        edad: 2,
+        genero: "macho",
+        habitat_zoo: 134,
+        cuidados: "Requiere un ambiente tropical y una dieta de vegetales...",
+        relacion_animales: "Rocky vive en un terrario junto a otras iguanas...",
+        estado_salud: "Bueno",
+        historia: "Rocky fue donado al zoológico por un criador local...",
+        interaccion_humanos: "Rocky es tranquilo y se acostumbra a la presencia humana...",
+        enlaces_geneticos: "Estudios genéticos han proporcionado información...",
+        detalles: {
+            nombre_cientifico: "Iguana iguana",
+            clase: "Reptil",
+            raza: "Verde",
+            especie: "Iguana",
+            tipo_animal: "Herbívoro",
+            invertebrado: false,
+            vertebrado: true,
+            tipo_habitat: "Selvas y bosques tropicales",
+            distribicion_geografica: {
+                habitat_natural: "América Central y Sudamérica",
+                region_geografica: "América",
+                pais: ["México", "Costa Rica", "Brasil"],
+                continente: "América",
+                ecosistema: "Selvas y bosques tropicales"
+            },
+            comportamiento: "Las iguanas verdes son animales solitarios...",
+            estado_conservacion: "Preocupación Menor",
+            depredadores: ["Depredadores naturales"],
+            alimento_principal: ["Vegetales", "Frutas"],
+            curiosidades: "Las iguanas verdes son reptiles de sangre fría que pueden regular su temperatura...",
+            amenazas: ["Depredadores naturales", "Tráfico de mascotas"],
+            relacion_con_humanos: "Las iguanas verdes son populares en el comercio de mascotas...",
+            importancia_ecologica: "Media",
+            origen: "América Central y Sudamérica"
+        }
+    }
+]);
+
+
