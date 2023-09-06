@@ -1,7 +1,6 @@
 use('zoologico')
 
-
-function siguiente_id(coleccion) {
+function auth_id(coleccion) {
     const sequenceDocument = db.counters.findOneAndUpdate(
         { _id: `${coleccion}id` },
         { $inc: { sequence_value: 1 } },
@@ -23,6 +22,7 @@ db.counters.insertMany([
     { _id: "animales_id", sequence_value: 0 },
 ]);
 
+//TODO: USUARIOS
 db.createCollection("usuarios", {
     validator: {
         $jsonSchema: {
@@ -68,6 +68,7 @@ db.usuarios.insertMany([
     }
 ]);
 
+//TODO: EMPLEADOS
 db.createCollection("empleados", {
     validator: {
         $jsonSchema: {
@@ -124,7 +125,7 @@ db.createCollection("empleados", {
 });
 db.empleados.insertMany([
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: 'Juan Pérez',
         cc: 123456779,
         cargo: 'Dirección',
@@ -137,7 +138,7 @@ db.empleados.insertMany([
         email: 'juan@example.com',
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Ana Gómez",
         cc: 987654321,
         cargo: "Administradora",
@@ -150,7 +151,7 @@ db.empleados.insertMany([
         email: "ana@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carlos Rodríguez",
         cc: 456789123,
         cargo: "Educador",
@@ -163,7 +164,7 @@ db.empleados.insertMany([
         email: "carlos@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "María González",
         cc: 789123456,
         cargo: "Cuidador",
@@ -176,7 +177,7 @@ db.empleados.insertMany([
         email: "maria@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Luis Martínez",
         cc: 666999777,
         cargo: "Cuidador",
@@ -189,7 +190,7 @@ db.empleados.insertMany([
         email: "luis@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Elena Fernández",
         cc: 123456799,
         cargo: "Investigador",
@@ -202,7 +203,7 @@ db.empleados.insertMany([
         email: "elena@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Andrés López",
         cc: 987654320,
         cargo: "Mantenimiento",
@@ -215,7 +216,7 @@ db.empleados.insertMany([
         email: "andres@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Laura Pérez",
         cc: 456789023,
         cargo: "Nutricionistas",
@@ -228,7 +229,7 @@ db.empleados.insertMany([
         email: "laura@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "José González",
         cc: 789120456,
         cargo: "Biólogo",
@@ -241,7 +242,7 @@ db.empleados.insertMany([
         email: "jose@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Juan Pérez",
         cc: 123456789,
         cargo: "Seguridad",
@@ -254,7 +255,7 @@ db.empleados.insertMany([
         email: "empleado1@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "María González",
         cc: 234567890,
         cargo: "Veterinarios",
@@ -267,7 +268,7 @@ db.empleados.insertMany([
         email: "empleado2@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Luis Rodríguez",
         cc: 345678901,
         cargo: "Comunicadores",
@@ -282,7 +283,7 @@ db.empleados.insertMany([
 
 
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Ana Martínez",
         cc: 456789012,
         cargo: "Veterinarios",
@@ -295,7 +296,7 @@ db.empleados.insertMany([
         email: "empleado4@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carlos Sánchez",
         cc: 567890123,
         cargo: "Botánicos",
@@ -308,7 +309,7 @@ db.empleados.insertMany([
         email: "empleado5@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Laura López",
         cc: 678901234,
         cargo: "Biólogos",
@@ -321,7 +322,7 @@ db.empleados.insertMany([
         email: "empleado6@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Pedro Ramírez",
         cc: 789012345,
         cargo: "Ornitólogos",
@@ -334,7 +335,7 @@ db.empleados.insertMany([
         email: "empleado7@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Rosa Torres",
         cc: 890123456,
         cargo: "Biólogos",
@@ -347,7 +348,7 @@ db.empleados.insertMany([
         email: "empleado8@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Javier Fernández",
         cc: 901234567,
         cargo: "Biólogos",
@@ -360,7 +361,7 @@ db.empleados.insertMany([
         email: "empleado9@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Isabel Castro",
         cc: 123345678,
         cargo: "Biólogos",
@@ -373,7 +374,7 @@ db.empleados.insertMany([
         email: "empleado10@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Martín Ruiz",
         cc: 234456789,
         cargo: "Biólogos",
@@ -386,7 +387,7 @@ db.empleados.insertMany([
         email: "empleado11@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carmen Morales",
         cc: 345567890,
         cargo: "Educador",
@@ -399,7 +400,7 @@ db.empleados.insertMany([
         email: "empleado12@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Sergio Ortega",
         cc: 456678901,
         cargo: "Personal de mantenimiento",
@@ -412,7 +413,7 @@ db.empleados.insertMany([
         email: "empleado13@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Elena García",
         cc: 567789012,
         cargo: "Personal de mantenimiento",
@@ -425,7 +426,7 @@ db.empleados.insertMany([
         email: "empleado14@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Jorge Díaz",
         cc: 678890123,
         cargo: "Personal de mantenimiento",
@@ -438,7 +439,7 @@ db.empleados.insertMany([
         email: "empleado15@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Patricia Silva",
         cc: 789901234,
         cargo: "Educador",
@@ -451,7 +452,7 @@ db.empleados.insertMany([
         email: "empleado16@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Diego Torres",
         cc: 890012345,
         cargo: "Personal técnico",
@@ -464,7 +465,7 @@ db.empleados.insertMany([
         email: "empleado17@example.com"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "María López",
         cc: 987654301,
         cargo: "Zoólogo",
@@ -478,7 +479,7 @@ db.empleados.insertMany([
         habitat: "Sabana Africana"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carlos Martínez",
         cc: 123450789,
         cargo: "Ecologista",
@@ -492,7 +493,7 @@ db.empleados.insertMany([
         habitat: "Bosque Tropical"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Ana Rodríguez",
         cc: 234560890,
         cargo: "Biología Marina",
@@ -506,7 +507,7 @@ db.empleados.insertMany([
         habitat: "Selva Amazónica"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Pedro Sánchez",
         cc: 345670901,
         cargo: "Ornitólogo",
@@ -520,7 +521,7 @@ db.empleados.insertMany([
         habitat: "Selva Africana"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Laura Pérez",
         cc: 456789022,
         cargo: "Veterinario",
@@ -534,7 +535,7 @@ db.empleados.insertMany([
         habitat: "Montaña de los Gorilas"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carlos López",
         cc: 567800123,
         cargo: "Biología Marina",
@@ -548,7 +549,7 @@ db.empleados.insertMany([
         habitat: "Pingüinera"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Sofía Torres",
         cc: 678900234,
         cargo: "Zoólogo",
@@ -562,7 +563,7 @@ db.empleados.insertMany([
         habitat: "Bosque de Lobos"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Diego Rodríguez",
         cc: 780012345,
         cargo: "Ecologista",
@@ -576,7 +577,7 @@ db.empleados.insertMany([
         habitat: "Tierras Tropicales"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Isabella Martínez",
         cc: 890103456,
         cargo: "Veterinario",
@@ -590,7 +591,7 @@ db.empleados.insertMany([
         habitat: "Leopardo de las Nieves"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Lucas Sánchez",
         cc: 901034567,
         cargo: "Biología Marina",
@@ -604,7 +605,7 @@ db.empleados.insertMany([
         habitat: "Pradera Africana"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "Carolina Torres",
         cc: 1122334455,
         cargo: "Ornitóloga",
@@ -618,7 +619,7 @@ db.empleados.insertMany([
         habitat: "Jardín de Pavos Reales"
     },
     {
-        id: siguiente_id("empleados"),
+        id: auth_id("empleados"),
         nombre_completo: "David López",
         cc: 2233445566,
         cargo: "Zoólogo",
@@ -633,7 +634,7 @@ db.empleados.insertMany([
     }
 
 ]);
-
+//TODO: INFRAESTRUCTURA
 db.createCollection('infraestructura', {
     validator: {
         $jsonSchema: {
@@ -675,7 +676,7 @@ db.createCollection('infraestructura', {
 //TODO: DEPARTAMENTOS COMPLETO
 db.infraestructura.insertMany([
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Cuidado Animal',
         cc_encargado: 123456779,
         tipo: 'Departamento',
@@ -683,7 +684,7 @@ db.infraestructura.insertMany([
         dimensiones: '1000 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Departamento Veterinario',
         tipo: 'Departamento',
         cc_encargado: 987654321,
@@ -691,7 +692,7 @@ db.infraestructura.insertMany([
         dimensiones: '800 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Diseño y Exhibiciones',
         tipo: 'Departamento',
         cc_encargado: 456789123,
@@ -699,7 +700,7 @@ db.infraestructura.insertMany([
         dimensiones: '1200 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Enriquecimiento Animal',
         tipo: 'Departamento',
         cc_encargado: 789123456,
@@ -707,7 +708,7 @@ db.infraestructura.insertMany([
         dimensiones: '600 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Educación y Conservación',
         tipo: 'Departamento',
         cc_encargado: 666999777,
@@ -715,7 +716,7 @@ db.infraestructura.insertMany([
         dimensiones: '1500 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Investigación y Desarrollo',
         tipo: 'Departamento',
         cc_encargado: 123456799,
@@ -723,7 +724,7 @@ db.infraestructura.insertMany([
         dimensiones: '700 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Mantenimiento y Paisajismo',
         tipo: 'Departamento',
         cc_encargado: 987654320,
@@ -731,7 +732,7 @@ db.infraestructura.insertMany([
         dimensiones: '2000 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Alimentación y Nutrición',
         tipo: 'Departamento',
         cc_encargado: 456789023,
@@ -739,7 +740,7 @@ db.infraestructura.insertMany([
         dimensiones: '500 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Conservación de Especies',
         tipo: 'Departamento',
         cc_encargado: 789120456,
@@ -747,7 +748,7 @@ db.infraestructura.insertMany([
         dimensiones: '1000 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Seguridad',
         tipo: 'Departamento',
         cc_encargado: 123456789,
@@ -755,7 +756,7 @@ db.infraestructura.insertMany([
         dimensiones: '800 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Bienestar Animal',
         tipo: 'Departamento',
         cc_encargado: 234567890,
@@ -763,7 +764,7 @@ db.infraestructura.insertMany([
         dimensiones: '1200 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Marketing y Relaciones Públicas',
         tipo: 'Departamento',
         cc_encargado: 345678901,
@@ -776,7 +777,7 @@ db.infraestructura.insertMany([
 //TODO: AREAS COMPLETO
 db.infraestructura.insertMany([
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Área de Exhibición',
         tipo: 'Area',
         cc_encargado: 456789012,
@@ -784,7 +785,7 @@ db.infraestructura.insertMany([
         dimensiones: '2000 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Jardín Botánico',
         tipo: 'Area',
         cc_encargado: 567890123,
@@ -792,7 +793,7 @@ db.infraestructura.insertMany([
         dimensiones: '1500 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Acuario',
         tipo: 'Area',
         cc_encargado: 678901234,
@@ -800,7 +801,7 @@ db.infraestructura.insertMany([
         dimensiones: '1000 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Aviario',
         tipo: 'Area',
         cc_encargado: 789012345,
@@ -808,7 +809,7 @@ db.infraestructura.insertMany([
         dimensiones: '1200 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Hábitats Nocturnos',
         tipo: 'Area',
         cc_encargado: 890123456,
@@ -816,7 +817,7 @@ db.infraestructura.insertMany([
         dimensiones: '800 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Zona de Animales Exóticos',
         tipo: 'Area',
         cc_encargado: 901234567,
@@ -824,7 +825,7 @@ db.infraestructura.insertMany([
         dimensiones: '1800 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Zona de Animales en Peligro',
         tipo: 'Area',
         cc_encargado: 123345678,
@@ -832,7 +833,7 @@ db.infraestructura.insertMany([
         dimensiones: '1600 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Zona de Aves Rapaces',
         tipo: 'Area',
         cc_encargado: 234456789,
@@ -840,7 +841,7 @@ db.infraestructura.insertMany([
         dimensiones: '1400 m²',
     },
     {
-        id: siguiente_id("infraestructura"),
+        id: auth_id("infraestructura"),
         nombre_lugar: 'Granja Educativa',
         tipo: 'Area',
         cc_encargado: 345567890,

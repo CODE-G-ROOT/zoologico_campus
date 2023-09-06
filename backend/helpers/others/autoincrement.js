@@ -1,8 +1,14 @@
-import { Counters } from "../collections/counters.js";
+import con from '../../connection/conect.js'
 
-export default async function autoIncrementID(col) {
-    const nuevoId = new Counters();
-    nuevoId.collection = col;
-    const res = await nuevoId.getID();
-    return res;
-}
+export default async function auth_id(collection){
+
+    let db = await con();
+    let counter = db.collection("counters");
+
+    const secuencesValues = await counter.findOneAndUpdate(
+        { counter: `${collection}id` },
+        { $inc: { sequence_value: 1 } },
+        { returnDocument: "after" }
+    );
+    return secuencesValues.value.sequence_value;
+};
