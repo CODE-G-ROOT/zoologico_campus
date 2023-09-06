@@ -27,25 +27,25 @@ Seguir los pasos para le buen funcionamiento de esta herramienta
 2. abrir el archivo almacenado y ubicarse en  `./backend` y correr los siguientes comandos en la terminal: 
 
 
-​			`npm update`
-
-​			`npm run tsc` Luego de insertar y correr este comando en la terminal, crea una nueva terminal y ubicate de nuevo en la carpeta `./backend`
-
-​			`npm run env`
+			`npm update`
+	
+			`npm run tsc` Luego de insertar y correr este comando en la terminal, crea una nueva terminal y ubicate de nuevo en la carpeta `./backend`
+	
+			`npm run env`
 
 3. Ahora ve al archivo `.env` generado y agrega tus credenciales de **mongodb** de la siguiente forma:
 
-​		**ATLAS_USER**="[Aquí va tu usuario de mongo]"
+		**ATLAS_USER**="[Aquí va tu usuario de mongo]"
+		
+		**ATLAS_PASSWORD**="[Aquí tu contraseña]"
+		
+		**ATLAS_DB**="zoologico"
+		
+		**JWT_PRIVATE_KEY**="cc"
+		
+		**MY_SERVER**={"hostname":"127.1.1.1","port":5510}
 
-​		**ATLAS_PASSWORD**="[Aquí tu contraseña]"
-
-​		**ATLAS_DB**="zoologico"
-
-​		**JWT_PRIVATE_KEY**="cc"
-
-​		**MY_SERVER**={"hostname":"127.1.1.1","port":5510}
-
-​		Si deseas cambiar el host o el puerto puedes configurar la variable de entorno **MY-SERVER** y cambiar los valores que tiene por predeterminados a tu 		gusto
+	Si deseas cambiar el host o el puerto puedes configurar la variable de entorno **MY-SERVER** y cambiar los valores que tiene por predeterminados a tu gusto
 
 <br>Listo ahroa que ya tenemos configuradas nuestras variables de entorno con nuestras credenciales de mongodb, ya podemos agregar la base de datos a nuestro mongodb. Para ello vamos a seguir los siguientes pasos:
 
@@ -103,7 +103,6 @@ Para poder acceder a la información almacenada en esta api, es importante tener
 # Endpoints:
 
 ### **animales** 
-
 
 >  las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente de la siguiente forma: 
 >  http://tushost:4000/animales/all
@@ -176,7 +175,41 @@ Utilizando **Thunder Client** ingresaremos la siguiente ruta para poder ingresar
 
 Bien hecho, si vez, es facil. Ahora ya sabes como insertar datos, si quieres insertar datos personalizados, te recomiendo que analices muy bien la estructura del insert y sus tipos de datos, ya que pueden que te den un dolor de cabeza.
 
- <br>
+#  <br>
+
+>  las siguientes son las sub-rutas a las que puedes acceder, cada una de ellas te da una información diferente de la siguiente forma: http://tushost:4000/animales/animales
+
+**GET** 
+
+-`/animales`:Obtener todos los animales registrados
+-`/animales/:id`: Obtiene el animal con ese ID
+
+**POST**
+
+-`/animales`:crear una nueva entidad animal 
+Claro, aquí tienes la tabla para tu README.md con las variables y sus tipos de datos:
+
+| **Campo**           | Tipo de dato     |
+| ------------------- | ---------------- |
+| id                  | Number (32 bits) |
+| nombre_animal       | String           |
+| animal              | String           |
+| edad_animal         | Number           |
+| genero_animal       | String           |
+| habitat_zoo         | Number           |
+| cuidados            | String           |
+| relacion_animales   | String           |
+| estado_salud        | String           |
+| historia            | String           |
+| interaccion_humanos | String           |
+| enlaces_geneticos   | String           |
+
+Puedes copiar y pegar esta tabla en tu README.md y reemplazar los nombres de las variables y los tipos de datos según sea necesario. Esto ayudará a los usuarios de tu API a comprender la estructura de los datos que deben enviar o recibir al interactuar con ella.
+
+**DELETE**
+
+-`/animales/:id`: Elimina el animal con ese ID
+<br>
 
 <hr>
 
@@ -261,6 +294,7 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 <br>
 
 <hr>
+
 ### **eventos**: `/eventos`
 
 **GET**: 
@@ -314,6 +348,9 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 <br>
 
 <hr>
+
+
+
 ### **finanzas**: `/finanzas`
 
 **GET**: 
@@ -345,6 +382,9 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 <br>
 
 <hr> 
+
+
+
 ### **historial_mantenimiento**: `/hmant`
 
 **GET**: 
@@ -375,7 +415,10 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 
 <br>
 
-<hr> 
+<hr>  
+
+
+
 ### **historial_medico**: `/hmed`
 
 **GET**: 
@@ -407,6 +450,7 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 <br>
 
 <hr>
+
 ### **infraestructura**: `/infra`
 
 **GET**: 
@@ -449,9 +493,11 @@ Ya no es necesario decir como funciona la ruta, si aún no entienes, te recomien
 
 Este endpoint permite consultar una organización específica por su identificador (ID).
 
+- `/org/:id`: Este endpoint permite consultar una organización específica por su identificador (ID).
+
 **POST**
 
-`/org` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
+- `/org` : Agrega un documento a la api, este documento debe cumplir con los siguientes parámetros para esta colección:
 
 | **Campo**   | Tipo de dato     |
 | ----------- | ---------------- |
@@ -462,6 +508,11 @@ Este endpoint permite consultar una organización específica por su identificad
 | fecha       | ISODate          |
 
 **DELETE** `/org/:id`:Este endpoint permite eliminar una organización específica por su identificador (ID).
+
+
+- **DELETE** 
+
+-`/org/:id`:Este endpoint permite eliminar una organización específica por su identificador (ID).
 
 <br>
 
